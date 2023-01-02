@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_project/provider.dart';
-import 'package:flutter_project/register_page/register_page.dart';
+import 'package:flutter_project/login_page/provider.dart';
+import 'package:flutter_project/register_page/mainScreen.dart';
 import 'package:provider/provider.dart';
 
 Widget textFieldEmail(){
   return Padding(
-    padding: EdgeInsets.all(12.0),
+    padding: EdgeInsets.all(18.0),
     child: TextFormField(
         decoration: InputDecoration(
             contentPadding: EdgeInsets.all(20),
@@ -26,7 +26,7 @@ Widget textFieldEmail(){
 
 Widget textFieldPassword(){
   return Padding(
-    padding: const EdgeInsets.all(12.0),
+    padding: const EdgeInsets.all(18.0),
     child: TextFormField(
         decoration: InputDecoration(
             contentPadding: EdgeInsets.all(20),
@@ -87,7 +87,7 @@ Widget toggleButtons() {
             fillColor: Colors.green,
             selectedColor: Colors.green,
             splashColor: Colors.lightGreen,
-            selectedBorderColor: Colors.green,
+            selectedBorderColor: Colors.white,
             borderColor: Colors.white,
             onPressed: (newindex) {
               value.checkIndex(newindex);

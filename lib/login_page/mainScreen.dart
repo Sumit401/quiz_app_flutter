@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_project/login_page/widgets_login.dart';
+import 'package:flutter_project/login_page/widgets.dart';
+import 'package:flutter_project/Responsive.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -14,10 +15,13 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       body: Container(
           alignment: Alignment.center,
-          width: MediaQuery.of(context).size.width,
+          width:  MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
           decoration: pageDecoration(),
           child: Container(
+            width: ResponsiveWidget.isSmallScreen(context)
+                ? MediaQuery.of(context).size.width
+                : MediaQuery.of(context).size.width / 2,
             alignment: Alignment.center,
             padding: EdgeInsets.all(20),
             child: Column(
