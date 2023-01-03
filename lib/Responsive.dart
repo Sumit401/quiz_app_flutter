@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ResponsiveWidget extends StatelessWidget {
+
   final Widget largeScreen;
   final Widget? mediumScreen;
   final Widget? smallScreen;
@@ -40,4 +41,11 @@ class ResponsiveWidget extends StatelessWidget {
       },
     );
   }
+}
+
+double screenWidth(context){
+  return MediaQuery.of(context).size.width;
+}
+double screenHeight(context){
+  return MediaQuery.of(context).size.height;
 }

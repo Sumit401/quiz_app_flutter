@@ -18,33 +18,41 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       body: Container(
           alignment: Alignment.center,
-          width:  MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
+          width:  screenWidth(context),
+          height: screenHeight(context),
           decoration: pageDecoration(),
           child: SingleChildScrollView(
-            child: Container(
-              width: ResponsiveWidget.isSmallScreen(context)
-                  ? MediaQuery.of(context).size.width
-                  : MediaQuery.of(context).size.width / 2,
-              alignment: Alignment.center,
-              padding: EdgeInsets.all(20),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  loginText(),
-                  //toggleButtons(),
-                  textFieldEmail(),
-                  textFieldPassword(),
-                  submitButton(),
-                  notUserSignup(context),
-                ],
-              ),
-            ),
+            child: bodyContainer(),
           )),
     );
   }
 
-  Widget loginText() {
+
+  Container bodyContainer() {
+    return Container(
+      alignment: Alignment.center,
+      padding: const EdgeInsets.all(20),
+      width: ResponsiveWidget.isSmallScreen(context)
+          ? screenWidth(context)
+          : screenWidth(context) / 2,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          loginText(),
+          //toggleButtons(),
+          textFieldEmail(),
+          textFieldPassword(),
+          submitButton(),
+          notUserSignup(context),
+        ],
+      ),
+    );
+  }
+}
+
+
+
+Widget loginText() {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 20),
       child: const Text("Login",
@@ -65,4 +73,3 @@ class _LoginPageState extends State<LoginPage> {
     ],stops: [0.1,0.2,0.3,0.5,0.9,1],
         begin: Alignment.bottomLeft,end: Alignment.topRight));
   }
-}

@@ -2,13 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_project/login_page/mainScreen.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-double screenHeight(context){
-  return MediaQuery.of(context).size.height;
-}
-double screenWidth(context){
-  return MediaQuery.of(context).size.width;
-}
-
 Future<bool?> long_flutter_toast(String message){
   return(
       Fluttertoast.showToast(

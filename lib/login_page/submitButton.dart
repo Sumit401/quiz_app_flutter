@@ -23,8 +23,8 @@ Widget submitButton() {
             try{
               UserCredential firebaseAuth = await FirebaseAuth.instance.signInWithEmailAndPassword(
                   email: value.email, password: value.password);
-              sharedPreferences.setString("userName", firebaseAuth.user!.displayName.toString());
-              sharedPreferences.setString("userEmail", firebaseAuth.user!.email.toString());
+              //sharedPreferences.setString("userName", firebaseAuth.user!.displayName.toString());
+              //sharedPreferences.setString("userEmail", firebaseAuth.user!.email.toString());
               FirebaseFirestore.instance.collection("users").doc(value.email).get()
                   .then((value1) => value1.data()!.forEach((key, value) {
                 if (key == "userCourse") {
@@ -34,6 +34,7 @@ Widget submitButton() {
                 }
               }));
               long_flutter_toast("Login Successful");
+              Navigator.pop(context);
               Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => FacultyHome(),));
             }catch(e){
               Navigator.pop(context);
