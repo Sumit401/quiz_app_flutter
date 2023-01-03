@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_project/login_page/widgets.dart';
 import 'package:flutter_project/Responsive.dart';
 
+import 'submitButton.dart';
+import 'textFields.dart';
+
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
@@ -18,22 +21,24 @@ class _LoginPageState extends State<LoginPage> {
           width:  MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
           decoration: pageDecoration(),
-          child: Container(
-            width: ResponsiveWidget.isSmallScreen(context)
-                ? MediaQuery.of(context).size.width
-                : MediaQuery.of(context).size.width / 2,
-            alignment: Alignment.center,
-            padding: EdgeInsets.all(20),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                loginText(),
-                toggleButtons(),
-                textFieldEmail(),
-                textFieldPassword(),
-                submitButton(),
-                notUserSignup(context),
-              ],
+          child: SingleChildScrollView(
+            child: Container(
+              width: ResponsiveWidget.isSmallScreen(context)
+                  ? MediaQuery.of(context).size.width
+                  : MediaQuery.of(context).size.width / 2,
+              alignment: Alignment.center,
+              padding: EdgeInsets.all(20),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  loginText(),
+                  //toggleButtons(),
+                  textFieldEmail(),
+                  textFieldPassword(),
+                  submitButton(),
+                  notUserSignup(context),
+                ],
+              ),
             ),
           )),
     );
@@ -44,7 +49,7 @@ class _LoginPageState extends State<LoginPage> {
       margin: const EdgeInsets.symmetric(vertical: 20),
       child: const Text("Login",
           style: TextStyle(
-              fontSize: 25, fontWeight: FontWeight.w800, color: Colors.white)),
+              fontSize: 30, fontWeight: FontWeight.w800, color: Colors.lightGreen,fontStyle: FontStyle.italic)),
     );
   }
 

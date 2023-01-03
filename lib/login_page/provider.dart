@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 
-class ToggleButtonProvider extends ChangeNotifier{
-  int buttonIndex=0;
+class LoginPageProvider extends ChangeNotifier{
+  String password="";
+  String email="";
 
-  void checkIndex(int indexes){
-    buttonIndex=indexes;
+  void emailNotifier(index){
+    email=index;
     notifyListeners();
   }
-
+  void passwordNotifier(index){
+    password=index;
+    notifyListeners();
+  }
 }

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_project/register_page/widgets.dart';
 import '../Responsive.dart';
+import 'submitButton.dart';
+import 'textFields.dart';
+import 'toggleButtons.dart';
+import 'widgets.dart';
 
 class Register extends StatefulWidget {
   const Register({Key? key}) : super(key: key);
@@ -12,29 +15,33 @@ class Register extends StatefulWidget {
 class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
+    print("build");
     return Scaffold(
       body: Container(
         alignment: Alignment.center,
         width:  screenWidth(context),
         height: screenHeight(context),
         decoration: pageDecoration(),
-        child: Container(
-          width: ResponsiveWidget.isSmallScreen(context)
-              ? screenWidth(context)
-              : screenWidth(context) / 2,
-          alignment: Alignment.center,
-          padding: const EdgeInsets.all(40),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              registerText(),
-              toggleForType(),
-              textFieldName(),
-              textFieldEmail(),
-              textFieldPassword(),
-              buttonSubmit(),
-              alreadyUserLogin(context),
-            ],
+        child: SingleChildScrollView(
+          child: Container(
+            width: ResponsiveWidget.isSmallScreen(context)
+                ? screenWidth(context)
+                : screenWidth(context) / 2,
+            alignment: Alignment.center,
+            padding: const EdgeInsets.all(40),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                registerText(),
+                toggleForStudentFaculty(),
+                selectCourse(),
+                textFieldName(),
+                textFieldEmail(),
+                textFieldPassword(),
+                buttonSubmit(),
+                alreadyUserLogin(context),
+              ],
+            ),
           ),
         ),
       ),

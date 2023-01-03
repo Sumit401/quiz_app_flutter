@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_project/login_page/mainScreen.dart';
-import 'package:flutter_project/register_page/provider.dart';
-import 'package:provider/provider.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 double screenHeight(context){
   return MediaQuery.of(context).size.height;
@@ -10,71 +9,17 @@ double screenWidth(context){
   return MediaQuery.of(context).size.width;
 }
 
-Widget textFieldName(){
-  return Container(
-    margin: EdgeInsets.symmetric(vertical: 10),
-    child: TextFormField(
-      decoration: InputDecoration(
-          labelText: "Name",
-          labelStyle: const TextStyle(color: Colors.white),
-          enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(20),
-              borderSide: const BorderSide(
-                  color: Colors.white, style: BorderStyle.solid, width: 2)),
-          focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(20),
-              borderSide: const BorderSide(
-                  color: Colors.white, style: BorderStyle.solid, width: 2))),
-    ),
-  );
+Future<bool?> long_flutter_toast(String message){
+  return(
+      Fluttertoast.showToast(
+          msg: message,
+          toastLength: Toast.LENGTH_LONG,
+          gravity: ToastGravity.BOTTOM,
+          timeInSecForIosWeb: 1,
+          textColor: Colors.white,
+          fontSize: 16.0));
 }
 
-Widget textFieldEmail(){
-  return Container(
-    margin: EdgeInsets.symmetric(vertical: 10),
-    child: TextFormField(
-      decoration: InputDecoration(
-          labelText: "Email",
-          labelStyle: const TextStyle(color: Colors.white),
-          enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(20),
-              borderSide: const BorderSide(
-                  color: Colors.white, style: BorderStyle.solid, width: 2)),
-          focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(20),
-              borderSide: const BorderSide(
-                  color: Colors.white, style: BorderStyle.solid, width: 2))),
-    ),
-  );
-}
-
-Widget textFieldPassword(){
-  return Container(
-    margin: EdgeInsets.symmetric(vertical: 10),
-    child: TextFormField(
-      decoration: InputDecoration(
-          labelText: "Password",
-          labelStyle: const TextStyle(color: Colors.white),
-          enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(20),
-              borderSide: const BorderSide(
-                  color: Colors.white, style: BorderStyle.solid, width: 2)),
-          focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(20),
-              borderSide: const BorderSide(
-                  color: Colors.white, style: BorderStyle.solid, width: 2))),
-    ),
-  );
-}
-
-Widget buttonSubmit() {
-  return ElevatedButton(
-      onPressed: () => null,
-      child: const Text(
-        "Submit",
-        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-      ));
-}
 
 Widget alreadyUserLogin(context) {
   return InkWell(
@@ -88,43 +33,5 @@ Widget alreadyUserLogin(context) {
       Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (context) => LoginPage()));
     },
-  );
-}
-
-Widget toggleForType() {
-  return ChangeNotifierProvider<ProviderToggleType>(
-    create: (context) => ProviderToggleType(),
-    child: Consumer<ProviderToggleType>(
-      builder: (context, value, child) {
-        return Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Expanded(
-                child: RadioListTile(
-                  activeColor: Colors.green,
-                  title: Text("Student",style: TextStyle(color: Colors.white)),
-                  value: 0,
-                  groupValue: value.selectedRadio,
-                  onChanged: (changedValue) {
-                    value.changeRadioValue(changedValue);
-                    print(value.selectedRadio);
-                  },
-                )),
-            Expanded(
-                child: RadioListTile(
-                  activeColor: Colors.green,
-                  title: Text("Faculty",style: TextStyle(color: Colors.white)),
-                  value: 1,
-                  groupValue: value.selectedRadio,
-                  onChanged: (changedValue) {
-                    value.changeRadioValue(changedValue);
-                    print(value.selectedRadio);
-                  },
-                )),
-          ],
-        );
-      },
-
-    ),
   );
 }

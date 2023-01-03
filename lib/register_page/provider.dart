@@ -1,13 +1,35 @@
-
-
 import 'package:flutter/material.dart';
 
-class ProviderToggleType extends ChangeNotifier{
+class RegisterPageProvider with ChangeNotifier{
 
-  int selectedRadio = 0;
+  int radioForStudentFaculty = 0;
+  int radioCourseType = 0;
+  String name = "";
+  String email = "";
+  String password = "";
 
-  void changeRadioValue(value){
-    selectedRadio=value;
+  void changeStudentFacultyValue(value){
+    radioForStudentFaculty=value;
+    notifyListeners();
+  }
+
+  void changeCourseType(value){
+    radioCourseType=value;
+    notifyListeners();
+  }
+  void nameController(value){
+    if(value!="") {
+      name=value;
+      notifyListeners();
+    }
+
+  }
+  void emailController(value){
+    email=value;
+    notifyListeners();
+  }
+  void passwordController(value){
+    password=value;
     notifyListeners();
   }
 }
