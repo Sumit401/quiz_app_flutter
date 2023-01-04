@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_project/Faculty/createQuiz/mainScreen.dart';
 
-Widget floatingButtonCreate() {
+Widget floatingButtonCreate(context) {
   return Container(
     decoration: BoxDecoration(
         shape: BoxShape.rectangle,
@@ -13,7 +14,7 @@ Widget floatingButtonCreate() {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       isExtended: true,
       backgroundColor: Colors.blueGrey,
-      onPressed: () => null,
+      onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => CreateQuiz(),)),
       elevation: 20,
       child: Padding(
         padding: const EdgeInsets.all(8.0),

@@ -29,6 +29,7 @@ ListTile listTileCreate(context){
         fontWeight: FontWeight.w400,),
     ),
     onTap: () => {
+      Navigator.pop(context),
       Navigator.push(context, MaterialPageRoute(builder: (context) => CreateQuiz(),))
     },
   );

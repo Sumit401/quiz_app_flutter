@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_project/Faculty/createQuiz/provider.dart';
 import 'package:flutter_project/login_page/mainScreen.dart';
 import 'package:flutter_project/login_page/provider.dart';
 import 'package:flutter_project/register_page/provider.dart';
@@ -20,7 +21,8 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => RegisterPageProvider(),),
-        ChangeNotifierProvider(create: (_) => LoginPageProvider(),)
+        ChangeNotifierProvider(create: (_) => LoginPageProvider(),),
+        ChangeNotifierProvider(create: (_) => CreateQuizProvider()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
