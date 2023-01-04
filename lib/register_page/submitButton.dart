@@ -2,9 +2,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../reusableWidgets/alertDialogLoading.dart';
 import '../login_page/mainScreen.dart';
+import '../reusableWidgets/switchCaseLoginError.dart';
+import '../reusableWidgets/toastWidget.dart';
 import 'provider.dart';
-import 'widgets.dart';
 
 Widget buttonSubmit() {
   return Consumer<RegisterPageProvider>(
@@ -43,35 +45,3 @@ Widget buttonSubmit() {
   ) ;
 }
 
-
-switchcase_error(e){
-  switch (e.code) {
-    case "email-already-in-use":
-      long_flutter_toast("Your Email is already Registered.");
-      break;
-    case "invalid-email":
-      long_flutter_toast("Enter Valid Email");
-      break;
-    case "weak-password":
-      long_flutter_toast("Password should be at least 6 characters");
-      break;
-    default:
-      long_flutter_toast("An undefined Error happened.");
-  };
-}
-
-showAlertDialog(BuildContext context){
-  AlertDialog alert=AlertDialog(
-    content: Row(
-      children: [
-        const CircularProgressIndicator(),
-        Container(margin: const EdgeInsets.only(left: 20),child:Text("Loading")),
-      ],),
-  );
-  showDialog(barrierDismissible: false,
-    context:context,
-    builder:(BuildContext context){
-      return alert;
-    },
-  );
-}

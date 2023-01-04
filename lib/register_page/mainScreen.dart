@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import '../Responsive.dart';
+import '../reusableWidgets/Responsive.dart';
 import 'submitButton.dart';
 import 'textFields.dart';
 import 'toggleButtons.dart';
-import 'widgets.dart';
+import 'alreadyUserLogin.dart';
 
 class Register extends StatefulWidget {
   const Register({Key? key}) : super(key: key);

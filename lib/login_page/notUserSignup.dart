@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_project/register_page/mainScreen.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 
 Widget notUserSignup(context) {
@@ -19,16 +18,6 @@ Widget notUserSignup(context) {
 }
 
 
-Future<bool?> long_flutter_toast(String message){
-  return(
-      Fluttertoast.showToast(
-          msg: message,
-          toastLength: Toast.LENGTH_LONG,
-          gravity: ToastGravity.BOTTOM,
-          timeInSecForIosWeb: 1,
-          textColor: Colors.white,
-          fontSize: 16.0));
-}
 
 
 

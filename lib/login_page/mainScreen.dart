@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_project/login_page/widgets.dart';
-import 'package:flutter_project/Responsive.dart';
+import 'package:flutter_project/login_page/notUserSignup.dart';
+import 'package:flutter_project/reusableWidgets/Responsive.dart';
 
 import 'submitButton.dart';
 import 'textFields.dart';

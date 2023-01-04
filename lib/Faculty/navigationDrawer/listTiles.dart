@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_project/Faculty/createQuiz/mainScreen.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 ListTile listTileQuiz(){
@@ -17,7 +18,7 @@ ListTile listTileQuiz(){
   );
 }
 
-ListTile listTileCreate(){
+ListTile listTileCreate(context){
   return ListTile(
     contentPadding: const EdgeInsets.only(top: 15, left: 20),
     leading: const Icon(FontAwesomeIcons.circlePlus,size: 20,
@@ -28,6 +29,7 @@ ListTile listTileCreate(){
         fontWeight: FontWeight.w400,),
     ),
     onTap: () => {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => CreateQuiz(),))
     },
   );
 }

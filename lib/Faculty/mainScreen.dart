@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_project/Faculty/navigationDrawer/mainDrawer.dart';
-import 'package:flutter_project/Faculty/widgets.dart';
+import 'package:flutter_project/Faculty/navigationDrawer/drawerBody.dart';
+import 'package:flutter_project/Faculty/appBar.dart';
 
 import 'floatingButton.dart';
 
@@ -15,7 +15,7 @@ class _FacultyHomeState extends State<FacultyHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBarContent(),
+      appBar: appBarContent(context),
       floatingActionButton: floatingButtonCreate(),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       drawer: navigationDrawer(context),

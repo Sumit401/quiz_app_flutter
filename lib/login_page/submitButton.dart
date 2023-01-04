@@ -6,8 +6,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 
 import '../Faculty/mainScreen.dart';
+import '../reusableWidgets/alertDialogLoading.dart';
+import '../reusableWidgets/toastWidget.dart';
 import 'provider.dart';
-import 'widgets.dart';
 
 Widget submitButton() {
   return Container(
@@ -75,18 +76,3 @@ switchCaseError(e){
   }
 }
 
-showAlertDialog(BuildContext context){
-  AlertDialog alert=AlertDialog(
-    content: Row(
-      children: [
-        const CircularProgressIndicator(),
-        Container(margin: const EdgeInsets.only(left: 20),child:const Text("Loading")),
-      ],),
-  );
-  showDialog(barrierDismissible: false,
-    context:context,
-    builder:(BuildContext context){
-      return alert;
-    },
-  );
-}
