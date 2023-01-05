@@ -1,0 +1,56 @@
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_project/Faculty/createQuiz/provider.dart';
+import 'package:provider/provider.dart';
+
+
+// Submit Quiz Button Main Screen
+Widget submitQuizButton() {
+  return Consumer<CreateQuizProvider>(
+    builder: (context, providerValue, child) {
+      return ElevatedButton(onPressed: () async{
+
+        // Get email of current logged in user..............................
+        String email = FirebaseAuth.instance.currentUser!.email.toString();
+
+        //Count Docs Size in Collection......................................
+        int getDocsCount = await FirebaseFirestore.instance.collection("users")
+                .doc(email).collection("questions").get()
+                .then((value) => value.size);
+            int i = 0;
+            int a = 101;
+
+            // Check the list value, quiz title and Quiz Description if not empty.............
+            if (providerValue.list.isNotEmpty &&
+                providerValue.quizTitle != "" &&
+                providerValue.quizDesc != "") {
+
+              // Set Quiz Description and Quiz Title to the Firebase Database.....................
+              await FirebaseFirestore.instance.collection("users")
+                  .doc(email).collection("questions")
+                  .doc("R${a + getDocsCount}")
+                  .set({"Quiz Title": providerValue.quizTitle,
+                "Quiz Description": providerValue.quizDesc
+              });
+
+              // Set each Element from list to the Firebase Database.....................
+              for (var element in providerValue.list) {
+                i++;
+                await FirebaseFirestore.instance
+                    .collection("users").doc(email)
+                    .collection("questions")
+                    .doc("R${a + getDocsCount}")
+                    .collection("S${a + getDocsCount}")
+                    .doc("Q$i").set(element);
+              }
+              // Clear the value of list, Quiz Desc and Quiz Title...............
+              providerValue.clearList();
+              providerValue.clearQuizDescValue();
+              providerValue.clearQuizTitleValue();
+            }
+          }, child: const Text("Submit Quiz"));
+    },
+  );
+}

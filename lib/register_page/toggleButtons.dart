@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_project/register_page/provider.dart';
 import 'package:provider/provider.dart';
+
+import 'provider.dart';
 
 Widget toggleForStudentFaculty() {
   return Consumer<RegisterPageProvider>(

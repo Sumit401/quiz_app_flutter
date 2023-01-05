@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_project/Faculty/createQuiz/provider.dart';
 import 'package:provider/provider.dart';
 
-import 'buttonsWidgets.dart';
+import 'submitQuizButton.dart';
+import 'alertDialogAddQuestions/dialogAddQuestion.dart';
 import 'listView.dart';
 import 'textFieldWidgets.dart';
 

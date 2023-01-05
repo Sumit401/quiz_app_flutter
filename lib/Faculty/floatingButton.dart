@@ -10,22 +10,26 @@ Widget floatingButtonCreate(context) {
         border: Border.all(color: Colors.black, width: 1)),
     width: 100,
     height: 45,
-    child: FloatingActionButton(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-      isExtended: true,
-      backgroundColor: Colors.blueGrey,
-      onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => CreateQuiz(),)),
-      elevation: 20,
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
-            Icon(Icons.add),
-            Text("Create",
-                style: TextStyle(fontSize: 17, fontWeight: FontWeight.w600)),
-          ],
-        ),
+    child: floatingButton(context),
+  );
+}
+
+Widget floatingButton(context) {
+  return FloatingActionButton(
+    backgroundColor: Colors.blueGrey,
+    elevation: 20,
+    isExtended: true,
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+    onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => CreateQuiz(),)),
+    child: Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: const [
+          Icon(Icons.add),
+          Text("Create",
+              style: TextStyle(fontSize: 17, fontWeight: FontWeight.w600)),
+        ],
       ),
     ),
   );

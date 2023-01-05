@@ -24,7 +24,7 @@ Container containerLogout(context) {
             showDialog(
               context: context,
               builder: (context) {
-                return alertDialogSignout(context);
+                return alertDialogSignOut(context);
               },
             );
           },

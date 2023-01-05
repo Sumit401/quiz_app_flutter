@@ -5,11 +5,12 @@ class CreateQuizProvider extends ChangeNotifier{
   String quizDesc = "";
 
   String questionInfo="";
-  String option1="";
-  String option2="";
-  String option3="";
-  String option4="";
-  List<Map> list = [];
+  String option1 = "";
+  String option2 = "";
+  String option3 = "";
+  String option4 = "";
+
+  List<Map<String,String>> list = [];
   
   void getQuizTitle(String title){
     quizTitle=title;
@@ -41,7 +42,7 @@ class CreateQuizProvider extends ChangeNotifier{
   }
 
   void setDataToList() {
-    Map value = {
+    Map<String,String> value = {
       "Question": questionInfo,
       "Answer1" : option1,
       "Answer2" : option2,
@@ -57,6 +58,18 @@ class CreateQuizProvider extends ChangeNotifier{
 
   void deleteData(index){
     list.removeAt(index);
+    notifyListeners();
+  }
+  void clearList(){
+    list.clear();
+    notifyListeners();
+  }
+  void clearQuizTitleValue(){
+    quizTitle="";
+    notifyListeners();
+  }
+  void clearQuizDescValue(){
+    quizDesc="";
     notifyListeners();
   }
 }
