@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../reusableWidgets/alertDialogLogout.dart';
+import 'alertDialogs/alertDialogLogout.dart';
 
-AppBar appBarContent(context) {
+AppBar appBarContent(context,title) {
   return AppBar(
-    title: const Text("My Quizzes"),
+    title: Text(title),
     centerTitle: true,
     elevation: 10,
     actions: [

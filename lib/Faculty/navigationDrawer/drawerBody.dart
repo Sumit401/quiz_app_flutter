@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_project/Faculty/createQuiz/mainScreen.dart';
+
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-ListTile listTileQuiz(){
+import '../createQuiz/mainScreen.dart';
+
+ListTile listTileMyQuiz(){
   return ListTile(
     contentPadding: const EdgeInsets.only(left: 20),
     leading: const Icon(FontAwesomeIcons.receipt,

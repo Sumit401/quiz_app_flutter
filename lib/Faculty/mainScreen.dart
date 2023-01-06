@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_project/Faculty/navigationDrawer/drawerMain.dart';
-import 'package:flutter_project/Faculty/appBar.dart';
 
+
+import '../reusableWidgets/appBar.dart';
 import 'floatingButton.dart';
+import 'navigationDrawer/drawerMain.dart';
 import 'showQuiz/mainScreen.dart';
 
 class FacultyHome extends StatefulWidget {
@@ -16,7 +17,7 @@ class _FacultyHomeState extends State<FacultyHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBarContent(context),
+      appBar: appBarContent(context,"My Quizzes"),
       floatingActionButton: floatingButtonCreate(context),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       drawer: navigationDrawer(context),

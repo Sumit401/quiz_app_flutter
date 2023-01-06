@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_project/login_page/notUserSignup.dart';
-import 'package:flutter_project/reusableWidgets/Responsive.dart';
-
+import '../reusableWidgets/Responsive.dart';
+import 'notUserSignup.dart';
 import 'submitButton.dart';
 import 'textFields.dart';
 
@@ -20,9 +19,9 @@ class _LoginPageState extends State<LoginPage> {
           alignment: Alignment.center,
           width:  screenWidth(context),
           height: screenHeight(context),
-          decoration: pageDecoration(),
+          decoration: pageDecoration(), //See Below.........
           child: SingleChildScrollView(
-            child: bodyContainer(),
+            child: bodyContainer(), // See below..........
           )),
     );
   }
@@ -38,12 +37,11 @@ class _LoginPageState extends State<LoginPage> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          loginText(),
-          //toggleButtons(),
-          textFieldEmail(),
-          textFieldPassword(),
-          submitButton(),
-          notUserSignup(context),
+          loginText(), // See below.........
+          textFieldEmail(), // See textFields.dart..................
+          textFieldPassword(), // See textFields.dart..................
+          submitButton(), // See submitButton.dart..................
+          notUserSignup(context), //See notUserSignup.dart..............
         ],
       ),
     );

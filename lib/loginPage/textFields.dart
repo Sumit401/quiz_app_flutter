@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import 'provider.dart';
 
+// Text Field for Email.....................................
 Widget textFieldEmail(){
   return Padding(
       padding: const EdgeInsets.all(18.0),
@@ -19,6 +20,7 @@ Widget textFieldEmail(){
   );
 }
 
+// Text Field for password.....................................
 Widget textFieldPassword(){
   return Padding(
     padding: const EdgeInsets.all(18.0),
@@ -37,6 +39,7 @@ Widget textFieldPassword(){
   );
 }
 
+// Input Decoration for above TextFormFields.....................
 InputDecoration inputTextDecoration(String value){
   return InputDecoration(
     contentPadding: const EdgeInsets.all(20),
@@ -47,12 +50,15 @@ InputDecoration inputTextDecoration(String value){
     enabledBorder: textFieldBorder(),);
 }
 
+// Border for above TextFormFields...............................
 OutlineInputBorder textFieldBorder(){
   return OutlineInputBorder(
       borderSide: const BorderSide(color: Colors.white),
       borderRadius: BorderRadius.circular(20),
       gapPadding: 5);
 }
+
+// Text Styling for above TextFormFields.........................
 TextStyle textStyleLabel(){
   return const TextStyle(color: Colors.white);
 }

@@ -1,10 +1,12 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_project/Faculty/createQuiz/provider.dart';
-import 'package:flutter_project/login_page/mainScreen.dart';
-import 'package:flutter_project/login_page/provider.dart';
-import 'package:flutter_project/register_page/provider.dart';
+
 import 'package:provider/provider.dart';
+
+import 'Faculty/createQuiz/provider.dart';
+import 'loginPage/mainScreen.dart';
+import 'loginPage/provider.dart';
+import 'registerPage/provider.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();

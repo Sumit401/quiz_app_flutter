@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_project/register_page/mainScreen.dart';
 
+import '../registerPage/mainScreen.dart';
 
 Widget notUserSignup(context) {
   return InkWell(

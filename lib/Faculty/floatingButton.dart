@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_project/Faculty/createQuiz/mainScreen.dart';
+
+import 'createQuiz/mainScreen.dart';
+
 
 Widget floatingButtonCreate(context) {
   return Container(

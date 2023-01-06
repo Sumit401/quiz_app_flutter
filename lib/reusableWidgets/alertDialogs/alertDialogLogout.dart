@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../login_page/mainScreen.dart';
+import '../../loginPage/mainScreen.dart';
 
 AlertDialog alertDialogSignOut(context) {
   return AlertDialog(

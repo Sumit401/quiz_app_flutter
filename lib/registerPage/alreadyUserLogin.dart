@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_project/login_page/mainScreen.dart';
+
+import '../loginPage/mainScreen.dart';
+
+
+
 
 Widget alreadyUserLogin(context) {
   return InkWell(
