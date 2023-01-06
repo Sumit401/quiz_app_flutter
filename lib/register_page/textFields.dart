@@ -10,6 +10,7 @@ Widget textFieldName(){
         child: TextFormField(
           style: const TextStyle(color: Colors.white),
           keyboardType: TextInputType.name,
+          textCapitalization: TextCapitalization.words,
           decoration: textFieldDecoration("Name"),
           onChanged: (value) {
             providerValue.nameController(value);

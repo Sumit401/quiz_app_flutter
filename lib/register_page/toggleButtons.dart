@@ -7,12 +7,12 @@ Widget toggleForStudentFaculty() {
   return Consumer<RegisterPageProvider>(
     builder: (context, value, child) {
       return Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Expanded(
               child: RadioListTile(
                 activeColor: Colors.cyan,
-                title: Text("Student",style: TextStyle(color: Colors.white)),
+                title: const Text("Student",style: TextStyle(fontSize: 15,color: Colors.white,)),
                 value: 0,
                 groupValue: value.radioForStudentFaculty,
                 onChanged: (changedValue) {
@@ -22,7 +22,7 @@ Widget toggleForStudentFaculty() {
           Expanded(
               child: RadioListTile(
                 activeColor: Colors.cyan,
-                title: Text("Faculty",style: TextStyle(color: Colors.white)),
+                title: const Text("Faculty",style: TextStyle(fontSize: 15,color: Colors.white)),
                 value: 1,
                 groupValue: value.radioForStudentFaculty,
                 onChanged: (changedValue) {
@@ -36,6 +36,7 @@ Widget toggleForStudentFaculty() {
   );
 }
 
+/*
 Widget selectCourse(){
   return Consumer<RegisterPageProvider>(
     builder: (context, value, child) {
@@ -44,7 +45,7 @@ Widget selectCourse(){
           Expanded(
               child: RadioListTile(
                 activeColor: Colors.cyan,
-                title: const Text("Science", style: TextStyle(color: Colors.white)),
+                title: const Text("Science", style: TextStyle(fontSize: 15,color: Colors.white)),
                 value: 0,
                 groupValue: value.radioCourseType,
                 onChanged: (radioValue) {
@@ -53,7 +54,7 @@ Widget selectCourse(){
           Expanded(
               child: RadioListTile(
                 activeColor: Colors.cyan,
-                title: const Text("Commerce", style: TextStyle(color: Colors.white)),
+                title: const Text("Commerce", style: TextStyle(fontSize: 15,color: Colors.white)),
                 value: 1,
                 groupValue: value.radioCourseType,
                 onChanged: (radioValue) {
@@ -64,4 +65,4 @@ Widget selectCourse(){
       );
     },
   );
-}
+}*/

@@ -23,6 +23,7 @@ Widget yesPressed(context) {
         SharedPreferences sharedPreference =
             await SharedPreferences.getInstance();
         await sharedPreference.clear();
+        Navigator.pop(context);
         Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const LoginPage()));
       },
       child: const Text("Yes", style: TextStyle(fontSize: 20)));

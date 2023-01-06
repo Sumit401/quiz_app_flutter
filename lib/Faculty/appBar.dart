@@ -5,7 +5,7 @@ import '../reusableWidgets/alertDialogLogout.dart';
 
 AppBar appBarContent(context) {
   return AppBar(
-    title: const Text("Faculty"),
+    title: const Text("My Quizzes"),
     centerTitle: true,
     elevation: 10,
     actions: [

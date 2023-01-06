@@ -38,7 +38,7 @@ Widget cardWidgetOfList(index) {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Column(
-                    children: [question(), questionValue()],
+                    children: [question(index), questionValue()],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -81,64 +81,73 @@ void getDataFromList(providerValue, index) {
   });
 }
 
-Container optionA() {
-  return Container(
+Expanded optionA() {
+  return Expanded(
+    child: Container(
       padding: const EdgeInsets.all(20),
       child: Text(
-        "A.) $opt1",
-        style: const TextStyle(
-            fontSize: 15,
-            fontWeight: FontWeight.w600,
-            overflow: TextOverflow.visible),
-        textAlign: TextAlign.center,
-      ));
+          "A.) $opt1",
+          style: const TextStyle(
+              fontSize: 15,
+              fontWeight: FontWeight.w600,
+              overflow: TextOverflow.visible),
+          textAlign: TextAlign.center,
+        ),
+    ),
+  );
 }
 
-Container optionB() {
-  return Container(
-      padding: const EdgeInsets.all(20),
-      child: Text(
-        "B.) $opt2",
-        style: const TextStyle(
-            fontSize: 15,
-            fontWeight: FontWeight.w600,
-            overflow: TextOverflow.visible),
-        textAlign: TextAlign.center,
-      ));
+Expanded optionB() {
+  return Expanded(
+    child: Container(
+        padding: const EdgeInsets.all(20),
+        child: Text(
+          "B.) $opt2",
+          style: const TextStyle(
+              fontSize: 15,
+              fontWeight: FontWeight.w600,
+              overflow: TextOverflow.visible),
+          textAlign: TextAlign.center,
+        )),
+  );
 }
 
-Container optionC() {
-  return Container(
-      padding: const EdgeInsets.all(20),
-      child: Text(
-        "C.) $opt3",
-        style: const TextStyle(
-            fontSize: 15,
-            fontWeight: FontWeight.w600,
-            overflow: TextOverflow.visible),
-        textAlign: TextAlign.center,
-      ));
+Expanded optionC() {
+  return Expanded(
+    child: Container(
+        padding: const EdgeInsets.all(20),
+        child: Text(
+          "C.) $opt3",
+          style: const TextStyle(
+              fontSize: 15,
+              fontWeight: FontWeight.w600,
+              overflow: TextOverflow.visible),
+          textAlign: TextAlign.center,
+        )),
+  );
 }
 
-Container optionD() {
-  return Container(
-      padding: EdgeInsets.all(20),
-      child: Text(
-        "D.) $opt4",
-        style: const TextStyle(
-            fontSize: 15,
-            fontWeight: FontWeight.w600,
-            overflow: TextOverflow.visible),
-        textAlign: TextAlign.center,
-      ));
+Expanded optionD() {
+  return Expanded(
+    child: Container(
+        padding: EdgeInsets.all(20),
+        child: Text(
+          "D.) $opt4",
+          style: const TextStyle(
+              fontSize: 15,
+              fontWeight: FontWeight.w600,
+              overflow: TextOverflow.visible),
+          textAlign: TextAlign.center,
+        )),
+  );
 }
 
-Container question() {
+Container question(index) {
   return Container(
       alignment: Alignment.center,
       padding: const EdgeInsets.only(top: 10, right: 10, left: 10),
-      child: const Text(
-        "Question: ",
+      child: Text(
+        "Question: #${index+1}",
         style: TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.bold,

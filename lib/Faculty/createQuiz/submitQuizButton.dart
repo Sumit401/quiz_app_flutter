@@ -30,7 +30,7 @@ Widget submitQuizButton() {
               // Set Quiz Description and Quiz Title to the Firebase Database.....................
               await FirebaseFirestore.instance.collection("users")
                   .doc(email).collection("questions")
-                  .doc("R${a + getDocsCount}")
+                  .doc("${a + getDocsCount}")
                   .set({"Quiz Title": providerValue.quizTitle,
                 "Quiz Description": providerValue.quizDesc
               });
@@ -41,14 +41,15 @@ Widget submitQuizButton() {
                 await FirebaseFirestore.instance
                     .collection("users").doc(email)
                     .collection("questions")
-                    .doc("R${a + getDocsCount}")
-                    .collection("S${a + getDocsCount}")
-                    .doc("Q$i").set(element);
+                    .doc("${a + getDocsCount}")
+                    .collection("${a + getDocsCount}")
+                    .doc("$i").set(element);
               }
               // Clear the value of list, Quiz Desc and Quiz Title...............
               providerValue.clearList();
               providerValue.clearQuizDescValue();
               providerValue.clearQuizTitleValue();
+              Navigator.pop(context);
             }
           }, child: const Text("Submit Quiz"));
     },

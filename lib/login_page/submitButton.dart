@@ -6,7 +6,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 
 import '../Faculty/mainScreen.dart';
+import '../Student/mainScreen.dart';
 import '../reusableWidgets/alertDialogLoading.dart';
+import '../reusableWidgets/switchCaseLoginError.dart';
 import '../reusableWidgets/toastWidget.dart';
 import 'provider.dart';
 
@@ -15,33 +17,50 @@ Widget submitButton() {
     margin: const EdgeInsets.only(top: 10),
     // Submit Button Login
     child: Consumer<LoginPageProvider>(
-      builder: (context, value, child) {
+      builder: (context, providerValue, child) {
         return ElevatedButton(
           onPressed: () async{
-            FocusManager.instance.primaryFocus?.unfocus();
-            showAlertDialog(context);
-            SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-            try{
-              UserCredential firebaseAuth = await FirebaseAuth.instance.signInWithEmailAndPassword(
-                  email: value.email, password: value.password);
-              //sharedPreferences.setString("userName", firebaseAuth.user!.displayName.toString());
-              //sharedPreferences.setString("userEmail", firebaseAuth.user!.email.toString());
-              FirebaseFirestore.instance.collection("users").doc(value.email).get()
-                  .then((value1) => value1.data()!.forEach((key, value) {
-                if (key == "userCourse") {
-                  sharedPreferences.setString("userCourse", value=="0" ? "Science" :"Commerce");
-                } else if (key == "userType") {
-                  sharedPreferences.setString("userType", value=="0" ? "Student" : "Faculty");
-                }
-              }));
-              long_flutter_toast("Login Successful");
-              Navigator.pop(context);
-              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => FacultyHome(),));
-            }catch(e){
-              Navigator.pop(context);
-              switchCaseError(e);
-            }
-
+        if(providerValue.email.trim()!="" && providerValue.password !="") {
+          FocusManager.instance.primaryFocus?.unfocus();
+          showAlertDialog(context);
+          SharedPreferences sharedPreferences = await SharedPreferences
+              .getInstance();
+          try {
+            UserCredential firebaseAuth = await FirebaseAuth.instance
+                .signInWithEmailAndPassword(
+                email: providerValue.email.trim(),
+                password: providerValue.password);
+            //sharedPreferences.setString("userName", firebaseAuth.user!.displayName.toString());
+            //sharedPreferences.setString("userEmail", firebaseAuth.user!.email.toString());
+            long_flutter_toast("Login Successful");
+            FirebaseFirestore.instance.collection("users").doc(
+                providerValue.email.trim()).get()
+                .then((value1) =>
+                value1.data()?.forEach((key, value) {
+                  if (key == "userType") {
+                    value == "0" ? { Navigator.pop(context), // If Student
+                      Navigator.pushReplacement(context, MaterialPageRoute(
+                        builder: (context) => StudentHome(),))
+                    }
+                        : { Navigator.pop(context), // If Faculty
+                      Navigator.pushReplacement(context, MaterialPageRoute(
+                        builder: (context) => FacultyHome(),))
+                    };
+                    sharedPreferences.setString("userType", value == "0"
+                        ? "Student"
+                        : "Faculty");
+                  }
+                  providerValue.deleteEmail();
+                  providerValue.deletePassword();
+                  //print(firebaseAuth.user?.providerData.toString());
+                        }));
+              } catch (e) {
+                Navigator.pop(context);
+                switchCaseError(e);
+              }
+            }else{
+          long_flutter_toast("Please fill out all fields to Continue");
+        }
           },
           style: submitButtonStyle(),
           child: const Text("Submit",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold)),
@@ -62,17 +81,4 @@ ButtonStyle submitButtonStyle(){
 }
 
 
-
-switchCaseError(e){
-  switch (e.code) {
-    case "wrong-password":
-      long_flutter_toast("Password Incorrect");
-      break;
-    case "user-not-found":
-      long_flutter_toast("User Not Registered");
-      break;
-    default:
-      long_flutter_toast("An undefined Error happened.");
-  }
-}
 

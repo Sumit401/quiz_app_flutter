@@ -15,7 +15,6 @@ class Register extends StatefulWidget {
 class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
-    print("build");
     return Scaffold(
       body: Container(
         alignment: Alignment.center,
@@ -34,7 +33,7 @@ class _RegisterState extends State<Register> {
               children: [
                 registerText(),
                 toggleForStudentFaculty(),
-                selectCourse(),
+                /*selectCourse(),*/
                 textFieldName(),
                 textFieldEmail(),
                 textFieldPassword(),

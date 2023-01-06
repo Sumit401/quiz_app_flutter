@@ -11,31 +11,40 @@ import 'provider.dart';
 
 Widget buttonSubmit() {
   return Consumer<RegisterPageProvider>(
-    builder: (context, value, child) {
+    builder: (context, providerValue, child) {
       return ElevatedButton(
           style: const ButtonStyle(elevation: MaterialStatePropertyAll(20)),
           onPressed: () async {
-            FocusManager.instance.primaryFocus?.unfocus(); // To remove Keyboard
-            showAlertDialog(context); // To show Alert Loading Dialog Box
-            try {
-              UserCredential result = await FirebaseAuth.instance
-                  .createUserWithEmailAndPassword(
-                  email: value.email,
-                  password: value.password);
-              result.user?.updateDisplayName(value.name);
+            if(providerValue.email.trim()!="" && providerValue.password !="" && providerValue.name.trim() !="") {
+              FocusManager.instance.primaryFocus
+                  ?.unfocus(); // To remove Keyboard
+              showAlertDialog(context); // To show Alert Loading Dialog Box
+              try {
+                UserCredential result = await FirebaseAuth.instance
+                    .createUserWithEmailAndPassword(
+                    email: providerValue.email.trim(),
+                    password: providerValue.password);
+                result.user?.updateDisplayName(providerValue.name.trim());
 
-              Map<String,String> userdata={
-                "name":value.name,
-                "userType" : value.radioForStudentFaculty.toString(),
-                "userCourse": value.radioCourseType.toString(),
-              };
-              FirebaseFirestore.instance.collection("users").doc(value.email).set(userdata);
-              long_flutter_toast("Successfully Registered");
-              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginPage(),));
-
-            } catch(e){
-              Navigator.pop(context);
-              switchcase_error(e);
+                Map<String, String> userdata = {
+                  "name": providerValue.name.trim(),
+                  "userType": providerValue.radioForStudentFaculty.toString(),
+                  /*"userCourse": value.radioCourseType.toString(),*/
+                };
+                FirebaseFirestore.instance.collection("users").doc(
+                    providerValue.email).set(userdata);
+                long_flutter_toast("Successfully Registered");
+                Navigator.pop(context);
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginPage(),));
+                providerValue.deletePassword();
+                providerValue.deleteEmail();
+                providerValue.deleteName();
+              } catch (e) {
+                Navigator.pop(context);
+                switchCaseError(e);
+              }
+            }else{
+              long_flutter_toast("Please fill out all fields to Continue");
             }
           },
           child: const Text(

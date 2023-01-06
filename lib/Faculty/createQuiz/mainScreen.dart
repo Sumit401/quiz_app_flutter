@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_project/Faculty/createQuiz/provider.dart';
 import 'package:provider/provider.dart';
 
+import '../../reusableWidgets/Responsive.dart';
 import 'submitQuizButton.dart';
 import 'alertDialogAddQuestions/dialogAddQuestion.dart';
 import 'listView.dart';
@@ -23,21 +24,25 @@ class _CreateQuizState extends State<CreateQuiz> {
           backgroundColor: Colors.blueGrey,
           centerTitle: true,
         ),
-        body: Consumer<CreateQuizProvider>(
-          builder: (context, providerValue, child) {
-            return Container(
-              padding: const EdgeInsets.all(20),
-              child: Column(
-                children: [
-                  textFieldTitle(providerValue),
-                  textFieldDescription(providerValue),
-                  listViewQuestions(providerValue),
-                  addQuestionsButton(context),
-                  submitQuizButton(),
-                ],
-              ),
-            );
-          },
+        body: SizedBox(
+          height: screenHeight(context),
+          width: screenWidth(context),
+          child: Consumer<CreateQuizProvider>(
+            builder: (context, providerValue, child) {
+              return Container(
+                padding: const EdgeInsets.all(20),
+                child: Column(
+                  children: [
+                    textFieldTitle(providerValue),
+                    textFieldDescription(providerValue),
+                    listViewQuestions(providerValue),
+                    addQuestionsButton(context),
+                    submitQuizButton(),
+                  ],
+                ),
+              );
+            },
+          ),
         ));
   }
 }

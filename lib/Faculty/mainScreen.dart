@@ -3,6 +3,7 @@ import 'package:flutter_project/Faculty/navigationDrawer/drawerMain.dart';
 import 'package:flutter_project/Faculty/appBar.dart';
 
 import 'floatingButton.dart';
+import 'showQuiz/mainScreen.dart';
 
 class FacultyHome extends StatefulWidget {
   const FacultyHome({Key? key}) : super(key: key);
@@ -19,7 +20,7 @@ class _FacultyHomeState extends State<FacultyHome> {
       floatingActionButton: floatingButtonCreate(context),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       drawer: navigationDrawer(context),
-      body: Container(),
+      body: showQuiz(context),
     );
   }
 }
