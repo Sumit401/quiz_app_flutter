@@ -37,7 +37,7 @@ class _LoginPageState extends State<LoginPage> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          loginText(), // See below.........
+          loginText(context), // See below.........
           textFieldEmail(), // See textFields.dart..................
           textFieldPassword(), // See textFields.dart..................
           submitButton(), // See submitButton.dart..................
@@ -50,12 +50,12 @@ class _LoginPageState extends State<LoginPage> {
 
 
 
-Widget loginText() {
+Widget loginText(context) {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 20),
-      child: const Text("Login",
+      child: Text("Login",
           style: TextStyle(
-              fontSize: 30, fontWeight: FontWeight.w800, color: Colors.lightGreen,fontStyle: FontStyle.italic)),
+              fontSize: setFontSize(context,30), fontWeight: FontWeight.w800, color: Colors.lightGreen,fontStyle: FontStyle.italic)),
     );
   }
 

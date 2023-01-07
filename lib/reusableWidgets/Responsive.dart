@@ -43,9 +43,34 @@ class ResponsiveWidget extends StatelessWidget {
   }
 }
 
-double screenWidth(context){
+double screenWidth(context) {
   return MediaQuery.of(context).size.width;
 }
-double screenHeight(context){
+
+double screenHeight(context) {
   return MediaQuery.of(context).size.height;
+}
+
+double setFontSize(context, size) {
+  if (MediaQuery.of(context).size.width <= 400) {
+    return size * 0.8;
+  } else if (MediaQuery.of(context).size.width >= 400 && MediaQuery.of(context).size.width < 450) {
+    return size * 0.94;
+  } else if (MediaQuery.of(context).size.width >= 450) {
+    return size;
+  } else {
+    return size;
+  }
+}
+
+String getScreenHeight(context) {
+  if (MediaQuery.of(context).size.height < 760) {
+    return "small";
+  } else if (MediaQuery.of(context).size.height >= 760 && MediaQuery.of(context).size.height < 1010) {
+    return "medium";
+  } else if (MediaQuery.of(context).size.height >= 1010) {
+    return "large";
+  } else {
+    return "large";
+  }
 }

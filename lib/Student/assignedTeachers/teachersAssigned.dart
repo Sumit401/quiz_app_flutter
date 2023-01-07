@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_project/Student/assignedTeachers/cardView.dart';
 
+import '../../reusableWidgets/Responsive.dart';
 import '../../reusableWidgets/createColor.dart';
 
 Widget teachersAssigned(context){
@@ -24,7 +25,7 @@ Widget teachersAssigned(context){
               child: Text(
                 "You have been Assigned Any Quiz\n Please Check back later.!",
                 style: TextStyle(
-                    fontSize: 20,
+                    fontSize: setFontSize(context, 23),
                     color: hexToColor("#263300"),
                     fontWeight: FontWeight.bold,
                     overflow: TextOverflow.visible,

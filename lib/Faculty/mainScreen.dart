@@ -17,7 +17,7 @@ class _FacultyHomeState extends State<FacultyHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBarWithAction(context,"My Quizzes"),
+      appBar: appBarWithLogout(context,"My Quizzes"),
       floatingActionButton: floatingButtonCreate(context),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       drawer: navigationDrawer(context),

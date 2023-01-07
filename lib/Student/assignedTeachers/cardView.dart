@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_project/Student/provider.dart';
 import 'package:flutter_project/Student/quizOfEachTeacher/quizFromEachFaculty.dart';
+import 'package:flutter_project/reusableWidgets/Responsive.dart';
 import 'package:provider/provider.dart';
 
 import '../../reusableWidgets/createColor.dart';
@@ -22,11 +23,11 @@ Widget cardWidget(snapshot, index) {
                 
                 // Create Column Widget of faculty Data to show in card............
                 // These containers are defined below..........................
-                facultyNameContainer(snapshot.data?.docs[index]["name"]),
-                headingContainer("About Faculty"),
-                contentContainer(snapshot.data?.docs[index]["about"]),
-                headingContainer("Experience of Faculty"),
-                contentContainer(snapshot.data?.docs[index]["experience"]),
+                facultyNameContainer(snapshot.data?.docs[index]["name"],context),
+                headingContainer("About Faculty",context),
+                contentContainer(snapshot.data?.docs[index]["about"],context),
+                headingContainer("Experience of Faculty",context),
+                contentContainer(snapshot.data?.docs[index]["experience"],context),
               ],
             ),
           ),
@@ -45,13 +46,13 @@ Widget cardWidget(snapshot, index) {
 }
 
 // Container for faculty Name from snapshots.............................
-Container facultyNameContainer(value) {
+Container facultyNameContainer(value,context) {
   return Container(
     padding: const EdgeInsets.only(top: 10, bottom: 10, right: 20, left: 20),
     child: Text(value,
         textAlign: TextAlign.center,
         style: TextStyle(
-            fontSize: 20,
+            fontSize: setFontSize(context, 23),
             fontWeight: FontWeight.w800,
             color: hexToColor("#7520a1"),
             overflow: TextOverflow.visible)),
@@ -59,13 +60,13 @@ Container facultyNameContainer(value) {
 }
 
 // Container of Heading.............................
-Container headingContainer(value) {
+Container headingContainer(value,context) {
   return Container(
     padding: const EdgeInsets.only(top: 10, bottom: 10, right: 20, left: 20),
     child: Text(value,
         textAlign: TextAlign.center,
         style: TextStyle(
-            fontSize: 15,
+            fontSize: setFontSize(context, 17),
             color: hexToColor("#14735b"),
             fontWeight: FontWeight.w800,
             overflow: TextOverflow.visible)),
@@ -73,10 +74,10 @@ Container headingContainer(value) {
 }
 
 // Container of Data from snapshots............................
-Container contentContainer(value) {
+Container contentContainer(value,context) {
   return Container(
       padding: const EdgeInsets.only(bottom: 10, right: 20, left: 20),
       child: Text(value,
           textAlign: TextAlign.justify,
-          style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w600)));
+          style: TextStyle(fontSize: setFontSize(context,15), fontWeight: FontWeight.w600)));
 }

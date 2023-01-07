@@ -1,5 +1,8 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_project/reusableWidgets/Responsive.dart';
+
+import 'dialogBoxForInstructions.dart';
 
 Widget showQuizForStudent(context, snapshot, index) {
   return Card(
@@ -7,21 +10,21 @@ Widget showQuizForStudent(context, snapshot, index) {
     elevation: 20,
     child: Column(
       children: [
-        textDisplay(snapshot.data.docs[index]['Quiz Title'].toString(), "title"),
-        textDisplay(snapshot.data.docs[index]['Quiz Description'].toString(), "desc"),
-        textDisplay(snapshot.data.docs[index]['Difficulty'].toString(), "diff"),
-        textDisplay(snapshot.data.docs[index]['Total Questions'].toString(), "total"),
+        textDisplay(snapshot.data.docs[index]['Quiz Title'].toString(), "title",context),
+        textDisplay(snapshot.data.docs[index]['Quiz Description'].toString(), "desc",context),
+        textDisplay(snapshot.data.docs[index]['Difficulty'].toString(), "diff",context),
+        textDisplay(snapshot.data.docs[index]['Total Questions'].toString(), "total",context),
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: ElevatedButton(
-              onPressed: () => null, child: Text("Attempt Quiz")),
+              onPressed: () => dialogBoxForInstructions(context), child: Text("Attempt Quiz")),
         )
       ],
     ),
   );
 }
 
-Widget textDisplay(value, type) {
+Widget textDisplay(value, type, context) {
   return Container(
       padding: type == "title"
           ? const EdgeInsets.all(20)
@@ -32,12 +35,12 @@ Widget textDisplay(value, type) {
               : type == "total"
                   ? "Questions to Attempt : $value"
                   : "$value",
-          style: textStyle(type)));
+          style: textStyle(type, context)));
 }
 
-TextStyle textStyle(value) {
+TextStyle textStyle(value, context) {
   return TextStyle(
-      fontSize: (value == "title") ? 22 : 14,
+      fontSize: (value == "title") ? setFontSize(context, 20) : setFontSize(context, 17),
       color: (value == "title") ? Colors.blue.shade700 : Colors.black,
       fontWeight: (value == "title") ? FontWeight.w800 : FontWeight.w600,
       overflow: TextOverflow.visible);

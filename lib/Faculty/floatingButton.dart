@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../reusableWidgets/Responsive.dart';
 import 'createQuiz/mainScreen.dart';
 
 
@@ -24,13 +25,13 @@ Widget floatingButton(context) {
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
     onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => CreateQuiz(),)),
     child: Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(5.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: const [
-          Icon(Icons.add),
+        children: [
+          const Icon(Icons.add),
           Text("Create",
-              style: TextStyle(fontSize: 17, fontWeight: FontWeight.w600)),
+              style: TextStyle(fontSize: setFontSize(context, 18), fontWeight: FontWeight.w600)),
         ],
       ),
     ),

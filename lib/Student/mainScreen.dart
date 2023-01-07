@@ -15,7 +15,7 @@ class _StudentHomeState extends State<StudentHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBarWithAction(context,"Student HomeScreen"),
+      appBar: appBarWithLogout(context,"Student HomeScreen"),
       drawer: navigationDrawerStudent(context),
       body: teachersAssigned(context),
     );

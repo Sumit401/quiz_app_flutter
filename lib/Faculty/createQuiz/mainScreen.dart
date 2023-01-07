@@ -5,7 +5,6 @@ import '../../reusableWidgets/Responsive.dart';
 import '../../reusableWidgets/appBar.dart';
 import 'provider.dart';
 import 'submitQuizButton.dart';
-import 'alertDialogAddQuestions/dialogAddQuestion.dart';
 import 'listView.dart';
 import 'textFieldWidgets.dart';
 import 'toggleButtonForDifficultyLevel.dart';
@@ -21,27 +20,39 @@ class _CreateQuizState extends State<CreateQuiz> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: appBarSimple(context,"Create Quiz"),
-        body: SizedBox(
-          height: screenHeight(context),
-          width: screenWidth(context),
-          child: Consumer<CreateQuizProvider>(
-            builder: (context, providerValue, child) {
-              return Container(
-                padding: const EdgeInsets.all(20),
-                child: Column(
-                  children: [
-                    textFieldTitle(providerValue),
-                    textFieldDescription(providerValue),
-                    toggleButtonForDifficultyLevel(),
-                    listViewQuestions(providerValue),
-                    addQuestionsButton(context),
-                    submitQuizButton(),
-                  ],
-                ),
-              );
-            },
-          ),
-        ));
+        appBar: appBarCreate(context,"Create Quiz"),
+        body: SingleChildScrollView(
+          child: SizedBox(
+            height: screenHeight(context),
+            width: screenWidth(context),
+            child: Consumer<CreateQuizProvider>(
+              builder: (context, providerValue, child) {
+                return Container(
+                  padding: const EdgeInsets.all(20),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      textFieldTitle(providerValue),
+                      textFieldDescription(providerValue),
+                      toggleButtonForDifficultyLevel(),
+                      listViewQuestions(context,providerValue),
+                      Expanded(
+                        child: Align(
+                          alignment: Alignment.topCenter,
+                          child: submitQuizButton(),
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              },
+            ),
+        ),
+      ),
+
+
+
+      );
   }
 }

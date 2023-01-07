@@ -15,10 +15,7 @@ Widget addQuestionsButton(context) {
           FocusScope.of(context).requestFocus(FocusNode());
           dialogBuilder(context);
         },
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const [Icon(Icons.add), Text("Add Questions")],
-        ),
+        child: const Icon(Icons.add,color: Colors.white,size: 35),
       ));
 }
 

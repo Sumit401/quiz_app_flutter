@@ -2,6 +2,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_project/reusableWidgets/Responsive.dart';
 
 import 'package:provider/provider.dart';
 import 'provider.dart';
@@ -52,7 +53,7 @@ Widget submitQuizButton() {
               providerValue.clearProviderValue();
               Navigator.pop(context);
             }
-          }, child: const Text("Submit Quiz"));
+          }, child: Text("Submit Quiz",style: TextStyle(fontSize: setFontSize(context, 16)),));
     },
   );
 }

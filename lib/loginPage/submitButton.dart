@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_project/reusableWidgets/Responsive.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -39,7 +40,7 @@ Widget buttonContent(providerValue,context) {
       }
     },
     style: submitButtonStyle(), // Button Styling See below..............................
-    child: const Text("Submit",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold)),
+    child: Text("Submit",style: TextStyle(fontSize: setFontSize(context, 22),fontWeight: FontWeight.bold)),
   );
 }
 

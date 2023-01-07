@@ -2,6 +2,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_project/reusableWidgets/Responsive.dart';
 
 import '../../reusableWidgets/createColor.dart';
 import 'quizDataCard.dart';
@@ -23,7 +24,7 @@ Container showQuiz(context)  {
               child: Text(
                 "You have not Created a Quiz\n Create one to Display Here!",
                 style: TextStyle(
-                    fontSize: 20,
+                    fontSize: setFontSize(context, 24),
                     fontWeight: FontWeight.bold,
                     color: hexToColor("#263300"),
                     overflow: TextOverflow.visible,

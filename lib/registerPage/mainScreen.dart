@@ -51,10 +51,10 @@ class _RegisterState extends State<Register> {
   }
 
   Widget registerText() {
-    return const Text(
+    return Text(
       "Register Now",
       style: TextStyle(
-      fontSize: 30, fontWeight: FontWeight.w800, color: Colors.white),
+      fontSize: setFontSize(context, 35), fontWeight: FontWeight.w800, color: Colors.white),
     );
   }
 

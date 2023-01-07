@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_project/reusableWidgets/Responsive.dart';
 import 'package:provider/provider.dart';
 import '../loginPage/mainScreen.dart';
 import '../reusableWidgets/alertDialogs/alertDialogLoading.dart';
@@ -31,9 +32,9 @@ Widget buttonContent(providerValue, context) {
           long_flutter_toast("Please fill out all fields to Continue");
         }
       },
-      child: const Text(
+      child: Text(
         "Submit",
-        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+        style: TextStyle(fontWeight: FontWeight.bold, fontSize: setFontSize(context, 22)),
       ));
 }
 
@@ -50,16 +51,13 @@ Future<void> setDataToFirebase(providerValue, context) async {
     // update display name in Firebase..........................
     result.user?.updateDisplayName(providerValue.name.trim());
 
-    // Check if faculty or Student
-    String type="";
-    providerValue.radioForStudentFaculty.toString()=="1" ? type="experience" : null;
 
     // Map user data ................
     Map<String, String> userdata = {
       "name": providerValue.name.trim(),
       "userType": providerValue.radioForStudentFaculty.toString(),
       "about" : "" ,
-      type : "",
+      "experience" : "",
       "qualification" : ""
     };
     // Set user data to collection in Firebase...........

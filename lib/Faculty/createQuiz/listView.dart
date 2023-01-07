@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 
+import '../../reusableWidgets/Responsive.dart';
+import '../../reusableWidgets/createColor.dart';
 import 'provider.dart';
 
 String ques = "";
@@ -10,18 +12,36 @@ String opt2 = "";
 String opt3 = "";
 String opt4 = "";
 
-Widget listViewQuestions(providerValue) {
-  return Expanded(
+Widget listViewQuestions(context, providerValue) {
+  if(providerValue.list.length<=0 || providerValue.list.length.toString() == "null") {
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: 50),
+        alignment: Alignment.center,
+        child: Text("\n\nAdd Questions to Quiz from '+' icon on Upper Right Corner.\n\n",
+          style: TextStyle(
+              fontSize: setFontSize(context, 24),
+              fontWeight: FontWeight.bold,
+              color: hexToColor("#8f3040"),
+              overflow: TextOverflow.visible,
+              wordSpacing: 2,
+              letterSpacing: 0.4),
+          textAlign: TextAlign.center,
+        ));
+
+  } else {
+    return Expanded(
+    flex: getScreenHeight(context) == "small" ? 1 : getScreenHeight(context) == "medium" ? 2 : 3,
     child: ListView.builder(
       shrinkWrap: true,
       scrollDirection: Axis.vertical,
       itemCount: providerValue.list.length,
       itemBuilder: (context, index) {
-        getDataFromList(providerValue, index);
-        return cardWidgetOfList(index);
+          getDataFromList(providerValue, index);
+          return cardWidgetOfList(index);
       },
     ),
   );
+  }
 }
 
 Widget cardWidgetOfList(index) {
@@ -37,27 +57,26 @@ Widget cardWidgetOfList(index) {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Column(
-                    children: [question(index), questionValue()],
-                  ),
+                  question(index, context),
+                  questionValue(context),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      optionA(),
-                      optionB(),
+                      options("A.) $opt1", context),
+                      options("B.) $opt2", context),
                     ],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      optionC(),
-                      optionD(),
+                      options("C.) $opt3", context),
+                      options("D.) $opt4", context),
                     ],
                   ),
                 ],
               ),
             ),
-            deleteQuestionFromList(providerValue,index),
+            deleteQuestionFromList(providerValue, index),
           ],
         );
       },
@@ -81,100 +100,54 @@ void getDataFromList(providerValue, index) {
   });
 }
 
-Expanded optionA() {
+Expanded options(value, context) {
   return Expanded(
     child: Container(
       padding: const EdgeInsets.all(20),
       child: Text(
-          "A.) $opt1",
-          style: const TextStyle(
-              fontSize: 15,
-              fontWeight: FontWeight.w600,
-              overflow: TextOverflow.visible),
-          textAlign: TextAlign.center,
-        ),
+        value,
+        style: TextStyle(
+            fontSize: setFontSize(context, 14),
+            fontWeight: FontWeight.w600,
+            overflow: TextOverflow.visible),
+        textAlign: TextAlign.center,
+      ),
     ),
   );
 }
 
-Expanded optionB() {
-  return Expanded(
-    child: Container(
-        padding: const EdgeInsets.all(20),
-        child: Text(
-          "B.) $opt2",
-          style: const TextStyle(
-              fontSize: 15,
-              fontWeight: FontWeight.w600,
-              overflow: TextOverflow.visible),
-          textAlign: TextAlign.center,
-        )),
-  );
-}
-
-Expanded optionC() {
-  return Expanded(
-    child: Container(
-        padding: const EdgeInsets.all(20),
-        child: Text(
-          "C.) $opt3",
-          style: const TextStyle(
-              fontSize: 15,
-              fontWeight: FontWeight.w600,
-              overflow: TextOverflow.visible),
-          textAlign: TextAlign.center,
-        )),
-  );
-}
-
-Expanded optionD() {
-  return Expanded(
-    child: Container(
-        padding: EdgeInsets.all(20),
-        child: Text(
-          "D.) $opt4",
-          style: const TextStyle(
-              fontSize: 15,
-              fontWeight: FontWeight.w600,
-              overflow: TextOverflow.visible),
-          textAlign: TextAlign.center,
-        )),
-  );
-}
-
-Container question(index) {
+Container question(index, context) {
   return Container(
       alignment: Alignment.center,
       padding: const EdgeInsets.only(top: 10, right: 10, left: 10),
       child: Text(
-        "Question: #${index+1}",
+        "Question: #${index + 1}",
         style: TextStyle(
-            fontSize: 18,
+            fontSize: setFontSize(context, 18),
             fontWeight: FontWeight.bold,
             overflow: TextOverflow.visible),
         textAlign: TextAlign.center,
       ));
 }
 
-Container questionValue() {
+Container questionValue(context) {
   return Container(
       alignment: Alignment.center,
       padding: const EdgeInsets.only(right: 10, left: 10, top: 2),
       child: Text(
         ques,
-        style: const TextStyle(
-            fontSize: 18,
+        style: TextStyle(
+            fontSize: setFontSize(context, 18),
             fontWeight: FontWeight.bold,
             overflow: TextOverflow.visible),
         textAlign: TextAlign.center,
       ));
 }
 
-Widget deleteQuestionFromList(providerValue,index){
+Widget deleteQuestionFromList(providerValue, index) {
   return InkWell(
     child: Container(
-        padding: EdgeInsets.all(20),
-        child: const Icon(FontAwesomeIcons.trash)),
+        padding: EdgeInsets.all(20), child: const Icon(FontAwesomeIcons.trash)),
     onTap: () {
       providerValue.deleteData(index);
     },

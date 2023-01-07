@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_project/reusableWidgets/Responsive.dart';
 
 import '../registerPage/mainScreen.dart';
 
@@ -6,9 +7,9 @@ Widget notUserSignup(context) {
   return InkWell(
     child: Container(
       margin: const EdgeInsets.only(top: 20),
-      child: const Text("Not a User? Click here SignUp",
+      child: Text("Not a User? Click here SignUp",
           style: TextStyle(
-              color: Colors.white, fontWeight: FontWeight.w600, fontSize: 20)),
+              color: Colors.white, fontWeight: FontWeight.w600, fontSize: setFontSize(context, 22))),
     ),
     onTap: () {
       Navigator.pushReplacement(
@@ -49,18 +50,18 @@ Widget toggleButtons() {
           children: [
             Container(
                 padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                child: const Text("Student",
+                child: Text("Student",
                     style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.w600,
-                        fontSize: 15))),
+                        fontSize: setFontSize(context,17)))),
             Container(
                 padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                child: const Text("Faculty",
+                child: Text("Faculty",
                     style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.w600,
-                        fontSize: 15)))
+                        fontSize: setFontSize(context,17))))
           ]);
     },
   );

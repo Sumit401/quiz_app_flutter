@@ -13,12 +13,12 @@ Drawer navigationDrawer(context) {
     child: SingleChildScrollView(
       child: Column(
         children: [
-          drawerHeader(),
-          listTileMyQuiz(),
+          drawerHeader(context),
+          listTileMyQuiz(context),
           listTileCreate(context),
-          listTileProfile(),
-          listTileAbout(),
-          listTileShare(),
+          listTileProfile(context),
+          listTileAbout(context),
+          listTileShare(context),
         ],
       ),
     ),

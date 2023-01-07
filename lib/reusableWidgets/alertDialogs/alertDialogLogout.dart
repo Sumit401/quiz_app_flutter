@@ -1,12 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_project/reusableWidgets/Responsive.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../loginPage/mainScreen.dart';
 
 AlertDialog alertDialogSignOut(context) {
   return AlertDialog(
-    title: const Text("Do You want to Logout ?"),
+    title: Text("Do You want to Logout ?",style: TextStyle(fontSize: setFontSize(context, 20))),
     elevation: 10,
     actions: [
       noPressed(context),
@@ -26,11 +27,11 @@ Widget yesPressed(context) {
         Navigator.pop(context);
         Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const LoginPage()));
       },
-      child: const Text("Yes", style: TextStyle(fontSize: 20)));
+      child: Text("Yes", style: TextStyle(fontSize: setFontSize(context, 22))));
 }
 
 Widget noPressed(context) {
   return TextButton(
       onPressed: () => Navigator.pop(context),
-      child: const Text("No", style: TextStyle(fontSize: 20)));
+      child: Text("No", style: TextStyle(fontSize: setFontSize(context, 22))));
 }

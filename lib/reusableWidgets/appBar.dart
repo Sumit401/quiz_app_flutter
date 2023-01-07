@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../Faculty/createQuiz/alertDialogAddQuestions/dialogAddQuestion.dart';
 import 'alertDialogs/alertDialogLogout.dart';
 
-AppBar appBarWithAction(context,title) {
+AppBar appBarWithLogout(context,title) {
   return AppBar(
     title: Text(title),
     centerTitle: true,
@@ -23,6 +24,19 @@ AppBar appBarSimple(context,title) {
     backgroundColor: Colors.blueGrey,
   );
 }
+
+AppBar appBarCreate(context,title) {
+  return AppBar(
+    title: Text(title),
+    centerTitle: true,
+    elevation: 10,
+    backgroundColor: Colors.blueGrey,
+    actions: [
+      addQuestionsButton(context),
+    ],
+  );
+}
+
 
 Container containerLogout(context) {
   return Container(

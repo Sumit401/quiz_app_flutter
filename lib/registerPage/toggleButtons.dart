@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../reusableWidgets/Responsive.dart';
 import 'provider.dart';
 
 Widget toggleForStudentFaculty() {
@@ -12,7 +13,7 @@ Widget toggleForStudentFaculty() {
           Expanded(
               child: RadioListTile(
                 activeColor: Colors.cyan,
-                title: const Text("Student",style: TextStyle(fontSize: 15,color: Colors.white,)),
+                title: Text("Student",style: TextStyle(fontSize: setFontSize(context,17),color: Colors.white,)),
                 value: 0,
                 groupValue: value.radioForStudentFaculty,
                 onChanged: (changedValue) {
@@ -22,7 +23,7 @@ Widget toggleForStudentFaculty() {
           Expanded(
               child: RadioListTile(
                 activeColor: Colors.cyan,
-                title: const Text("Faculty",style: TextStyle(fontSize: 15,color: Colors.white)),
+                title: Text("Faculty",style: TextStyle(fontSize: setFontSize(context,17), color: Colors.white)),
                 value: 1,
                 groupValue: value.radioForStudentFaculty,
                 onChanged: (changedValue) {
@@ -45,7 +46,7 @@ Widget selectCourse(){
           Expanded(
               child: RadioListTile(
                 activeColor: Colors.cyan,
-                title: const Text("Science", style: TextStyle(fontSize: 15,color: Colors.white)),
+                title: Text("Science", style: TextStyle(fontSize: setFontSize(context,17),color: Colors.white)),
                 value: 0,
                 groupValue: value.radioCourseType,
                 onChanged: (radioValue) {
@@ -54,7 +55,7 @@ Widget selectCourse(){
           Expanded(
               child: RadioListTile(
                 activeColor: Colors.cyan,
-                title: const Text("Commerce", style: TextStyle(fontSize: 15,color: Colors.white)),
+                title: Text("Commerce", style: TextStyle(fontSize:setFontSize(context,17),color: Colors.white)),
                 value: 1,
                 groupValue: value.radioCourseType,
                 onChanged: (radioValue) {
