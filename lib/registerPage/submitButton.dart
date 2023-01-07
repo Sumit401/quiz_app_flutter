@@ -50,10 +50,17 @@ Future<void> setDataToFirebase(providerValue, context) async {
     // update display name in Firebase..........................
     result.user?.updateDisplayName(providerValue.name.trim());
 
+    // Check if faculty or Student
+    String type="";
+    providerValue.radioForStudentFaculty.toString()=="1" ? type="experience" : null;
+
     // Map user data ................
     Map<String, String> userdata = {
       "name": providerValue.name.trim(),
       "userType": providerValue.radioForStudentFaculty.toString(),
+      "about" : "" ,
+      type : "",
+      "qualification" : ""
     };
     // Set user data to collection in Firebase...........
     FirebaseFirestore.instance.collection("users").doc(

@@ -3,13 +3,15 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
+import '../../../reusableWidgets/Responsive.dart';
+
 Widget contentOfAlertDialog(context,index,snapshot){
   String? email = FirebaseAuth.instance.currentUser?.email.toString();
   var firestoreSnapshots =FirebaseFirestore.instance.collection("users").doc(email).collection("questions").doc("${snapshot.data.docs[index].id}").collection("${snapshot.data.docs[index].id}").snapshots();
 
   return SizedBox(
-    height: 300,
-    width: double.maxFinite,
+    height: screenHeight(context)/1.8,
+    width: screenWidth(context),
     child: StreamBuilder(
         stream: firestoreSnapshots,
         builder: (context, snapshot2) {

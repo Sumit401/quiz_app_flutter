@@ -3,7 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'alertDialogs/alertDialogLogout.dart';
 
-AppBar appBarContent(context,title) {
+AppBar appBarWithAction(context,title) {
   return AppBar(
     title: Text(title),
     centerTitle: true,
@@ -12,6 +12,14 @@ AppBar appBarContent(context,title) {
       containerLogout(context),
 
     ],
+    backgroundColor: Colors.blueGrey,
+  );
+}
+AppBar appBarSimple(context,title) {
+  return AppBar(
+    title: Text(title),
+    centerTitle: true,
+    elevation: 10,
     backgroundColor: Colors.blueGrey,
   );
 }

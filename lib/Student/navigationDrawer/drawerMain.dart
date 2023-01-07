@@ -15,7 +15,11 @@ Drawer navigationDrawerStudent(context)
       child: Column(
         children: [
           drawerHeader(),
-          drawerBody(),
+          listTileMyQuiz(),
+          listTileCheckScore(),
+          listTileProfile(),
+          listTileAbout(),
+          listTileShare(),
         ],
       ),
     ),

@@ -11,27 +11,36 @@ Container titleOfAlertDialog(context,index,snapshot) {
       children: [
         Container(
             padding: const EdgeInsets.only(bottom: 10),
-            child: const Text(
-              "Title:",
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800),
-            )),
-        Container(
-            padding: const EdgeInsets.only(bottom: 10),
             child: Text(
                 snapshot.data.docs[index]['Quiz Title'].toString(),
                 textAlign: TextAlign.center,
                 overflow: TextOverflow.visible,
                 style: const TextStyle(
-                    fontSize: 15, fontWeight: FontWeight.w600))),
+                    fontSize: 20, fontWeight: FontWeight.w800))),
         Container(
             padding: const EdgeInsets.only(bottom: 10, top: 10),
             child: const Text("Description: ",
                 style: TextStyle(
-                    fontSize: 20, fontWeight: FontWeight.w800))),
+                    fontSize: 18, fontWeight: FontWeight.w600))),
         Container(
             padding: const EdgeInsets.only(bottom: 10),
             child: Text(
                 snapshot.data.docs[index]['Quiz Description'].toString(),
+                textAlign: TextAlign.center,
+                overflow: TextOverflow.visible,
+                style: const TextStyle(
+                    fontSize: 15, fontWeight: FontWeight.w400))),
+
+        Container(
+            padding: const EdgeInsets.only(bottom: 10),
+            child: Text("Difficulty : ${snapshot.data.docs[index]['Difficulty'].toString()}",
+                textAlign: TextAlign.center,
+                overflow: TextOverflow.visible,
+                style: const TextStyle(
+                    fontSize: 15, fontWeight: FontWeight.w600))),
+        Container(
+            padding: const EdgeInsets.only(bottom: 10),
+            child: Text("Total Questions : ${snapshot.data.docs[index]['Total Questions'].toString()}",
                 textAlign: TextAlign.center,
                 overflow: TextOverflow.visible,
                 style: const TextStyle(

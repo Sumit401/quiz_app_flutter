@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../reusableWidgets/appBar.dart';
 import 'navigationDrawer/drawerMain.dart';
+import 'assignedTeachers/teachersAssigned.dart';
 
 class StudentHome extends StatefulWidget {
   const StudentHome({Key? key}) : super(key: key);
@@ -14,9 +15,9 @@ class _StudentHomeState extends State<StudentHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBarContent(context,"Student HomeScreen"),
+      appBar: appBarWithAction(context,"Student HomeScreen"),
       drawer: navigationDrawerStudent(context),
-      body: Container(),
+      body: teachersAssigned(context),
     );
   }
 }

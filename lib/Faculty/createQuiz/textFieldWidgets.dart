@@ -39,27 +39,27 @@ Widget textFieldQuestions(providerValue) {
 Widget textFieldOption1(providerValue) {
   return TextFormField(
       textCapitalization: TextCapitalization.sentences,
-      decoration: const InputDecoration(labelText: "Option 1"),
+      decoration: const InputDecoration(labelText: "Option 1 (Correct Answer)",labelStyle: TextStyle(color: Colors.green)),
       onChanged: (value) => providerValue.getOption1(value));
 }
 
 Widget textFieldOption2(providerValue) {
   return TextFormField(
       textCapitalization: TextCapitalization.sentences,
-      decoration: const InputDecoration(labelText: "Option 2"),
+      decoration: const InputDecoration(labelText: "Option 2 (Incorrect Answer)",labelStyle: TextStyle(color: Colors.redAccent)),
       onChanged: (value) => providerValue.getOption2(value));
 }
 
 Widget textFieldOption3(providerValue) {
   return TextFormField(
       textCapitalization: TextCapitalization.sentences,
-      decoration: const InputDecoration(labelText: "Option 3"),
+      decoration: const InputDecoration(labelText: "Option 3 (Incorrect Answer)",labelStyle: TextStyle(color: Colors.redAccent)),
       onChanged: (value) => providerValue.getOption3(value));
 }
 
 Widget textFieldOption4(providerValue) {
   return TextFormField(
       textCapitalization: TextCapitalization.sentences,
-      decoration: const InputDecoration(labelText: "Option 4"),
+      decoration: const InputDecoration(labelText: "Option 4 (Incorrect Answer)",labelStyle: TextStyle(color: Colors.redAccent)),
       onChanged: (value) => providerValue.getOption4(value));
 }

@@ -33,7 +33,9 @@ Widget submitQuizButton() {
                   .doc(email).collection("questions")
                   .doc("${a + getDocsCount}")
                   .set({"Quiz Title": providerValue.quizTitle,
-                "Quiz Description": providerValue.quizDesc
+                "Quiz Description": providerValue.quizDesc,
+                "Total Questions" : providerValue.list.length,
+                "Difficulty" : providerValue.stringForQuizDifficulty
               });
 
               // Set each Element from list to the Firebase Database.....................
@@ -47,9 +49,7 @@ Widget submitQuizButton() {
                     .doc("$i").set(element);
               }
               // Clear the value of list, Quiz Desc and Quiz Title...............
-              providerValue.clearList();
-              providerValue.clearQuizDescValue();
-              providerValue.clearQuizTitleValue();
+              providerValue.clearProviderValue();
               Navigator.pop(context);
             }
           }, child: const Text("Submit Quiz"));

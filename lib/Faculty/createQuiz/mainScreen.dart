@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../reusableWidgets/Responsive.dart';
+import '../../reusableWidgets/appBar.dart';
 import 'provider.dart';
 import 'submitQuizButton.dart';
 import 'alertDialogAddQuestions/dialogAddQuestion.dart';
 import 'listView.dart';
 import 'textFieldWidgets.dart';
+import 'toggleButtonForDifficultyLevel.dart';
 
 class CreateQuiz extends StatefulWidget {
   const CreateQuiz({Key? key}) : super(key: key);
@@ -19,11 +21,7 @@ class _CreateQuizState extends State<CreateQuiz> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text("Create Quiz"),
-          backgroundColor: Colors.blueGrey,
-          centerTitle: true,
-        ),
+        appBar: appBarSimple(context,"Create Quiz"),
         body: SizedBox(
           height: screenHeight(context),
           width: screenWidth(context),
@@ -35,6 +33,7 @@ class _CreateQuizState extends State<CreateQuiz> {
                   children: [
                     textFieldTitle(providerValue),
                     textFieldDescription(providerValue),
+                    toggleButtonForDifficultyLevel(),
                     listViewQuestions(providerValue),
                     addQuestionsButton(context),
                     submitQuizButton(),

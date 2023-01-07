@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class CreateQuizProvider extends ChangeNotifier{
+  int radioForQuizDifficulty=0;
+  String stringForQuizDifficulty="Easy";
   String quizTitle = "";
   String quizDesc = "";
 
@@ -41,6 +43,20 @@ class CreateQuizProvider extends ChangeNotifier{
     notifyListeners();
   }
 
+  void getQuizDifficulty(difficultyValue){
+    if(difficultyValue==0) {
+      radioForQuizDifficulty=0;
+      stringForQuizDifficulty="Easy";
+    } else if(difficultyValue==1) {
+      radioForQuizDifficulty=difficultyValue;
+      stringForQuizDifficulty="Medium";
+    } else if(difficultyValue==2) {
+      radioForQuizDifficulty=difficultyValue;
+      stringForQuizDifficulty="Difficult";
+    }
+    notifyListeners();
+  }
+
   void setDataToList() {
     Map<String,String> value = {
       "Question": questionInfo,
@@ -50,6 +66,7 @@ class CreateQuizProvider extends ChangeNotifier{
       "Answer4" : option4
     };
     list.add(value);
+    // Clear the values once added to list.......................
     questionInfo = "";
     option1 = ""; option2 = "";
     option3 = ""; option4 = "";
@@ -60,16 +77,13 @@ class CreateQuizProvider extends ChangeNotifier{
     list.removeAt(index);
     notifyListeners();
   }
-  void clearList(){
+  void clearProviderValue(){
     list.clear();
-    notifyListeners();
-  }
-  void clearQuizTitleValue(){
     quizTitle="";
-    notifyListeners();
-  }
-  void clearQuizDescValue(){
     quizDesc="";
+    radioForQuizDifficulty=0;
+    stringForQuizDifficulty="Easy";
     notifyListeners();
   }
+
 }

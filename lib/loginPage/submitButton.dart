@@ -43,8 +43,6 @@ Widget buttonContent(providerValue,context) {
   );
 }
 
-
-
 // Button Styling for above Submit Button
 ButtonStyle submitButtonStyle(){
   return ButtonStyle(
@@ -69,24 +67,27 @@ Future<void> getValueFromFirebase(providerValue,context) async {
         email: providerValue.email.trim(),
         password: providerValue.password);
 
+
+
      /* sharedPreferences.setString("userName", firebaseAuth.user!.displayName.toString());
       sharedPreferences.setString("userEmail", firebaseAuth.user!.email.toString());*/
 
-      // Show flutter Toast if login Successful.........
-    short_flutter_toast("Login Successful");
 
     // Check if the user is Student or faculty by getting data from Database.............
     FirebaseFirestore.instance.collection("users").doc(
         providerValue.email.trim()).get()
         .then((value1) =>
         value1.data()?.forEach((key, value) {
+
           // Check user type and Navigate see below...................
-          checkUserTypeAndNaviagte(key,value,context,sharedPreferences);
+          checkUserTypeAndNavigate(key,value,context,sharedPreferences);
 
           // Delete Provider value..................
           providerValue.deleteEmail();
           providerValue.deletePassword();
         }));
+      // Show flutter Toast if login Successful.........
+      short_flutter_toast("Login Successful");
   } catch (e) {
     // Catch error display toast...........
     Navigator.pop(context);
@@ -94,20 +95,25 @@ Future<void> getValueFromFirebase(providerValue,context) async {
   }
 }
 // Check user type and Navigate.............................................
-void checkUserTypeAndNaviagte(key,value,context,sharedPreferences) {
+void checkUserTypeAndNavigate(key,value,context,sharedPreferences) {
+
+  sharedPreferences.setString("userType", value == "0"
+      ? "Student"
+      : "Faculty");
+
+  // Navigation Check..... if student or Faculty
   if (key == "userType") {
     value == "0" ? { Navigator.pop(context), // If user is Student
       Navigator.pushReplacement(context, MaterialPageRoute(
-        builder: (context) => StudentHome(),))
+        builder: (context) => const StudentHome(),))
     }
         : { Navigator.pop(context), // If user is Faculty
       Navigator.pushReplacement(context, MaterialPageRoute(
-        builder: (context) => FacultyHome(),))
+        builder: (context) => const FacultyHome(),))
     };
-    sharedPreferences.setString("userType", value == "0"
-        ? "Student"
-        : "Faculty");
+
   }
+
 }
 
 

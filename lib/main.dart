@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_project/Student/provider.dart';
 
 import 'package:provider/provider.dart';
 
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => RegisterPageProvider(),),
         ChangeNotifierProvider(create: (_) => LoginPageProvider(),),
         ChangeNotifierProvider(create: (_) => CreateQuizProvider()),
+        ChangeNotifierProvider(create: (_) => StudentProvider()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
