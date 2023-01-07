@@ -10,6 +10,7 @@ Widget textFieldEmail(){
       child: Consumer<LoginPageProvider>(
         builder: (context, providerValue, child) {
           return TextFormField(
+              keyboardType: TextInputType.emailAddress,
               decoration: inputTextDecoration("Email"),
               onChanged: (value) {
                 providerValue.emailNotifier(value);
@@ -27,6 +28,7 @@ Widget textFieldPassword(){
     child: Consumer<LoginPageProvider>(
       builder: (context, providerValue, child) {
         return TextFormField(
+          keyboardType: TextInputType.visiblePassword,
           obscureText: true,
           style: textStyleLabel(),
           decoration: inputTextDecoration("Password"),
