@@ -20,21 +20,23 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
-    String? userName =
-        FirebaseAuth.instance.currentUser?.displayName.toString();
+    // Get firebase logged in user name......................................
+    String? userName = FirebaseAuth.instance.currentUser?.displayName.toString();
     return Scaffold(
       appBar: appBarSimple(context, "Welcome $userName"),
-      body: Consumer<FacultyProfilePageProvider>(
+      body: Consumer<ProfilePageProvider>(
         builder: (context, providerValue, child) {
-          return Column(
-            children: [
-              userImageProfile(context),
-              //userNameProfile(context),
-              userEmailContent(context),
-              userDescriptionContent(context, providerValue),
-              userExperienceContent(context, providerValue),
-              userQualificationContent(context, providerValue),
-            ],
+          return SingleChildScrollView(
+            child: Column(
+              children: [
+                userImageContent(context),
+                userNameContent(context),
+                userEmailContent(context),
+                userDescriptionContent(context, providerValue),
+                userExperienceContent(context, providerValue),
+                userQualificationContent(context, providerValue),
+              ],
+            ),
           );
         },
       ),

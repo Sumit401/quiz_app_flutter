@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class FacultyProfilePageProvider extends ChangeNotifier{
+class ProfilePageProvider extends ChangeNotifier{
 
   String experience = "";
   String about = "";

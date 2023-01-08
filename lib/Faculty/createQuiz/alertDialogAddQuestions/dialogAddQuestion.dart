@@ -32,16 +32,21 @@ Future dialogBuilder(context) {
   );
 }
 
-AlertDialog alertDialogBoxAddQuestions(context,providerValue) {
-  return AlertDialog(
-    scrollable: true,
-    elevation: 10,
-    alignment: Alignment.center,
-    contentPadding: const EdgeInsets.all(20),
-    actionsAlignment: MainAxisAlignment.center,
-    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-    title: const Center(child: Text("Question")),
-    content: contentOfAlertDialogBox(context,providerValue),
-    actions: [actionsOfAlertDialogBox(context,providerValue) ],
+Widget alertDialogBoxAddQuestions(context,providerValue) {
+  return Center(
+    child: SingleChildScrollView(
+      scrollDirection: Axis.vertical,
+      child: AlertDialog(
+        scrollable: true,
+        elevation: 10,
+        alignment: Alignment.center,
+        contentPadding: const EdgeInsets.all(20),
+        actionsAlignment: MainAxisAlignment.center,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        title: const Center(child: Text("Question")),
+        content: contentOfAlertDialogBox(context,providerValue),
+        actions: [actionsOfAlertDialogBox(context,providerValue) ],
+      ),
+    ),
   );
 }

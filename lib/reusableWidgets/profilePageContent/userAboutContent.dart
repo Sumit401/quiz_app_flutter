@@ -1,39 +1,56 @@
-
 import 'package:flutter/material.dart';
 
 import '../Responsive.dart';
+import 'dialogBoxToUpdate.dart';
 
 Widget userDescriptionContent(context, providerValue) {
-  return Container(
-    padding: contentPadding(context),
-    child: Column(
-      children: [
-        containerHeading(context,"Your Description"),
-        textForHeading(providerValue.about, context),
-      ],
+  return InkWell(
+    child: Container(
+      padding: contentPadding(context),
+      child: Column(
+        children: [
+          containerHeading(context, "Your Description"),
+          providerValue.about == "" ? textForHeading("No Data Available", context) : textForHeading(providerValue.about, context),
+        ],
+      ),
     ),
+    onTap: () {
+      createDialogBoxUpdate(context, providerValue, "Your Description");
+    },
   );
 }
-Widget userExperienceContent(context, providerValue)  {
-  return Container(
-    padding: contentPadding(context),
-    child: Column(
-      children: [
-        containerHeading(context,"Experience"),
-        textForHeading(providerValue.experience, context),
-      ],
+
+Widget userExperienceContent(context, providerValue) {
+  return InkWell(
+    child: Container(
+      padding: contentPadding(context),
+      child: Column(
+        children: [
+          containerHeading(context, "Experience"),
+          providerValue.experience == "" ? textForHeading("No Data Available", context)  : textForHeading(providerValue.experience, context),
+        ],
+      ),
     ),
+    onTap: () {
+      createDialogBoxUpdate(context, providerValue, "Experience");
+    },
   );
 }
+
 Widget userQualificationContent(context, providerValue) {
-  return Container(
-    padding: contentPadding(context),
-    child: Column(
-      children: [
-        containerHeading(context,"Qualification"),
-        textForHeading(providerValue.qualification, context),
-      ],
+  return InkWell(
+    child: Container(
+      padding: contentPadding(context),
+      child: Column(
+        children: [
+          containerHeading(context, "Qualification"),
+          providerValue.qualification == "" ? textForHeading("No Data Available", context) : textForHeading(providerValue.qualification, context),
+        ],
+      ),
     ),
+    onTap: () {
+      createDialogBoxUpdate(context, providerValue, "Qualification");
+    },
   );
 }
 
@@ -49,7 +66,7 @@ Text textForHeading(providerValue, context) {
   );
 }
 
-Container containerHeading(context,value) {
+Container containerHeading(context, value) {
   return Container(
       padding: EdgeInsets.only(bottom: setSize(context, 7)),
       child: Text(value,

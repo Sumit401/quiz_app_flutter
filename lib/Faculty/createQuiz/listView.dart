@@ -14,19 +14,22 @@ String opt4 = "";
 
 Widget listViewQuestions(context, providerValue) {
   if(providerValue.list.length<=0 || providerValue.list.length.toString() == "null") {
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: 50),
-        alignment: Alignment.center,
-        child: Text("\n\nAdd Questions to Quiz from '+' icon on Upper Right Corner.\n\n",
-          style: TextStyle(
-              fontSize: setSize(context, 24),
-              fontWeight: FontWeight.bold,
-              color: hexToColor("#8f3040"),
-              overflow: TextOverflow.visible,
-              wordSpacing: 2,
-              letterSpacing: 0.4),
-          textAlign: TextAlign.center,
-        ));
+
+    return Expanded(
+      child: Container(
+        padding: EdgeInsets.symmetric(vertical: screenHeight(context)< 500 ?0 :50),
+          alignment: Alignment.center,
+          child: Text("\n\nAdd Questions to Quiz from '+' icon on Upper Right Corner.\n\n",
+            style: TextStyle(
+                fontSize: setSize(context, 24),
+                fontWeight: FontWeight.bold,
+                color: hexToColor("#8f3040"),
+                overflow: TextOverflow.visible,
+                wordSpacing: 2,
+                letterSpacing: 0.4),
+            textAlign: TextAlign.center,
+          )),
+    );
 
   } else {
     return Expanded(

@@ -4,10 +4,10 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 
 import '../../reusableWidgets/Responsive.dart';
+import '../../reusableWidgets/profileSection/getProfileInfo.dart';
+import '../../reusableWidgets/profileSection/profilePageMain.dart';
+import '../../reusableWidgets/profileSection/provider.dart';
 import '../createQuiz/mainScreen.dart';
-import '../profilePage/getProfileInfo.dart';
-import '../profilePage/profilePageMain.dart';
-import '../profilePage/provider.dart';
 
 ListTile listTileMyQuiz(context) {
   return ListTile(
@@ -45,7 +45,7 @@ ListTile listTileCreate(context) {
 
 Widget listTileProfile(context) {
   return Container(
-    child: Consumer<FacultyProfilePageProvider>(
+    child: Consumer<ProfilePageProvider>(
       builder: (context, providerValue, child) {
         return ListTile(
           contentPadding: const EdgeInsets.only(top: 15, left: 20),

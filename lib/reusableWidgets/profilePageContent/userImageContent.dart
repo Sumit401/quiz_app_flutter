@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import '../Responsive.dart';
 
 // Container for user Image
-Container userImageProfile(context) {
+Container userImageContent(context) {
   String? imageUrl = FirebaseAuth.instance.currentUser?.photoURL.toString();
   if (imageUrl == "null") {
     return Container(

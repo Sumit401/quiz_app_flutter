@@ -57,9 +57,9 @@ double setSize(context, size) {
   } else if (MediaQuery.of(context).size.width >= 400 && MediaQuery.of(context).size.width < 450) {
     return size * 0.94;
   } else if (MediaQuery.of(context).size.width >= 450) {
-    return size;
+    return size*1.0;
   } else {
-    return size;
+    return size*1.0;
   }
 }
 

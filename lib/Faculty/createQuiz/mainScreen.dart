@@ -38,9 +38,12 @@ class _CreateQuizState extends State<CreateQuiz> {
                       toggleButtonForDifficultyLevel(),
                       listViewQuestions(context,providerValue),
                       Expanded(
-                        child: Align(
-                          alignment: Alignment.topCenter,
-                          child: submitQuizButton(),
+                        child: Container(
+                          margin: EdgeInsets.only(top: 10),
+                          child: Align(
+                            alignment: Alignment.center,
+                            child: submitQuizButton(),
+                          ),
                         ),
                       ),
                     ],

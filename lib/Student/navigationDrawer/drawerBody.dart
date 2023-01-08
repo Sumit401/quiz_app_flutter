@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_project/reusableWidgets/profileSection/getProfileInfo.dart';
+import 'package:flutter_project/reusableWidgets/profileSection/profilePageMain.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
+
 
 import '../../reusableWidgets/Responsive.dart';
+import '../../reusableWidgets/profileSection/provider.dart';
 
 ListTile listTileMyQuiz(context) {
   return ListTile(
@@ -35,16 +40,27 @@ ListTile listTileCheckScore(context) {
   );
 }
 
-ListTile listTileProfile(context) {
-  return ListTile(
-    contentPadding: const EdgeInsets.only(top: 15, left: 20),
-    leading:
-        const Icon(FontAwesomeIcons.userLarge, size: 20, color: Colors.black),
-    title:  Text(
-      "My Profile",
-      style: TextStyle(fontSize: setSize(context, 17), fontWeight: FontWeight.w400),
+Container listTileProfile(context) {
+  return Container(
+    child: Consumer<ProfilePageProvider>(
+      builder: (context, providervalue, child) {
+        return ListTile(
+          contentPadding: const EdgeInsets.only(top: 15, left: 20),
+          leading:
+          const Icon(FontAwesomeIcons.userLarge, size: 20, color: Colors.black),
+          title:  Text(
+            "My Profile",
+            style: TextStyle(fontSize: setSize(context, 17), fontWeight: FontWeight.w400),
+          ),
+          onTap: () {
+            getProfileInfo(providervalue);
+            Navigator.pop(context);
+            Navigator.push(context, MaterialPageRoute(builder: (context) => const ProfilePage()));
+          },
+        );
+      },
+
     ),
-    onTap: () => {},
   );
 }
 
