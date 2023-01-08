@@ -31,7 +31,7 @@ Widget floatingButton(context) {
         children: [
           const Icon(Icons.add),
           Text("Create",
-              style: TextStyle(fontSize: setFontSize(context, 18), fontWeight: FontWeight.w600)),
+              style: TextStyle(fontSize: setSize(context, 18), fontWeight: FontWeight.w600)),
         ],
       ),
     ),

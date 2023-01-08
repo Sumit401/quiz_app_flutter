@@ -13,16 +13,14 @@ dialogBoxForInstructions(context){
         actionsPadding: const EdgeInsets.only(right: 30,bottom: 20,top: 10),
         contentPadding: const EdgeInsets.symmetric(vertical: 30,horizontal: 30),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        title: Text("Instructions",style: TextStyle(color: Colors.red, fontSize: setFontSize(context, 22))),
+        title: Text("Instructions",style: TextStyle(color: Colors.red, fontSize: setSize(context, 22))),
           content: Text(
               "\u2022 Welcome to Online Examination \n\u2022 Exam has Total 10 Questions.\n\u2022 Total Time for the Exam is 20 Minutes \n\u2022 Negative Marking : No",
               textAlign: TextAlign.start,
-              style: TextStyle(wordSpacing: 1, height: 1.5,fontSize: setFontSize(context,15))),
+              style: TextStyle(wordSpacing: 1, height: 1.5,fontSize: setSize(context,15))),
           actions: [
             ElevatedButton(
               onPressed: () {
-                print("Height ${screenHeight(context)}");
-                print("Width ${screenWidth(context)}");
                 Navigator.pop(context);
                 Navigator.pop(context);
               },

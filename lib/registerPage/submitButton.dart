@@ -34,7 +34,7 @@ Widget buttonContent(providerValue, context) {
       },
       child: Text(
         "Submit",
-        style: TextStyle(fontWeight: FontWeight.bold, fontSize: setFontSize(context, 22)),
+        style: TextStyle(fontWeight: FontWeight.bold, fontSize: setSize(context, 22)),
       ));
 }
 

@@ -26,7 +26,7 @@ userEmail(context) {
       child: Text(
         "${FirebaseAuth.instance.currentUser?.email}",
         style: TextStyle(
-            fontSize: setFontSize(context, 17),
+            fontSize: setSize(context, 17),
             fontWeight: FontWeight.w500,
             color: Colors.white),
         overflow: TextOverflow.ellipsis,
@@ -36,11 +36,12 @@ userEmail(context) {
 
 userName(context) {
   return Container(
+    margin: EdgeInsets.only(bottom: 5),
     alignment: Alignment.center,
       child: Text(
         "${FirebaseAuth.instance.currentUser?.displayName}",
         style: TextStyle(
-            fontSize: setFontSize(context, 20),
+            fontSize: setSize(context, 20),
             fontWeight: FontWeight.bold,
             color: Colors.white),
         overflow: TextOverflow.ellipsis,

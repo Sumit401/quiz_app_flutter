@@ -31,7 +31,7 @@ Widget showQuizData(context, snapshot, index) {
 
 TextStyle textStyle(value,context) {
   return TextStyle(
-      fontSize: (value == "title") ?setFontSize(context,24): setFontSize(context,16),
+      fontSize: (value == "title") ?setSize(context,24): setSize(context,16),
       color: (value == "title") ? Colors.blue.shade700 : Colors.black,
       fontWeight: (value == "title") ? FontWeight.w800 : FontWeight.w600,
       overflow: TextOverflow.visible);

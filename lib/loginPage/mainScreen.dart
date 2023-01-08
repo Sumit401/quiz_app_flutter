@@ -55,7 +55,7 @@ Widget loginText(context) {
       margin: const EdgeInsets.symmetric(vertical: 20),
       child: Text("Login",
           style: TextStyle(
-              fontSize: setFontSize(context,30), fontWeight: FontWeight.w800, color: Colors.lightGreen,fontStyle: FontStyle.italic)),
+              fontSize: setSize(context,30), fontWeight: FontWeight.w800, color: Colors.lightGreen,fontStyle: FontStyle.italic)),
     );
   }
 

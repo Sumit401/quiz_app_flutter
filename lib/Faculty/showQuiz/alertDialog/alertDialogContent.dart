@@ -34,12 +34,12 @@ Widget contentOfAlertDialog(context, index, snapshot) {
                   children: [
                     Text("Question #${index2 + 1}",
                         style: TextStyle(
-                            fontSize: setFontSize(context, 20),
+                            fontSize: setSize(context, 20),
                             fontWeight: FontWeight.w600)),
                     Text(
                       "${snapshot2.data?.docs[index2]['Question'].toString()} ",
                       style: TextStyle(
-                          fontSize: setFontSize(context, 19),
+                          fontSize: setSize(context, 19),
                           fontWeight: FontWeight.w500),
                       textAlign: TextAlign.center,
                     ),
@@ -70,7 +70,7 @@ Widget answerValue(value,context){
     child: Text(value,
       textAlign: TextAlign.center,
       overflow: TextOverflow.visible,
-      style: TextStyle(fontSize: setFontSize(context, 16)),
+      style: TextStyle(fontSize: setSize(context, 16)),
     ),
   );
 }

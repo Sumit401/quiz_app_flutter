@@ -25,7 +25,7 @@ Widget teachersAssigned(context){
               child: Text(
                 "You have been Assigned Any Quiz\n Please Check back later.!",
                 style: TextStyle(
-                    fontSize: setFontSize(context, 23),
+                    fontSize: setSize(context, 23),
                     color: hexToColor("#263300"),
                     fontWeight: FontWeight.bold,
                     overflow: TextOverflow.visible,

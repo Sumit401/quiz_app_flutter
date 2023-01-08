@@ -19,7 +19,7 @@ Widget listViewQuestions(context, providerValue) {
         alignment: Alignment.center,
         child: Text("\n\nAdd Questions to Quiz from '+' icon on Upper Right Corner.\n\n",
           style: TextStyle(
-              fontSize: setFontSize(context, 24),
+              fontSize: setSize(context, 24),
               fontWeight: FontWeight.bold,
               color: hexToColor("#8f3040"),
               overflow: TextOverflow.visible,
@@ -107,7 +107,7 @@ Expanded options(value, context) {
       child: Text(
         value,
         style: TextStyle(
-            fontSize: setFontSize(context, 14),
+            fontSize: setSize(context, 14),
             fontWeight: FontWeight.w600,
             overflow: TextOverflow.visible),
         textAlign: TextAlign.center,
@@ -123,7 +123,7 @@ Container question(index, context) {
       child: Text(
         "Question: #${index + 1}",
         style: TextStyle(
-            fontSize: setFontSize(context, 18),
+            fontSize: setSize(context, 18),
             fontWeight: FontWeight.bold,
             overflow: TextOverflow.visible),
         textAlign: TextAlign.center,
@@ -137,7 +137,7 @@ Container questionValue(context) {
       child: Text(
         ques,
         style: TextStyle(
-            fontSize: setFontSize(context, 18),
+            fontSize: setSize(context, 18),
             fontWeight: FontWeight.bold,
             overflow: TextOverflow.visible),
         textAlign: TextAlign.center,

@@ -78,5 +78,5 @@ Widget toggleButtonDifficult(providerValue, context) {
 Text textWidget(context, value) {
   return Text(value,
       style:
-          TextStyle(fontSize: setFontSize(context, 18), color: Colors.black));
+          TextStyle(fontSize: setSize(context, 18), color: Colors.black));
 }

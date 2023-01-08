@@ -9,7 +9,7 @@ Widget notUserSignup(context) {
       margin: const EdgeInsets.only(top: 20),
       child: Text("Not a User? Click here SignUp",
           style: TextStyle(
-              color: Colors.white, fontWeight: FontWeight.w600, fontSize: setFontSize(context, 22))),
+              color: Colors.white, fontWeight: FontWeight.w600, fontSize: setSize(context, 22))),
     ),
     onTap: () {
       Navigator.pushReplacement(

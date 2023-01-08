@@ -52,7 +52,7 @@ Container facultyNameContainer(value,context) {
     child: Text(value,
         textAlign: TextAlign.center,
         style: TextStyle(
-            fontSize: setFontSize(context, 23),
+            fontSize: setSize(context, 23),
             fontWeight: FontWeight.w800,
             color: hexToColor("#7520a1"),
             overflow: TextOverflow.visible)),
@@ -66,7 +66,7 @@ Container headingContainer(value,context) {
     child: Text(value,
         textAlign: TextAlign.center,
         style: TextStyle(
-            fontSize: setFontSize(context, 17),
+            fontSize: setSize(context, 17),
             color: hexToColor("#14735b"),
             fontWeight: FontWeight.w800,
             overflow: TextOverflow.visible)),
@@ -79,5 +79,5 @@ Container contentContainer(value,context) {
       padding: const EdgeInsets.only(bottom: 10, right: 20, left: 20),
       child: Text(value,
           textAlign: TextAlign.justify,
-          style: TextStyle(fontSize: setFontSize(context,15), fontWeight: FontWeight.w600)));
+          style: TextStyle(fontSize: setSize(context,15), fontWeight: FontWeight.w600)));
 }

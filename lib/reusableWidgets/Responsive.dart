@@ -51,7 +51,7 @@ double screenHeight(context) {
   return MediaQuery.of(context).size.height;
 }
 
-double setFontSize(context, size) {
+double setSize(context, size) {
   if (MediaQuery.of(context).size.width <= 400) {
     return size * 0.8;
   } else if (MediaQuery.of(context).size.width >= 400 && MediaQuery.of(context).size.width < 450) {

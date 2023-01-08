@@ -65,7 +65,7 @@ class _QuizFromEachFacultyState extends State<QuizFromEachFaculty> {
       "This Faculty has no Quiz to Show.\n Kindly check back later.!",
       textAlign: TextAlign.center,
       style: TextStyle(
-          fontSize: setFontSize(context, 17),
+          fontSize: setSize(context, 17),
           fontWeight: FontWeight.bold,
           color: hexToColor("#263300"),
           overflow: TextOverflow.visible,

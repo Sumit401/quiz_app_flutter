@@ -7,7 +7,7 @@ import '../../loginPage/mainScreen.dart';
 
 AlertDialog alertDialogSignOut(context) {
   return AlertDialog(
-    title: Text("Do You want to Logout ?",style: TextStyle(fontSize: setFontSize(context, 20))),
+    title: Text("Do You want to Logout ?",style: TextStyle(fontSize: setSize(context, 20))),
     elevation: 10,
     actions: [
       noPressed(context),
@@ -27,11 +27,11 @@ Widget yesPressed(context) {
         Navigator.pop(context);
         Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const LoginPage()));
       },
-      child: Text("Yes", style: TextStyle(fontSize: setFontSize(context, 22))));
+      child: Text("Yes", style: TextStyle(fontSize: setSize(context, 22))));
 }
 
 Widget noPressed(context) {
   return TextButton(
       onPressed: () => Navigator.pop(context),
-      child: Text("No", style: TextStyle(fontSize: setFontSize(context, 22))));
+      child: Text("No", style: TextStyle(fontSize: setSize(context, 22))));
 }

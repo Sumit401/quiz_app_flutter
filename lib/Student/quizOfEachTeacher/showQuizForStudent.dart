@@ -40,7 +40,7 @@ Widget textDisplay(value, type, context) {
 
 TextStyle textStyle(value, context) {
   return TextStyle(
-      fontSize: (value == "title") ? setFontSize(context, 20) : setFontSize(context, 17),
+      fontSize: (value == "title") ? setSize(context, 20) : setSize(context, 17),
       color: (value == "title") ? Colors.blue.shade700 : Colors.black,
       fontWeight: (value == "title") ? FontWeight.w800 : FontWeight.w600,
       overflow: TextOverflow.visible);

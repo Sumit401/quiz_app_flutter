@@ -54,7 +54,7 @@ class _RegisterState extends State<Register> {
     return Text(
       "Register Now",
       style: TextStyle(
-      fontSize: setFontSize(context, 35), fontWeight: FontWeight.w800, color: Colors.white),
+      fontSize: setSize(context, 35), fontWeight: FontWeight.w800, color: Colors.white),
     );
   }
 

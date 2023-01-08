@@ -15,7 +15,7 @@ Widget submitQuizButton() {
       return ElevatedButton(onPressed: () async{
 
         // Get email of current logged in user..............................
-        String email = FirebaseAuth.instance.currentUser!.email.toString();
+        String? email = FirebaseAuth.instance.currentUser?.email.toString();
 
         //Count Docs Size in Collection......................................
         int getDocsCount = await FirebaseFirestore.instance.collection("users")
@@ -53,7 +53,7 @@ Widget submitQuizButton() {
               providerValue.clearProviderValue();
               Navigator.pop(context);
             }
-          }, child: Text("Submit Quiz",style: TextStyle(fontSize: setFontSize(context, 16)),));
+          }, child: Text("Submit Quiz",style: TextStyle(fontSize: setSize(context, 16)),));
     },
   );
 }

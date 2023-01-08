@@ -16,12 +16,12 @@ Container titleOfAlertDialog(context,index,snapshot) {
                 textAlign: TextAlign.center,
                 overflow: TextOverflow.visible,
                 style: TextStyle(
-                    fontSize: setFontSize(context, 20), fontWeight: FontWeight.w800))),
+                    fontSize: setSize(context, 20), fontWeight: FontWeight.w800))),
         Container(
             padding: const EdgeInsets.only(bottom: 10, top: 10),
             child: Text("Description: ",
                 style: TextStyle(
-                    fontSize: setFontSize(context, 18), fontWeight: FontWeight.w600))),
+                    fontSize: setSize(context, 18), fontWeight: FontWeight.w600))),
         Container(
             padding: const EdgeInsets.only(bottom: 10),
             child: Text(
@@ -29,7 +29,7 @@ Container titleOfAlertDialog(context,index,snapshot) {
                 textAlign: TextAlign.center,
                 overflow: TextOverflow.visible,
                 style: TextStyle(
-                    fontSize: setFontSize(context, 18), fontWeight: FontWeight.w400))),
+                    fontSize: setSize(context, 18), fontWeight: FontWeight.w400))),
 
         Container(
             padding: const EdgeInsets.only(bottom: 10),
@@ -37,13 +37,13 @@ Container titleOfAlertDialog(context,index,snapshot) {
                 textAlign: TextAlign.center,
                 overflow: TextOverflow.visible,
                 style: TextStyle(
-                    fontSize: setFontSize(context, 18), fontWeight: FontWeight.w600))),
+                    fontSize: setSize(context, 18), fontWeight: FontWeight.w600))),
         Container(
             child: Text("Total Questions : ${snapshot.data.docs[index]['Total Questions'].toString()}",
                 textAlign: TextAlign.center,
                 overflow: TextOverflow.visible,
                 style: TextStyle(
-                    fontSize: setFontSize(context, 18), fontWeight: FontWeight.w600))),
+                    fontSize: setSize(context, 18), fontWeight: FontWeight.w600))),
       ],
     ),
   );

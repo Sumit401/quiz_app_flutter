@@ -24,7 +24,7 @@ Container showQuiz(context)  {
               child: Text(
                 "You have not Created a Quiz\n Create one to Display Here!",
                 style: TextStyle(
-                    fontSize: setFontSize(context, 24),
+                    fontSize: setSize(context, 24),
                     fontWeight: FontWeight.bold,
                     color: hexToColor("#263300"),
                     overflow: TextOverflow.visible,

@@ -13,7 +13,7 @@ Widget toggleForStudentFaculty() {
           Expanded(
               child: RadioListTile(
                 activeColor: Colors.cyan,
-                title: Text("Student",style: TextStyle(fontSize: setFontSize(context,17),color: Colors.white,)),
+                title: Text("Student",style: TextStyle(fontSize: setSize(context,17),color: Colors.white,)),
                 value: 0,
                 groupValue: value.radioForStudentFaculty,
                 onChanged: (changedValue) {
@@ -23,7 +23,7 @@ Widget toggleForStudentFaculty() {
           Expanded(
               child: RadioListTile(
                 activeColor: Colors.cyan,
-                title: Text("Faculty",style: TextStyle(fontSize: setFontSize(context,17), color: Colors.white)),
+                title: Text("Faculty",style: TextStyle(fontSize: setSize(context,17), color: Colors.white)),
                 value: 1,
                 groupValue: value.radioForStudentFaculty,
                 onChanged: (changedValue) {

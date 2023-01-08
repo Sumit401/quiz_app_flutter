@@ -3,8 +3,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_project/reusableWidgets/Responsive.dart';
 import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
 
 import '../Faculty/mainScreen.dart';
 import '../Student/mainScreen.dart';
@@ -40,7 +38,7 @@ Widget buttonContent(providerValue,context) {
       }
     },
     style: submitButtonStyle(), // Button Styling See below..............................
-    child: Text("Submit",style: TextStyle(fontSize: setFontSize(context, 22),fontWeight: FontWeight.bold)),
+    child: Text("Submit",style: TextStyle(fontSize: setSize(context, 22),fontWeight: FontWeight.bold)),
   );
 }
 
@@ -61,14 +59,12 @@ ButtonStyle submitButtonStyle(){
 Future<void> getValueFromFirebase(providerValue,context) async {
 
   // Create shared preference to set data ......................
-  SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+  //SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
   try {
     //SignIn with email password.........
       await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: providerValue.email.trim(),
         password: providerValue.password);
-
-
 
      /* sharedPreferences.setString("userName", firebaseAuth.user!.displayName.toString());
       sharedPreferences.setString("userEmail", firebaseAuth.user!.email.toString());*/
@@ -81,7 +77,7 @@ Future<void> getValueFromFirebase(providerValue,context) async {
         value1.data()?.forEach((key, value) {
 
           // Check user type and Navigate see below...................
-          checkUserTypeAndNavigate(key,value,context,sharedPreferences);
+          checkUserTypeAndNavigate(key,value,context);
 
           // Delete Provider value..................
           providerValue.deleteEmail();
@@ -90,20 +86,19 @@ Future<void> getValueFromFirebase(providerValue,context) async {
       // Show flutter Toast if login Successful.........
       short_flutter_toast("Login Successful");
   } catch (e) {
-    // Catch error display toast...........
+    // Catch error display toast..........................
     Navigator.pop(context);
     switchCaseError(e); //See Reusable Widget..............
   }
 }
-// Check user type and Navigate.............................................
-void checkUserTypeAndNavigate(key,value,context,sharedPreferences) {
+// Check user type and Navigate to HomeScreen...........................
+void checkUserTypeAndNavigate(key,value,context) {
 
-  sharedPreferences.setString("userType", value == "0"
-      ? "Student"
-      : "Faculty");
-
-  // Navigation Check..... if student or Faculty
+  // Navigation Check..... if student or Faculty..........................
   if (key == "userType") {
+    //Set value to shared preferences..................
+
+
     value == "0" ? { Navigator.pop(context), // If user is Student
       Navigator.pushReplacement(context, MaterialPageRoute(
         builder: (context) => const StudentHome(),))
