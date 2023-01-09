@@ -43,6 +43,7 @@ dependencies:
   fluttertoast: ^8.1.1
   shared_preferences: ^2.0.15
   font_awesome_flutter: ^10.3.0
+  toggle_switch: ^2.0.1
 
 dev_dependencies:
   flutter_test:

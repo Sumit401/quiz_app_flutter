@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 class RegisterPageProvider with ChangeNotifier{
 
   int radioForStudentFaculty = 0;
-  //int radioCourseType = 0;
   String name = "";
   String email = "";
   String password = "";
@@ -37,8 +36,4 @@ class RegisterPageProvider with ChangeNotifier{
   void deleteEmail(){
     email="";
   }
-/*void changeCourseType(value){
-    radioCourseType=value;
-    notifyListeners();
-  }*/
 }

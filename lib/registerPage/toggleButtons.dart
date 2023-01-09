@@ -1,36 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:toggle_switch/toggle_switch.dart';
 
 import '../reusableWidgets/Responsive.dart';
 import 'provider.dart';
 
 Widget toggleForStudentFaculty() {
   return Consumer<RegisterPageProvider>(
-    builder: (context, value, child) {
-      return Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Expanded(
-              child: RadioListTile(
-                activeColor: Colors.cyan,
-                title: Text("Student",style: TextStyle(fontSize: setSize(context,17),color: Colors.white,)),
-                value: 0,
-                groupValue: value.radioForStudentFaculty,
-                onChanged: (changedValue) {
-                  value.changeStudentFacultyValue(changedValue);
-                },
-              )),
-          Expanded(
-              child: RadioListTile(
-                activeColor: Colors.cyan,
-                title: Text("Faculty",style: TextStyle(fontSize: setSize(context,17), color: Colors.white)),
-                value: 1,
-                groupValue: value.radioForStudentFaculty,
-                onChanged: (changedValue) {
-                  value.changeStudentFacultyValue(changedValue);
-                },
-              )),
-        ],
+    builder: (context, providerValue, child) {
+      return Container(
+        margin: EdgeInsets.only(top: setSize(context, 20),bottom: setSize(context, 10)),
+        child: ToggleSwitch(
+          cornerRadius: 15,
+          fontSize: setSize(context, 18),
+          activeBgColor: const [Colors.green],
+          borderWidth: setSize(context, 5),
+          animate: true,
+          minWidth: setSize(context, 130),
+          animationDuration: 400,
+          initialLabelIndex: providerValue.radioForStudentFaculty,
+          totalSwitches: 2,
+          labels: const ['Student',"Faculty"],
+          onToggle: (index) {
+            print('switched to: $index');
+            providerValue.changeStudentFacultyValue(index);
+          },
+        ),
       );
     },
 

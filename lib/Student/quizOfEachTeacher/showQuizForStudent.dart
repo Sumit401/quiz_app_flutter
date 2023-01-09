@@ -1,6 +1,8 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_project/Student/provider.dart';
 import 'package:flutter_project/reusableWidgets/Responsive.dart';
+import 'package:provider/provider.dart';
 
 import 'dialogBoxForInstructions.dart';
 
@@ -16,8 +18,19 @@ Widget showQuizForStudent(context, snapshot, index) {
         textDisplay(snapshot.data.docs[index]['Total Questions'].toString(), "total",context),
         Padding(
           padding: const EdgeInsets.all(8.0),
-          child: ElevatedButton(
-              onPressed: () => dialogBoxForInstructions(context), child: Text("Attempt Quiz")),
+          child: Consumer<StudentProvider>(
+            builder: (context, providerValue, child) {
+              return ElevatedButton(
+                  onPressed: () async{
+                    providerValue.getDifficultyLevel(snapshot.data.docs[index]['Difficulty'].toString());
+                    providerValue.getTotalQuestions(snapshot.data.docs[index]['Total Questions'].toString());
+                    providerValue.getQuizTitle(snapshot.data.docs[index]['Quiz Title'].toString());
+                    providerValue.getQuizID(snapshot.data.docs[index].id.toString());
+                    dialogBoxForInstructions(context);
+                  },
+                  child: Text("Attempt Quiz"));
+            },
+          ),
         )
       ],
     ),
