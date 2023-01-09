@@ -3,8 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../Responsive.dart';
-import '../profileSection/provider.dart';
+import '../../Responsive.dart';
+import '../provider.dart';
 
 createDialogBoxUpdate(context, providerValue, updateValue) {
   showDialog(
@@ -22,7 +22,8 @@ createDialogBoxUpdate(context, providerValue, updateValue) {
   );
 }
 
-Widget contentOfAlertBox(context, providerValue, updateValue) {
+// Content of Alert Dialog Box..................
+contentOfAlertBox(context, providerValue, updateValue) {
   return SizedBox(
     width: screenWidth(context),
     child: TextFormField(
@@ -30,23 +31,30 @@ Widget contentOfAlertBox(context, providerValue, updateValue) {
           ? providerValue.about
           : updateValue == "Experience"
               ? providerValue.experience
-              : providerValue.qualification,
-      decoration: InputDecoration(
+              : updateValue == "Phone"
+                  ? providerValue.userPhone
+                  : providerValue.qualification,
+      decoration: InputDecoration(counterText: "",
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(20))),
-      maxLines: 10,
+      maxLines: updateValue != "Phone" ? 10 : 1,
       minLines: 1,
+      maxLength: updateValue == "Phone" ? 10 : 500,
       onChanged: (value) {
         updateValue == "Your Description"
             ? providerValue.getAbout(value)
             : updateValue == "Experience"
                 ? providerValue.getExperience(value)
-                : providerValue.getQualification(value);
+                : updateValue == "Phone"
+                    ? providerValue.getUserPhone(value)
+                    : providerValue.getQualification(value);
       },
     ),
   );
 }
 
-Widget buttonForSave() {
+
+// Button To update...................................
+buttonForSave() {
   return Consumer<ProfilePageProvider>(
     builder: (context, proValue, child) {
       return ElevatedButton(onPressed: () {
@@ -55,7 +63,8 @@ Widget buttonForSave() {
         Map<String,String> updatedData= {
           "about": proValue.about,
           "experience":proValue.experience,
-          "qualification":proValue.qualification
+          "qualification":proValue.qualification,
+          "contact" : proValue.userPhone,
         };
         FirebaseFirestore.instance.collection("users").doc(email).update(updatedData);
         Navigator.pop(context);

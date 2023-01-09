@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 
 class ProfilePageProvider extends ChangeNotifier{
 
+  String userName = "";
+  String userPhone = "";
   String experience = "";
   String about = "";
   String qualification="";
+  String userType="";
 
   getExperience(value){
     experience = value;
@@ -16,6 +19,18 @@ class ProfilePageProvider extends ChangeNotifier{
   }
   getQualification(value){
     qualification = value;
+    notifyListeners();
+  }
+  getUserType(value){
+    userType=value;
+    notifyListeners();
+  }
+  getUserPhone(value){
+    userPhone=value;
+    notifyListeners();
+  }
+  getUserName(value){
+    userName=value;
     notifyListeners();
   }
 

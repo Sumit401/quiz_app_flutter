@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 
 import '../../reusableWidgets/Responsive.dart';
 import '../../reusableWidgets/profileSection/getProfileInfo.dart';
-import '../../reusableWidgets/profileSection/profilePageMain.dart';
+import '../../reusableWidgets/profileSection/mainPage.dart';
 import '../../reusableWidgets/profileSection/provider.dart';
 import '../createQuiz/mainScreen.dart';
 

@@ -4,11 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../reusableWidgets/appBar.dart';
-import '../../reusableWidgets/profilePageContent/emailAndNameContent.dart';
-import '../../reusableWidgets/profilePageContent/userAboutContent.dart';
-import '../../reusableWidgets/profilePageContent/userImageContent.dart';
+import '../Responsive.dart';
+import 'profilePageContent/emailContent.dart';
+import 'profilePageContent/nameContent.dart';
+import 'profilePageContent/userDescriptionContent.dart';
+import 'profilePageContent/userExp_And_Qual_Content.dart';
+import 'profilePageContent/userImageContent.dart';
+import 'profilePageContent/userPhoneContent.dart';
 import 'provider.dart';
-
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -21,7 +24,8 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     // Get firebase logged in user name......................................
-    String? userName = FirebaseAuth.instance.currentUser?.displayName.toString();
+    String? userName =
+        FirebaseAuth.instance.currentUser?.displayName.toString();
     return Scaffold(
       appBar: appBarSimple(context, "Welcome $userName"),
       body: Consumer<ProfilePageProvider>(
@@ -31,10 +35,16 @@ class _ProfilePageState extends State<ProfilePage> {
               children: [
                 userImageContent(context),
                 userNameContent(context),
+                containerSeperator(context),
                 userEmailContent(context),
-                userDescriptionContent(context, providerValue),
-                userExperienceContent(context, providerValue),
+                containerSeperator(context),
+                userPhoneContent(context,providerValue),
+                containerSeperator(context),
+                providerValue.userType != "0" ? userExperienceContent(context, providerValue) : Container(),
+                providerValue.userType != "0" ? containerSeperator(context) : Container(),
                 userQualificationContent(context, providerValue),
+                containerSeperator(context),
+                userDescriptionContent(context, providerValue),
               ],
             ),
           );
@@ -42,4 +52,9 @@ class _ProfilePageState extends State<ProfilePage> {
       ),
     );
   }
+}
+
+containerSeperator(context) {
+  return Container(
+      width: screenWidth(context), height: 1, color: Colors.black54);
 }

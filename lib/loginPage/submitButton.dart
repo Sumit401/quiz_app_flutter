@@ -69,7 +69,6 @@ Future<void> getValueFromFirebase(providerValue,context) async {
      /* sharedPreferences.setString("userName", firebaseAuth.user!.displayName.toString());
       sharedPreferences.setString("userEmail", firebaseAuth.user!.email.toString());*/
 
-
     // Check if the user is Student or faculty by getting data from Database.............
     FirebaseFirestore.instance.collection("users").doc(
         providerValue.email.trim()).get()

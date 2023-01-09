@@ -58,7 +58,8 @@ Future<void> setDataToFirebase(providerValue, context) async {
       "userType": providerValue.radioForStudentFaculty.toString(),
       "about" : "" ,
       "experience" : "",
-      "qualification" : ""
+      "qualification" : "",
+      "contact" : "",
     };
     // Set user data to collection in Firebase...........
     FirebaseFirestore.instance.collection("users").doc(

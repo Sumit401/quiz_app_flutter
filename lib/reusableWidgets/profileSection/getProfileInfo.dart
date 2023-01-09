@@ -15,6 +15,12 @@ getProfileInfo(providerValue) async {
       providerValue.getAbout(value);
     }else if(key=="qualification") {
       providerValue.getQualification(value);
+    }else if(key=="contact") {
+      providerValue.getUserPhone(value);
+    } else if(key=="userType") {
+      providerValue.getUserType(value);
+    }else if(key=="name") {
+      providerValue.getUserName(value);
     }
   }));
 }
