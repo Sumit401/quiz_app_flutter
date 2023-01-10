@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 
 import 'Faculty/createQuiz/provider.dart';
 import 'Student/provider.dart';
+import 'Student/startQuiz/provider.dart';
 import 'loginPage/mainScreen.dart';
 import 'loginPage/provider.dart';
 import 'registerPage/provider.dart';
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => CreateQuizProvider()),
         ChangeNotifierProvider(create: (_) => StudentProvider()),
         ChangeNotifierProvider(create: (_) => ProfilePageProvider()),
+        ChangeNotifierProvider(create: (_) => StartQuizProvider()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

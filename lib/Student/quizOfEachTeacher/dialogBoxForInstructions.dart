@@ -16,38 +16,59 @@ dialogBoxForInstructions(context) {
               elevation: 20,
               scrollable: true,
               alignment: Alignment.center,
-              actionsPadding:
-                  const EdgeInsets.only(right: 30, bottom: 20, top: 10),
-              contentPadding: const EdgeInsets.symmetric(vertical: 30, horizontal: 30),
+              actionsPadding: actionsPaddingDialogBox(context),
+              contentPadding: contentPaddingDialogBox(context),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20)),
-              title: Text("Instructions",
-                  style: TextStyle(
-                      color: Colors.red, fontSize: setSize(context, 22))),
-              content: Text(
-                  "\u2022 Welcome to Online ${providerValue.quizTitle} \n\u2022 Exam has Total ${providerValue.totalQuestions} Questions.\n\u2022 Total Time for the Exam is ${int.parse(providerValue.totalQuestions) * 2} Minutes \n\u2022 Negative Marking : No",
-                  textAlign: TextAlign.start,
-                  style: TextStyle(
-                      wordSpacing: 1,
-                      height: 1.5,
-                      fontSize: setSize(context, 15))),
-              actions: [
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                    Navigator.pop(context);
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => const StartQuiz()));
-                  },
-                  style: const ButtonStyle(
-                      backgroundColor: MaterialStatePropertyAll(Colors.green)),
-                  child: const Text("Start Test"),
-                )
-              ],
+              title: alertDialogTitle(context),
+              content: alertDialogContent(context, providerValue),
+              actions: [ alertDialogActions(context) ],
             );
           },
         ),
       );
     },
   );
+}
+
+Text alertDialogTitle(context) {
+  return Text("Instructions",
+      style: TextStyle(color: Colors.red, fontSize: setSize(context, 22)));
+}
+
+
+Text alertDialogContent(context, providerValue) {
+  return Text(
+      "\u2022 Welcome to Online ${providerValue.quizTitle} \n\u2022 Exam has Total ${providerValue.totalQuestions} Questions.\n\u2022 Total Time for the Exam is ${int.parse(providerValue.totalQuestions) * 2} Minutes \n\u2022 Negative Marking : No \n\u2022 Each Question is Compulsory to Attend",
+      textAlign: TextAlign.start,
+      style: TextStyle(
+          wordSpacing: 1, height: 1.5, fontSize: setSize(context, 15)));
+}
+
+
+Widget alertDialogActions(context) {
+  return ElevatedButton(
+      onPressed: () {
+        Navigator.pop(context);
+        Navigator.pop(context);
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const StartQuiz()));
+      },
+      style: const ButtonStyle(
+          backgroundColor: MaterialStatePropertyAll(Colors.green)),
+      child: const Text("Start Test"));
+}
+
+
+EdgeInsets contentPaddingDialogBox(BuildContext context) {
+  return EdgeInsets.symmetric(
+      vertical: setSize(context, 30),
+      horizontal: setSize(context, 30));
+}
+
+EdgeInsets actionsPaddingDialogBox(BuildContext context) {
+  return EdgeInsets.only(
+      right: setSize(context, 30),
+      bottom: setSize(context, 20),
+      top: setSize(context, 10));
 }

@@ -14,8 +14,10 @@ class LoginPageProvider extends ChangeNotifier{
   }
   void deletePassword(){
     password="";
+    notifyListeners();
   }
   void deleteEmail(){
     email="";
+    notifyListeners();
   }
 }

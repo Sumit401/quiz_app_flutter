@@ -4,7 +4,7 @@ import 'package:flutter_project/Student/provider.dart';
 import 'package:flutter_project/reusableWidgets/appBar.dart';
 import 'package:provider/provider.dart';
 
-import 'pageViewContainer.dart';
+import 'PageView/pageViewContainer.dart';
 
 class StartQuiz extends StatefulWidget {
   const StartQuiz({Key? key}) : super(key: key);
@@ -22,15 +22,11 @@ class _StartQuizState extends State<StartQuiz> {
       appBar: appBarSimple(context, "Start Quiz"),
       body: Consumer<StudentProvider>(
         builder: (context, providerValue, child) {
-          var firestoreSnapshots = FirebaseFirestore.instance
-              .collection("users")
-              .doc(providerValue.facultyID)
-              .collection("questions")
-              .doc(providerValue.quizID)
-              .collection(providerValue.quizID)
-              .snapshots();
 
-          int count = int.parse(providerValue.totalQuestions);
+          var firestoreSnapshots = FirebaseFirestore.instance
+              .collection("users").doc(providerValue.facultyID)
+              .collection("questions").doc(providerValue.quizID)
+              .collection(providerValue.quizID).snapshots();
 
           return Container(
             //color: hexToColor("#a27cc1"),
