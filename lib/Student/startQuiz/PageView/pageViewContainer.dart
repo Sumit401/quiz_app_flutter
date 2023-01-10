@@ -18,7 +18,7 @@ Widget pageViewContainer(snapshot, index, _pagecontroller, context) {
   print(index);
   return SingleChildScrollView(
     child: Container(
-        margin: EdgeInsets.only(top: setSize(context, 30)),
+        margin: EdgeInsets.only(top: setSize(context, 100)),
         alignment: Alignment.center,
         child: Consumer<StartQuizProvider>(
           builder: (context, providerValue, child) {

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_project/Student/provider.dart';
 import 'package:flutter_project/Student/startQuiz/mainPage.dart';
+import 'package:flutter_project/Student/startQuiz/provider.dart';
 import 'package:flutter_project/reusableWidgets/Responsive.dart';
 import 'package:provider/provider.dart';
 
@@ -10,8 +11,8 @@ dialogBoxForInstructions(context) {
     builder: (context) {
       return SizedBox(
         width: screenWidth(context),
-        child: Consumer<StudentProvider>(
-          builder: (context, providerValue, child) {
+        child: Consumer2<StudentProvider,StartQuizProvider>(
+          builder: (context, studentProvider, startQuizProvider, child) {
             return AlertDialog(
               elevation: 20,
               scrollable: true,
@@ -21,8 +22,8 @@ dialogBoxForInstructions(context) {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20)),
               title: alertDialogTitle(context),
-              content: alertDialogContent(context, providerValue),
-              actions: [ alertDialogActions(context) ],
+              content: alertDialogContent(context, studentProvider),
+              actions: [ alertDialogActions(context,startQuizProvider) ],
             );
           },
         ),
@@ -46,9 +47,11 @@ Text alertDialogContent(context, providerValue) {
 }
 
 
-Widget alertDialogActions(context) {
+Widget alertDialogActions(context, StartQuizProvider startQuizProvider,) {
   return ElevatedButton(
       onPressed: () {
+        startQuizProvider.resetAnswerValue();
+        startQuizProvider.resetTotalCorrectAns();
         Navigator.pop(context);
         Navigator.pop(context);
         Navigator.push(context,

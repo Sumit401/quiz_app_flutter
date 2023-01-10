@@ -25,6 +25,16 @@ AppBar appBarSimple(context,title) {
   );
 }
 
+AppBar appBarSimpleWithoutBack(context,title) {
+  return AppBar(
+    title: Text(title),
+    centerTitle: true,
+    elevation: 10,
+    automaticallyImplyLeading: false,
+    backgroundColor: Colors.blueGrey,
+  );
+}
+
 AppBar appBarCreate(context,title) {
   return AppBar(
     title: Text(title),

@@ -6,6 +6,7 @@ import '../../../reusableWidgets/createColor.dart';
 
 Widget listViewPageView(providerValue,answers){
   return ListView.builder(
+    physics: const ClampingScrollPhysics(),
       shrinkWrap: true,
       itemCount: 4,
       itemBuilder: (context, itemIndex) {
