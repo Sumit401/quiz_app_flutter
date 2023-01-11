@@ -1,9 +1,11 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_project/Student/provider.dart';
+
 import 'package:provider/provider.dart';
 
+import 'providers/snapshotProvider.dart';
 import 'PageView/pageViewContainer.dart';
+import 'providers/timerProvider.dart';
 
 class StartQuiz extends StatefulWidget {
   const StartQuiz({Key? key}) : super(key: key);
@@ -15,37 +17,54 @@ class StartQuiz extends StatefulWidget {
 class _StartQuizState extends State<StartQuiz> {
   final PageController _pagecontroller = PageController();
 
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async => false,
       child: Scaffold(
         //appBar: appBarSimpleWithoutBack(context, "Start Quiz"),
-        body: Consumer<StudentProvider>(
+        body: Consumer<SnapshotProvider>(
           builder: (context, providerValue, child) {
-            var firestoreSnapshots = FirebaseFirestore.instance
-                .collection("users").doc(providerValue.facultyID)
-                .collection("questions").doc(providerValue.quizID)
-                .collection(providerValue.quizID).snapshots();
-
+            print("build");
             return Container(
               alignment: Alignment.topCenter,
               child: StreamBuilder(
-                  stream: firestoreSnapshots,
+                  stream: providerValue.firestoreSnapshots,
                   builder: (context, snapshot) {
-                    return PageView.builder(
-                      physics: const NeverScrollableScrollPhysics(),
-                      controller: _pagecontroller,
-                      itemCount: snapshot.data?.docs.length,
-                      itemBuilder: (context, index) {
-                        return pageViewContainer(snapshot, index, _pagecontroller,context);
-                      },
+                    return Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        timer(),
+                        Expanded(
+                          child: PageView.builder(
+                            physics: const NeverScrollableScrollPhysics(),
+                            controller: _pagecontroller,
+                            itemCount: snapshot.data?.docs.length,
+                            itemBuilder: (context, index) {
+                              return pageViewContainer(snapshot, index, _pagecontroller,context);
+                            },
+                          ),
+                        ),
+                      ],
                     );
                   }),
             );
           },
         ),
       ),
+    );
+  }
+
+  timer() {
+    return Consumer<TimerProvider>(
+      builder: (context, timerProvider, child) {
+        return Container(
+            margin: const EdgeInsets.only(top: 50),
+            child: Text(timerProvider.timer.toString(),
+              style: TextStyle(fontSize: 40),
+            ));
+      },
     );
   }
 }

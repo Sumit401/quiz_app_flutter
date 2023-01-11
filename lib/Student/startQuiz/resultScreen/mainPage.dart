@@ -1,12 +1,12 @@
 
 import 'package:flutter/material.dart';
-import 'package:flutter_project/Student/provider.dart';
-import 'package:flutter_project/reusableWidgets/Responsive.dart';
 import 'package:provider/provider.dart';
 import 'package:screenshot/screenshot.dart';
 
+import '../../../reusableWidgets/Responsive.dart';
 import '../../../reusableWidgets/appBar.dart';
-import '../provider.dart';
+import '../providers/startQuizProvider.dart';
+import '../providers/studentProvider.dart';
 import 'resultSummaryContent.dart';
 
 class ResultSummary extends StatefulWidget {

@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_project/Student/assignedTeachers/cardView.dart';
 
 import '../../reusableWidgets/Responsive.dart';
 import '../../reusableWidgets/createColor.dart';
+import 'cardView.dart';
 
 Widget teachersAssigned(context){
 

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_project/Faculty/createQuiz/provider.dart';
 import 'package:provider/provider.dart';
 
 import '../../reusableWidgets/Responsive.dart';
+import 'createQuizProvider.dart';
 
-Widget toggleButtonForDifficultyLevel() {
+Widget toggleButtonForDifficultyLevel(context) {
   return Container(
-    margin: EdgeInsets.only(top: 10,bottom: 20),
+    margin: EdgeInsets.only(top: setSize(context, 10),bottom: setSize(context, 20)),
       padding: const EdgeInsets.only(top: 10, right: 10),
       child: Consumer<CreateQuizProvider>(
         builder: (context, providerValue, child) {

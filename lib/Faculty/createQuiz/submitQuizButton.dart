@@ -2,10 +2,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_project/reusableWidgets/Responsive.dart';
 
 import 'package:provider/provider.dart';
-import 'provider.dart';
+import '../../reusableWidgets/Responsive.dart';
+import 'createQuizProvider.dart';
 
 
 // Submit Quiz Button Main Screen

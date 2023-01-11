@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_project/reusableWidgets/Responsive.dart';
 
 import '../registerPage/mainScreen.dart';
+import '../reusableWidgets/Responsive.dart';
 
 Widget notUserSignup(context) {
   return InkWell(

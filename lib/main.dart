@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
 
-import 'Faculty/createQuiz/provider.dart';
-import 'Student/provider.dart';
-import 'Student/startQuiz/provider.dart';
+import 'Faculty/createQuiz/createQuizProvider.dart';
+import 'Student/startQuiz/providers/snapshotProvider.dart';
+import 'Student/startQuiz/providers/studentProvider.dart';
+import 'Student/startQuiz/providers/startQuizProvider.dart';
+import 'Student/startQuiz/providers/timerProvider.dart';
 import 'loginPage/mainScreen.dart';
 import 'loginPage/provider.dart';
 import 'registerPage/provider.dart';
@@ -31,6 +33,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => StudentProvider()),
         ChangeNotifierProvider(create: (_) => ProfilePageProvider()),
         ChangeNotifierProvider(create: (_) => StartQuizProvider()),
+        ChangeNotifierProvider(create: (_) => TimerProvider()),
+        ChangeNotifierProvider(create: (_) => SnapshotProvider()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

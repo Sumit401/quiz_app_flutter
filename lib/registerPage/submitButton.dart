@@ -2,9 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_project/reusableWidgets/Responsive.dart';
 import 'package:provider/provider.dart';
 import '../loginPage/mainScreen.dart';
+import '../reusableWidgets/Responsive.dart';
 import '../reusableWidgets/alertDialogs/alertDialogLoading.dart';
 import '../reusableWidgets/switchCaseLoginError.dart';
 import '../reusableWidgets/toastWidget.dart';

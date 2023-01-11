@@ -6,6 +6,7 @@ class StartQuizProvider extends ChangeNotifier{
   int answerIndex = -1;
   int totalRight = 0;
 
+
   void getAnswerID(value){
     answerIndex=value;
     notifyListeners();

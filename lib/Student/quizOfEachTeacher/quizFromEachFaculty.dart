@@ -1,12 +1,12 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_project/Student/provider.dart';
 import 'package:provider/provider.dart';
 
 import '../../reusableWidgets/Responsive.dart';
 import '../../reusableWidgets/appBar.dart';
 import '../../reusableWidgets/createColor.dart';
+import '../startQuiz/providers/studentProvider.dart';
 import 'showQuizForStudent.dart';
 
 class QuizFromEachFaculty extends StatefulWidget {
@@ -26,7 +26,7 @@ class _QuizFromEachFacultyState extends State<QuizFromEachFaculty> {
 
           // Firebase Snapshot......................
           var firestoreSnapshots = FirebaseFirestore.instance
-              .collection("users").doc(providerValue.facultyID)
+              .collection("users").doc(providerValue.facultyEmail)
               .collection("questions").snapshots();
 
           return Container(

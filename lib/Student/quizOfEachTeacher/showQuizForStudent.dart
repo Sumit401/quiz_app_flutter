@@ -1,9 +1,9 @@
 
 import 'package:flutter/material.dart';
-import 'package:flutter_project/Student/provider.dart';
-import 'package:flutter_project/reusableWidgets/Responsive.dart';
 import 'package:provider/provider.dart';
 
+import '../../reusableWidgets/Responsive.dart';
+import '../startQuiz/providers/studentProvider.dart';
 import 'dialogBoxForInstructions.dart';
 
 Widget showQuizForStudent(context, snapshot, index) {
@@ -25,6 +25,7 @@ Widget showQuizForStudent(context, snapshot, index) {
                     providerValue.getDifficultyLevel(snapshot.data.docs[index]['Difficulty'].toString());
                     providerValue.getTotalQuestions(snapshot.data.docs[index]['Total Questions'].toString());
                     providerValue.getQuizTitle(snapshot.data.docs[index]['Quiz Title'].toString());
+                    providerValue.getQuizDescription(snapshot.data.docs[index]['Quiz Description'].toString());
                     providerValue.getQuizID(snapshot.data.docs[index].id.toString());
                     dialogBoxForInstructions(context);
                   },

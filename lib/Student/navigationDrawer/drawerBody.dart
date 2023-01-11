@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_project/reusableWidgets/profileSection/getProfileInfo.dart';
-import 'package:flutter_project/reusableWidgets/profileSection/mainPage.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 
 
 import '../../reusableWidgets/Responsive.dart';
+import '../../reusableWidgets/profileSection/getProfileInfo.dart';
+import '../../reusableWidgets/profileSection/mainPage.dart';
 import '../../reusableWidgets/profileSection/provider.dart';
 
 ListTile listTileMyQuiz(context) {

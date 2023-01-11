@@ -1,17 +1,19 @@
+
 import 'package:flutter/material.dart';
 
 class StudentProvider extends ChangeNotifier{
 
-  String facultyID="";
+  String facultyEmail="";
   String difficultyLevel = "";
   String totalQuestions = "";
   String quizTitle = "";
   String quizID = "";
+  String quizDesc = "";
 
 
 
   void setFacultyEmail(value){
-    facultyID=value;
+    facultyEmail=value;
     notifyListeners();
   }
   void getDifficultyLevel(value){
@@ -26,9 +28,12 @@ class StudentProvider extends ChangeNotifier{
     quizTitle=value;
     notifyListeners();
   }
+  void getQuizDescription(value){
+    quizDesc=value;
+    notifyListeners();
+  }
   void getQuizID(value){
     quizID=value;
     notifyListeners();
   }
-
 }
