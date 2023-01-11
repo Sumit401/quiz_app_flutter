@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
 
-import 'Faculty/createQuiz/createQuizProvider.dart';
-import 'Student/startQuiz/providers/snapshotProvider.dart';
-import 'Student/startQuiz/providers/studentProvider.dart';
-import 'Student/startQuiz/providers/startQuizProvider.dart';
-import 'Student/startQuiz/providers/timerProvider.dart';
+import 'providers/createQuizProvider.dart';
 import 'loginPage/mainScreen.dart';
-import 'loginPage/provider.dart';
-import 'registerPage/provider.dart';
+import 'providers/loginPageProvider.dart';
+import 'providers/RegisterPageProvider.dart';
+import 'providers/studentProviders/studentSnapshotProvider.dart';
+import 'providers/studentProviders/startQuizProvider.dart';
+import 'providers/studentProviders/studentProvider.dart';
+import 'providers/studentProviders/timerCountDownProvider.dart';
 import 'reusableWidgets/profileSection/provider.dart';
 
 void main() async {

@@ -2,9 +2,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../providers/studentProviders/startQuizProvider.dart';
 import '../../../reusableWidgets/Responsive.dart';
 import '../../../reusableWidgets/createColor.dart';
-import '../providers/startQuizProvider.dart';
+
 
 Widget listViewPageView(answers){
   return ListView.builder(

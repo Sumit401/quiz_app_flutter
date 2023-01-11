@@ -9,7 +9,7 @@ import '../reusableWidgets/Responsive.dart';
 import '../reusableWidgets/alertDialogs/alertDialogLoading.dart';
 import '../reusableWidgets/switchCaseLoginError.dart';
 import '../reusableWidgets/toastWidget.dart';
-import 'provider.dart';
+import '../providers/loginPageProvider.dart';
 
 
 // Login Button Content.....................................

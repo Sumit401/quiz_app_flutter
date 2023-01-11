@@ -2,12 +2,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../providers/studentProviders/studentSnapshotProvider.dart';
+import '../../providers/studentProviders/startQuizProvider.dart';
+import '../../providers/studentProviders/studentProvider.dart';
+import '../../providers/studentProviders/timerCountDownProvider.dart';
 import '../../reusableWidgets/Responsive.dart';
 import '../startQuiz/mainPage.dart';
-import '../startQuiz/providers/snapshotProvider.dart';
-import '../startQuiz/providers/startQuizProvider.dart';
-import '../startQuiz/providers/studentProvider.dart';
-import '../startQuiz/providers/timerProvider.dart';
 
 dialogBoxForInstructions(context) {
   showDialog(

@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
 
-import 'providers/snapshotProvider.dart';
+import '../../providers/studentProviders/studentSnapshotProvider.dart';
+import '../../providers/studentProviders/timerCountDownProvider.dart';
 import 'PageView/pageViewContainer.dart';
-import 'providers/timerProvider.dart';
+
 
 class StartQuiz extends StatefulWidget {
   const StartQuiz({Key? key}) : super(key: key);

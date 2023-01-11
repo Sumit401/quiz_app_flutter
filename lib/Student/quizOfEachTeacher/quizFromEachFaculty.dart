@@ -3,10 +3,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../providers/studentProviders/studentProvider.dart';
 import '../../reusableWidgets/Responsive.dart';
 import '../../reusableWidgets/appBar.dart';
 import '../../reusableWidgets/createColor.dart';
-import '../startQuiz/providers/studentProvider.dart';
 import 'showQuizForStudent.dart';
 
 class QuizFromEachFaculty extends StatefulWidget {

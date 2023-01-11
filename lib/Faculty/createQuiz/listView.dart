@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 
 import '../../reusableWidgets/Responsive.dart';
 import '../../reusableWidgets/createColor.dart';
-import 'createQuizProvider.dart';
+import '../../providers/createQuizProvider.dart';
 
 String ques = "";
 String opt1 = "";

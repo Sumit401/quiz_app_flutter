@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 
 import '../reusableWidgets/Responsive.dart';
-import 'provider.dart';
+import '../providers/RegisterPageProvider.dart';
 
 Widget toggleForStudentFaculty() {
   return Consumer<RegisterPageProvider>(

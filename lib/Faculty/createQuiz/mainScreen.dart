@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../../reusableWidgets/Responsive.dart';
 import '../../reusableWidgets/appBar.dart';
-import 'createQuizProvider.dart';
+import '../../providers/createQuizProvider.dart';
 import 'submitQuizButton.dart';
 import 'listView.dart';
 import 'textFieldWidgets.dart';
