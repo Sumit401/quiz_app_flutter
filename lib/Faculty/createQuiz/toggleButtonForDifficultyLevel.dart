@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../reusableWidgets/Responsive.dart';
 import '../../providers/createQuizProvider.dart';
+import '../../reusableWidgets/Responsive.dart';
 
 Widget toggleButtonForDifficultyLevel(context) {
   return Container(
