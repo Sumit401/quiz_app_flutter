@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_project/Faculty/Students%20Result/mainPage.dart';
 
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
@@ -90,6 +91,21 @@ ListTile listTileShare(context) {
     ),
     onTap: () {
 
+    },
+  );
+}
+ListTile listTileStudentResult(context) {
+  return ListTile(
+    contentPadding: const EdgeInsets.only(top: 15, left: 20),
+    leading:
+    const Icon(FontAwesomeIcons.squarePollVertical, size: 20, color: Colors.black),
+    title: Text(
+      "Student's Score",
+      style: TextStyle(fontSize: setSize(context, 18), fontWeight: FontWeight.w400),
+    ),
+    onTap: () {
+      Navigator.pop(context);
+      Navigator.push(context, MaterialPageRoute(builder: (context) => const StudentResult()));
     },
   );
 }

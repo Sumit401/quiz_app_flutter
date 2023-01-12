@@ -5,14 +5,15 @@ import 'package:flutter/material.dart';
 import '../../../reusableWidgets/Responsive.dart';
 
 Widget contentOfAlertDialog(context, index, snapshot) {
+
+  // Get Current User Email..........................
   String? email = FirebaseAuth.instance.currentUser?.email.toString();
+
+  // Get Snapshots of Questions........................
   var firestoreSnapshots = FirebaseFirestore.instance
-      .collection("users")
-      .doc(email)
-      .collection("questions")
-      .doc("${snapshot.data.docs[index].id}")
-      .collection("${snapshot.data.docs[index].id}")
-      .snapshots();
+      .collection("users").doc(email)
+      .collection("questions").doc("${snapshot.data.docs[index].id}")
+      .collection("${snapshot.data.docs[index].id}").snapshots();
 
   return SizedBox(
     height: screenHeight(context) / 1.8,
@@ -27,6 +28,15 @@ Widget contentOfAlertDialog(context, index, snapshot) {
               if (!snapshot.hasData) {
                 return const Center(child: CircularProgressIndicator());
               }
+
+              // Set snapshots in String.............................
+              String? quest = snapshot2.data?.docs[index2]['Question'];
+              String? ans1 = snapshot2.data?.docs[index2]['Answer1'];
+              String? ans2 = snapshot2.data?.docs[index2]['Answer2'];
+              String? ans3 = snapshot2.data?.docs[index2]['Answer3'];
+              String? ans4 = snapshot2.data?.docs[index2]['Answer4'];
+
+
               return Container(
                 padding: const EdgeInsets.all(20),
                 child: Column(
@@ -37,7 +47,7 @@ Widget contentOfAlertDialog(context, index, snapshot) {
                             fontSize: setSize(context, 20),
                             fontWeight: FontWeight.w600)),
                     Text(
-                      "${snapshot2.data?.docs[index2]['Question'].toString()} ",
+                      "$quest ",
                       style: TextStyle(
                           fontSize: setSize(context, 19),
                           fontWeight: FontWeight.w500),
@@ -46,15 +56,15 @@ Widget contentOfAlertDialog(context, index, snapshot) {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        answerValue("A.) ${snapshot2.data?.docs[index2]['Answer1'].toString()}", context),
-                        answerValue("B.) ${snapshot2.data?.docs[index2]['Answer2'].toString()}", context),
+                        answerContainer("A.) $ans1", context),
+                        answerContainer("B.) $ans2", context),
                       ],
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        answerValue("C.) ${snapshot2.data?.docs[index2]['Answer3'].toString()}", context),
-                        answerValue("D.) ${snapshot2.data?.docs[index2]['Answer4'].toString()}", context),
+                        answerContainer("C.) $ans3", context),
+                        answerContainer("D.) $ans4", context),
                       ],
                     ),
                   ],
@@ -65,12 +75,15 @@ Widget contentOfAlertDialog(context, index, snapshot) {
         }),
   );
 }
-Widget answerValue(value,context){
+Widget answerContainer(value,context){
   return Expanded(
-    child: Text(value,
-      textAlign: TextAlign.center,
-      overflow: TextOverflow.visible,
-      style: TextStyle(fontSize: setSize(context, 16)),
+    child: Container(
+      margin: EdgeInsets.only(top: setSize(context, 10)),
+      child: Text(value,
+        textAlign: TextAlign.center,
+        overflow: TextOverflow.visible,
+        style: TextStyle(fontSize: setSize(context, 16)),
+      ),
     ),
   );
 }

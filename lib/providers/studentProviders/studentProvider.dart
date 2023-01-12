@@ -9,6 +9,7 @@ class StudentProvider extends ChangeNotifier{
   String quizTitle = "";
   String quizID = "";
   String quizDesc = "";
+  String facultyName = "";
 
 
 
@@ -16,6 +17,11 @@ class StudentProvider extends ChangeNotifier{
     facultyEmail=value;
     notifyListeners();
   }
+  void setFacultyName(value){
+    facultyName=value;
+    notifyListeners();
+  }
+
   void getDifficultyLevel(value){
     difficultyLevel=value;
     notifyListeners();

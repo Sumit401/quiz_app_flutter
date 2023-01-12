@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_project/Student/checkScores/checkScores.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 
@@ -20,7 +21,9 @@ ListTile listTileMyQuiz(context) {
         fontWeight: FontWeight.w400,
       ),
     ),
-    onTap: () => {},
+    onTap: () {
+
+    },
   );
 }
 
@@ -36,7 +39,10 @@ ListTile listTileCheckScore(context) {
         fontWeight: FontWeight.w400,
       ),
     ),
-    onTap: () => {},
+    onTap: () {
+      Navigator.pop(context);
+      Navigator.push(context, MaterialPageRoute(builder: (context) => const CheckScore()));
+    },
   );
 }
 
@@ -74,7 +80,9 @@ ListTile listTileAbout(context) {
       "About Us",
       style: TextStyle(fontSize: setSize(context, 17), fontWeight: FontWeight.w400),
     ),
-    onTap: () => {},
+    onTap: () {
+
+    },
   );
 }
 
@@ -87,6 +95,8 @@ ListTile listTileShare(context) {
       "Share",
       style: TextStyle(fontSize: setSize(context, 17), fontWeight: FontWeight.w400),
     ),
-    onTap: () => {},
+    onTap: () {
+
+    },
   );
 }

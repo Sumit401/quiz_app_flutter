@@ -43,6 +43,7 @@ class _QuizFromEachFacultyState extends State<QuizFromEachFaculty> {
                 } else {
                   // Create listView of the Faculty Quiz..........................
                   return ListView.builder(
+
                     itemCount: snapshot.data?.docs.length,
                     itemBuilder: (context, index) {
                       if (!snapshot.hasData) {

@@ -27,7 +27,6 @@ class _StartQuizState extends State<StartQuiz> {
         //appBar: appBarSimpleWithoutBack(context, "Start Quiz"),
         body: Consumer<SnapshotProvider>(
           builder: (context, providerValue, child) {
-            print("build");
             return Container(
               alignment: Alignment.topCenter,
               child: StreamBuilder(
@@ -60,10 +59,12 @@ class _StartQuizState extends State<StartQuiz> {
   timer() {
     return Consumer<TimerProvider>(
       builder: (context, timerProvider, child) {
+        int mins= (timerProvider.timer/60).toInt();
+        int sec = (timerProvider.timer%60).toInt();
         return Container(
             margin: const EdgeInsets.only(top: 50),
-            child: Text(timerProvider.timer.toString(),
-              style: TextStyle(fontSize: 40),
+            child: Text(timerProvider.timer > 0 ? "${mins} min ${sec} sec left" : "Times Up",
+              style: TextStyle(fontSize: 30),
             ));
       },
     );

@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 
 import '../../providers/studentProviders/studentProvider.dart';
 import '../../reusableWidgets/Responsive.dart';
-import 'dialogBoxForInstructions.dart';
+import '../InstructionDialog/dialogMain.dart';
 
 Widget showQuizForStudent(context, snapshot, index) {
   return Card(

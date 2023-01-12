@@ -19,7 +19,7 @@ Widget listViewPageView(answers){
               child: Container(
                 decoration: BoxDecoration(
                     color: providerValue.answerIndex == itemIndex
-                        ? Colors.green
+                        ? Colors.green.shade700
                         : hexToColor("#9393F4"),borderRadius: BorderRadius.circular(20)),
                 padding: EdgeInsets.all(setSize(context, 20)),
                 margin: EdgeInsets.symmetric(
@@ -29,7 +29,7 @@ Widget listViewPageView(answers){
                   children: [
                     Text("${String.fromCharCode((65 + itemIndex))})."),
                     const SizedBox(width: 8),
-                    Expanded(child: Text(" ${answers[itemIndex]}"))
+                    Expanded(child: Text(" ${answers[itemIndex]}",style: TextStyle(color: Colors.white,fontSize: setSize(context, 17),fontWeight: FontWeight.w500),))
                   ],
                 ),
               ),

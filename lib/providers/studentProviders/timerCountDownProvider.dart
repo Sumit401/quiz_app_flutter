@@ -4,10 +4,12 @@ import 'package:flutter/cupertino.dart';
 
 class TimerProvider extends ChangeNotifier{
   int timer = 0 ;
+  var timerdata ;
 
   void startTimer(){
-    Timer.periodic(Duration(seconds: 1),(timerdata) {
+    Timer.periodic(const Duration(seconds: 1),(timer_data) {
       timer--;
+      timerdata=timer_data;
       notifyListeners();
     },);
     notifyListeners();
@@ -15,5 +17,8 @@ class TimerProvider extends ChangeNotifier{
   void setTimerData(value){
     timer=value;
     notifyListeners();
+  }
+  void cancelTimer(){
+    timerdata.cancel();
   }
 }

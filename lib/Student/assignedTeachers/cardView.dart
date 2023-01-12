@@ -5,7 +5,6 @@ import 'package:provider/provider.dart';
 import '../../providers/studentProviders/studentProvider.dart';
 import '../../reusableWidgets/Responsive.dart';
 import '../../reusableWidgets/createColor.dart';
-
 import '../quizOfEachTeacher/quizFromEachFaculty.dart';
 
 Widget cardWidget(snapshot, index) {
@@ -16,13 +15,12 @@ Widget cardWidget(snapshot, index) {
         return InkWell(
           child: Card(
             elevation: 20,
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 
-                // Create Column Widget of faculty Data to show in card............
+                // Create Column Widget of faculty Data to show in card........
                 // These containers are defined below..........................
                 facultyNameContainer(snapshot.data?.docs[index]["name"],context),
                 headingContainer("About Faculty",context),
@@ -36,6 +34,7 @@ Widget cardWidget(snapshot, index) {
 
             // Set Faculty ID to Provider...............
             providerValue.setFacultyEmail(snapshot.data.docs[index].id);
+            providerValue.setFacultyName(snapshot.data.docs[index]["name"]);
             // navigate to QuizfromFaculty() class to get list of quiz assigned by particular faculty........
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => const QuizFromEachFaculty()));

@@ -17,6 +17,7 @@ Drawer navigationDrawer(context) {
           // Inside drawerMain of navigationDrawer Folder
           listTileMyQuiz(context),
           listTileCreate(context),
+          listTileStudentResult(context),
           listTileProfile(context),
           listTileAbout(context),
           listTileShare(context),
@@ -25,3 +26,5 @@ Drawer navigationDrawer(context) {
     ),
   );
 }
+
+

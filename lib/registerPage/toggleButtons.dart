@@ -22,7 +22,6 @@ Widget toggleForStudentFaculty() {
           totalSwitches: 2,
           labels: const ['Student',"Faculty"],
           onToggle: (index) {
-            print('switched to: $index');
             providerValue.changeStudentFacultyValue(index);
           },
         ),
@@ -31,34 +30,3 @@ Widget toggleForStudentFaculty() {
 
   );
 }
-
-/*
-Widget selectCourse(){
-  return Consumer<RegisterPageProvider>(
-    builder: (context, value, child) {
-      return Row(
-        children: [
-          Expanded(
-              child: RadioListTile(
-                activeColor: Colors.cyan,
-                title: Text("Science", style: TextStyle(fontSize: setFontSize(context,17),color: Colors.white)),
-                value: 0,
-                groupValue: value.radioCourseType,
-                onChanged: (radioValue) {
-                  value.changeCourseType(radioValue);
-                },)),
-          Expanded(
-              child: RadioListTile(
-                activeColor: Colors.cyan,
-                title: Text("Commerce", style: TextStyle(fontSize:setFontSize(context,17),color: Colors.white)),
-                value: 1,
-                groupValue: value.radioCourseType,
-                onChanged: (radioValue) {
-                  value.changeCourseType(radioValue);
-                },
-              ))
-        ],
-      );
-    },
-  );
-}*/
