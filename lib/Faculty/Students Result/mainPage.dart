@@ -33,7 +33,7 @@ class _StudentResultState extends State<StudentResult> {
                 return Container(
                     alignment: Alignment.center,
                     child: Text(
-                      "You have not Created a Quiz\n Create one to Display Here!",
+                      "No Candidate to Display !",
                       style: TextStyle(
                           height: 1.5,
                           fontSize: setSize(context, 24),
@@ -48,7 +48,7 @@ class _StudentResultState extends State<StudentResult> {
                 return ListView.builder(
                   itemCount: snapshot.data?.docs.length,
                   itemBuilder: (context, index) {
-                    if (snapshot.data?.docs[index]["userType"] == "0") {
+                    if (snapshot.data?.docs[index]["userType"] == "0" && snapshot.data?.docs[index]["about"] != "" && snapshot.data?.docs[index]["qualification"] != "") {
                       return checkScoreList(snapshot, context, index);
                     } else {
                       return Container();

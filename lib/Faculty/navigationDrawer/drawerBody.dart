@@ -62,8 +62,23 @@ Widget listTileCreate(context) {
                       "Kindly Update Profile Section to Create Quiz"),
                   actions: [
                     TextButton(
-                        onPressed: () => Navigator.pop(context),
-                        child: const Text("Ok", style: TextStyle(fontSize: 15)))
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        child: const Text(
+                          "Cancel",
+                          style: TextStyle(fontSize: 15),
+                        )),
+                    TextButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => const ProfilePage(),));
+
+                        },
+                        child: const Text(
+                          "Update",
+                          style: TextStyle(fontSize: 15),
+                        ))
                   ],
                 );
               },

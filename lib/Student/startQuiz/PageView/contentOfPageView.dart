@@ -6,7 +6,7 @@ questionContainer(context, index, snapshot) {
   return Container(
     margin: EdgeInsets.symmetric(
         vertical: setSize(context, 20), horizontal: setSize(context, 20)),
-    child: Text("${snapshot.data?.docs[index]["Question"]}",
+    child: Text("${snapshot.data?.docs[index]["Question"].toString()=="null" ? "" : snapshot.data?.docs[index]["Question"]}",
         style: TextStyle(
             color: Colors.black,
             fontSize: setSize(context, 20),

@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../../reusableWidgets/Responsive.dart';
 import '../../reusableWidgets/profileSection/getProfileInfo.dart';
+import '../../reusableWidgets/profileSection/mainPage.dart';
 import '../../reusableWidgets/profileSection/provider.dart';
 import '../createQuiz/mainScreen.dart';
 
@@ -46,9 +47,21 @@ Widget floatingButton(context) {
                       "Kindly Update Profile Section to Create Quiz"),
                   actions: [
                     TextButton(
-                        onPressed: () => Navigator.pop(context),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
                         child: const Text(
-                          "OK",
+                          "Cancel",
+                          style: TextStyle(fontSize: 15),
+                        )),
+                    TextButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => const ProfilePage(),));
+
+                        },
+                        child: const Text(
+                          "Update",
                           style: TextStyle(fontSize: 15),
                         ))
                   ],

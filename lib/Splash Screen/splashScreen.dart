@@ -53,6 +53,7 @@ class _SplashScreenState extends State<SplashScreen> {
         }
       });
     }
+    print(userType);
     return userType == "Student " ? const StudentHome() : userType=="Faculty" ? const FacultyHome() : const Register();
   }
 

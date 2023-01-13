@@ -5,6 +5,7 @@ import '../../providers/studentProviders/studentProvider.dart';
 import '../../reusableWidgets/Responsive.dart';
 import '../../reusableWidgets/createColor.dart';
 import '../../reusableWidgets/profileSection/getProfileInfo.dart';
+import '../../reusableWidgets/profileSection/mainPage.dart';
 import '../../reusableWidgets/profileSection/provider.dart';
 import '../quizOfEachTeacher/quizFromEachFaculty.dart';
 
@@ -51,9 +52,23 @@ Widget cardWidget(snapshot, index) {
                         "Kindly Update Profile Section to Participate in a Quiz"),
                     actions: [
                       TextButton(
-                          onPressed: () => Navigator.pop(context),
-                          child:
-                              const Text("Ok", style: TextStyle(fontSize: 15)))
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          child: const Text(
+                            "Cancel",
+                            style: TextStyle(fontSize: 15),
+                          )),
+                      TextButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => const ProfilePage(),));
+
+                          },
+                          child: const Text(
+                            "Update",
+                            style: TextStyle(fontSize: 15),
+                          ))
                     ],
                   );
                 },

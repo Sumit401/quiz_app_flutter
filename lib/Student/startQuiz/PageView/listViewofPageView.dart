@@ -31,7 +31,7 @@ Widget listViewPageView(answers) {
                     const SizedBox(width: 8),
                     Expanded(
                         child: Text(
-                      " ${answers[itemIndex]}",
+                      " ${answers[itemIndex].toString()=="null" ? "" : answers[itemIndex]}",
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: setSize(context, 17),

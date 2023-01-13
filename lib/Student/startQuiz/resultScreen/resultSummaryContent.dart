@@ -85,7 +85,7 @@ Widget resultContainer(result, context) {
                 fontWeight: FontWeight.w500,
                 fontSize: setSize(context, 20),
                 color: Colors.black)),
-        Text(result > 40 ? "Passed" : "Failed",
+        Text(result > 50 ? "Passed" : "Failed",
             style: TextStyle(
                 color:
                     result > 40 ? hexToColor("#0cab44") : hexToColor("#a31a08"),
