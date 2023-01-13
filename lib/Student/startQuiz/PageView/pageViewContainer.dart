@@ -5,7 +5,6 @@ import 'contentOfPageView.dart';
 import 'listViewofPageView.dart';
 import 'submitButtonOfPageView.dart';
 
-
 Widget pageViewContainer(snapshot, index, _pagecontroller, context) {
   List answers = [];
   answers.add(snapshot.data?.docs[index]["Answer1"]);
@@ -17,14 +16,15 @@ Widget pageViewContainer(snapshot, index, _pagecontroller, context) {
     child: Container(
         margin: EdgeInsets.only(top: setSize(context, 50)),
         alignment: Alignment.center,
-        child:  Column(
-              children: [
-                questionNumberContainer(context, index, snapshot),
-                dividerLineContainer(context),
-                questionContainer(context, index, snapshot),
-                listViewPageView(answers),
-                submitButtonPageView(context, _pagecontroller, answers, snapshot, index),
-              ],
+        child: Column(
+          children: [
+            questionNumberContainer(context, index, snapshot),
+            dividerLineContainer(context),
+            questionContainer(context, index, snapshot),
+            listViewPageView(answers),
+            submitButtonPageView(
+                context, _pagecontroller, answers, snapshot, index),
+          ],
         )),
   );
 }

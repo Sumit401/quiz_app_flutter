@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import '../../../reusableWidgets/Responsive.dart';
@@ -15,7 +14,6 @@ questionContainer(context, index, snapshot) {
         textAlign: TextAlign.justify),
   );
 }
-
 
 questionNumberContainer(context, index, snapshot) {
   return Container(

@@ -1,4 +1,3 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -10,8 +9,10 @@ import '../../../providers/studentProviders/timerCountDownProvider.dart';
 import '../startQuiz/mainPage.dart';
 
 Widget alertDialogActions(context) {
-  return Consumer4<StartQuizProvider, StudentProvider, TimerProvider, SnapshotProvider>(
-    builder: (context, startQuizProvider, studentProvider, timerProvider, snapshotProvider, child) {
+  return Consumer4<StartQuizProvider, StudentProvider, TimerProvider,
+      SnapshotProvider>(
+    builder: (context, startQuizProvider, studentProvider, timerProvider,
+        snapshotProvider, child) {
       return ElevatedButton(
           onPressed: () {
             startQuizProvider.resetAnswerValue();
@@ -20,9 +21,12 @@ Widget alertDialogActions(context) {
             timerProvider.setTimerData(time);
 
             var firestoreSnapshots = FirebaseFirestore.instance
-                .collection("users").doc(studentProvider.facultyEmail)
-                .collection("questions").doc(studentProvider.quizID)
-                .collection(studentProvider.quizID).snapshots();
+                .collection("users")
+                .doc(studentProvider.facultyEmail)
+                .collection("questions")
+                .doc(studentProvider.quizID)
+                .collection(studentProvider.quizID)
+                .snapshots();
 
             snapshotProvider.setfirestoreSnapshots(firestoreSnapshots);
             Navigator.pop(context);

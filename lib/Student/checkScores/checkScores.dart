@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../../reusableWidgets/Responsive.dart';
 import '../../reusableWidgets/appBar.dart';
+import '../../reusableWidgets/createColor.dart';
 import 'scoresList.dart';
 
 class CheckScore extends StatefulWidget {
@@ -14,32 +15,56 @@ class CheckScore extends StatefulWidget {
 }
 
 class _CheckScoreState extends State<CheckScore> {
-
   @override
   Widget build(BuildContext context) {
     var email = FirebaseAuth.instance.currentUser?.email;
-    var firestore= FirebaseFirestore.instance.collection("users").doc(email).collection("answers").snapshots();
+    var firestore = FirebaseFirestore.instance
+        .collection("users")
+        .doc(email)
+        .collection("answers")
+        .snapshots();
     return Scaffold(
-      appBar: appBarSimple(context,"My Scores"),
+      appBar: appBarSimple(context, "My Scores"),
       body: StreamBuilder(
         stream: firestore,
         builder: (context, snapshot) {
-          if(!snapshot.hasData) {
-            return const CircularProgressIndicator();
+          // check if snapshot data is null..............................
+          if ((snapshot.data?.docs.length).toString() == "null" ||
+              (snapshot.data?.docs.length).toString() == "0") {
+            return Container(
+                alignment: Alignment.center,
+                child: Text(
+                  "You have Not Participated in any Quiz\nComplete now to Check Scores here.!",
+                  style: TextStyle(
+                      height: 1.5,
+                      fontSize: setSize(context, 23),
+                      color: hexToColor("#263300"),
+                      fontWeight: FontWeight.bold,
+                      overflow: TextOverflow.visible,
+                      wordSpacing: 2,
+                      letterSpacing: 0.4),
+                  textAlign: TextAlign.center,
+                ));
+          } else {
+            return GridView.builder(
+              physics: const ScrollPhysics(),
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  mainAxisExtent: screenHeight(context) / 3,
+                  mainAxisSpacing: 10),
+              shrinkWrap: true,
+              scrollDirection: Axis.vertical,
+              itemCount: snapshot.data?.docs.length,
+              itemBuilder: (context, index) {
+                if (!snapshot.hasData) {
+                  return const CircularProgressIndicator();
+                }
+                return scoresList(snapshot, index, context);
+              },
+            );
           }
-          return GridView.builder(
-            physics: const ScrollPhysics(),
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2,mainAxisExtent: screenHeight(context)/3.5),
-            shrinkWrap: true,
-            scrollDirection: Axis.vertical,
-            itemCount: snapshot.data?.docs.length,
-            itemBuilder: (context, index) {
-            return scoresList(snapshot,index,context);
-          },);
         },
       ),
     );
   }
-
-
 }

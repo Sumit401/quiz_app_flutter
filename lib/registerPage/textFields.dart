@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import '../providers/RegisterPageProvider.dart';
 
-Widget textFieldName(){
+Widget textFieldName() {
   return Consumer<RegisterPageProvider>(
     builder: (context, providerValue, child) {
       return Container(
@@ -21,7 +22,7 @@ Widget textFieldName(){
   );
 }
 
-Widget textFieldEmail(){
+Widget textFieldEmail() {
   return Consumer<RegisterPageProvider>(
     builder: (context, providerValue, child) {
       return Container(
@@ -39,7 +40,7 @@ Widget textFieldEmail(){
   );
 }
 
-Widget textFieldPassword(){
+Widget textFieldPassword() {
   return Consumer<RegisterPageProvider>(
     builder: (context, providerValue, child) {
       return Container(
@@ -58,7 +59,7 @@ Widget textFieldPassword(){
   );
 }
 
-InputDecoration textFieldDecoration(String label){
+InputDecoration textFieldDecoration(String label) {
   return InputDecoration(
       labelText: label,
       labelStyle: const TextStyle(color: Colors.white),
@@ -66,7 +67,7 @@ InputDecoration textFieldDecoration(String label){
       focusedBorder: textFieldBorder());
 }
 
-OutlineInputBorder textFieldBorder(){
+OutlineInputBorder textFieldBorder() {
   return OutlineInputBorder(
       borderRadius: BorderRadius.circular(20),
       borderSide: const BorderSide(

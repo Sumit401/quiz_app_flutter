@@ -1,37 +1,50 @@
 import 'package:flutter/material.dart';
 
-class ProfilePageProvider extends ChangeNotifier{
-
+class ProfilePageProvider extends ChangeNotifier {
   String userName = "";
   String userPhone = "";
   String experience = "";
   String about = "";
-  String qualification="";
-  String userType="";
+  String qualification = "";
+  String userType = "";
 
-  getExperience(value){
+  getExperience(value) {
     experience = value;
     notifyListeners();
   }
-  getAbout(value){
+
+  getAbout(value) {
     about = value;
     notifyListeners();
   }
-  getQualification(value){
+
+  getQualification(value) {
     qualification = value;
     notifyListeners();
   }
-  getUserType(value){
-    userType=value;
-    notifyListeners();
-  }
-  getUserPhone(value){
-    userPhone=value;
-    notifyListeners();
-  }
-  getUserName(value){
-    userName=value;
+
+  getUserType(value) {
+    userType = value;
     notifyListeners();
   }
 
+  getUserPhone(value) {
+    userPhone = value;
+    notifyListeners();
+  }
+
+  getUserName(value) {
+    userName = value;
+    notifyListeners();
+  }
+
+  clearAllProfileData() {
+    userName = "";
+    userPhone = "";
+    experience = "";
+    about = "";
+    qualification = "";
+    userType = "";
+    notifyListeners();
+  }
 }

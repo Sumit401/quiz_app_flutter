@@ -1,7 +1,6 @@
-
 import 'package:flutter/material.dart';
-import '../../../reusableWidgets/Responsive.dart';
 
+import '../../../reusableWidgets/Responsive.dart';
 import 'dialogAction.dart';
 import 'dialogContent.dart';
 
@@ -10,24 +9,22 @@ dialogBoxForInstructions(context) {
     context: context,
     builder: (context) {
       return SizedBox(
-        width: screenWidth(context),
-        child: AlertDialog(
-              elevation: 20,
-              scrollable: true,
-              alignment: Alignment.center,
-              actionsPadding: actionsPaddingDialogBox(context),
-              contentPadding: contentPaddingDialogBox(context),
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20)),
-              title: alertDialogTitle(context),
-              content: alertDialogContent(context),
-              actions: [ alertDialogActions(context) ],
-            )
-      );
+          width: screenWidth(context),
+          child: AlertDialog(
+            elevation: 20,
+            scrollable: true,
+            alignment: Alignment.center,
+            actionsPadding: actionsPaddingDialogBox(context),
+            contentPadding: contentPaddingDialogBox(context),
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+            title: alertDialogTitle(context),
+            content: alertDialogContent(context),
+            actions: [alertDialogActions(context)],
+          ));
     },
   );
 }
-
 
 EdgeInsets contentPaddingDialogBox(BuildContext context) {
   return EdgeInsets.symmetric(

@@ -1,43 +1,73 @@
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../providers/studentProviders/studentProvider.dart';
 import '../../reusableWidgets/Responsive.dart';
 import '../../reusableWidgets/createColor.dart';
+import '../../reusableWidgets/profileSection/getProfileInfo.dart';
+import '../../reusableWidgets/profileSection/provider.dart';
 import '../quizOfEachTeacher/quizFromEachFaculty.dart';
 
 Widget cardWidget(snapshot, index) {
   return Padding(
     padding: const EdgeInsets.all(8.0),
-    child: Consumer<StudentProvider>(
-      builder: (context, providerValue, child) {
+    child: Consumer2<StudentProvider, ProfilePageProvider>(
+      builder: (context, studentProvider, profileProvider, child) {
         return InkWell(
           child: Card(
             elevation: 20,
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                
                 // Create Column Widget of faculty Data to show in card........
                 // These containers are defined below..........................
-                facultyNameContainer(snapshot.data?.docs[index]["name"],context),
-                headingContainer("About Faculty",context),
-                contentContainer(snapshot.data?.docs[index]["about"],context),
-                headingContainer("Experience of Faculty",context),
-                contentContainer(snapshot.data?.docs[index]["experience"],context),
+                facultyNameContainer(
+                    snapshot.data?.docs[index]["name"], context),
+                headingContainer("About Faculty", context),
+                contentContainer(snapshot.data?.docs[index]["about"], context),
+                headingContainer("Experience of Faculty", context),
+                contentContainer(
+                    snapshot.data?.docs[index]["experience"], context),
               ],
             ),
           ),
-          onTap: () {
-
-            // Set Faculty ID to Provider...............
-            providerValue.setFacultyEmail(snapshot.data.docs[index].id);
-            providerValue.setFacultyName(snapshot.data.docs[index]["name"]);
-            // navigate to QuizfromFaculty() class to get list of quiz assigned by particular faculty........
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const QuizFromEachFaculty()));
+          onTap: () async {
+            await getProfileInfo(profileProvider);
+            if (profileProvider.qualification == "" ||
+                profileProvider.about == "") {
+              showDialog(
+                context: context,
+                builder: (context) {
+                  return AlertDialog(
+                    title: const Text("Alert",
+                        style: TextStyle(
+                            color: Colors.red,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold)),
+                    elevation: 20,
+                    content: const Text(
+                        "Kindly Update Profile Section to Participate in a Quiz"),
+                    actions: [
+                      TextButton(
+                          onPressed: () => Navigator.pop(context),
+                          child:
+                              const Text("Ok", style: TextStyle(fontSize: 15)))
+                    ],
+                  );
+                },
+              );
+            } else {
+              // Set Faculty ID to Provider...............
+              studentProvider.setFacultyEmail(snapshot.data.docs[index].id);
+              studentProvider.setFacultyName(snapshot.data.docs[index]["name"]);
+              // navigate to QuizfromFaculty() class to get list of quiz assigned by particular faculty........
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const QuizFromEachFaculty()));
+            }
           },
         );
       },
@@ -46,7 +76,7 @@ Widget cardWidget(snapshot, index) {
 }
 
 // Container for faculty Name from snapshots.............................
-Container facultyNameContainer(value,context) {
+Container facultyNameContainer(value, context) {
   return Container(
     padding: const EdgeInsets.only(top: 10, bottom: 10, right: 20, left: 20),
     child: Text(value,
@@ -60,7 +90,7 @@ Container facultyNameContainer(value,context) {
 }
 
 // Container of Heading.............................
-Container headingContainer(value,context) {
+Container headingContainer(value, context) {
   return Container(
     padding: const EdgeInsets.only(top: 10, bottom: 10, right: 20, left: 20),
     child: Text(value,
@@ -74,10 +104,11 @@ Container headingContainer(value,context) {
 }
 
 // Container of Data from snapshots............................
-Container contentContainer(value,context) {
+Container contentContainer(value, context) {
   return Container(
       padding: const EdgeInsets.only(bottom: 10, right: 20, left: 20),
       child: Text(value,
           textAlign: TextAlign.justify,
-          style: TextStyle(fontSize: setSize(context,15), fontWeight: FontWeight.w600)));
+          style: TextStyle(
+              fontSize: setSize(context, 15), fontWeight: FontWeight.w600)));
 }

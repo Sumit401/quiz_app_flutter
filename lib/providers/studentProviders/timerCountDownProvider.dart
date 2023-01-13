@@ -2,23 +2,29 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 
-class TimerProvider extends ChangeNotifier{
-  int timer = 0 ;
-  var timerdata ;
+class TimerProvider extends ChangeNotifier {
+  int timer = 0;
 
-  void startTimer(){
-    Timer.periodic(const Duration(seconds: 1),(timer_data) {
-      timer--;
-      timerdata=timer_data;
-      notifyListeners();
-    },);
+  var timerdata;
+
+  void startTimer() {
+    Timer.periodic(
+      const Duration(seconds: 1),
+      (timer_data) {
+        timer--;
+        timerdata = timer_data;
+        notifyListeners();
+      },
+    );
     notifyListeners();
   }
-  void setTimerData(value){
-    timer=value;
+
+  void setTimerData(value) {
+    timer = value;
     notifyListeners();
   }
-  void cancelTimer(){
+
+  void cancelTimer() {
     timerdata.cancel();
   }
 }

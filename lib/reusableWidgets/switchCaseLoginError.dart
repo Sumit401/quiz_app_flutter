@@ -1,7 +1,6 @@
-
 import 'toastWidget.dart';
 
-switchCaseError(e){
+switchCaseError(e) {
   print(e.toString());
   switch (e.code) {
     case "email-already-in-use":
@@ -21,6 +20,6 @@ switchCaseError(e){
       break;
     default:
       long_flutter_toast("An undefined Error happened.");
-
-  };
+  }
+  ;
 }

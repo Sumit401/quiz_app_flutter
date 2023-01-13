@@ -1,30 +1,30 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_project/providers/studentProviders/timerCountDownProvider.dart';
-
 import 'package:provider/provider.dart';
 
 import '../../../providers/studentProviders/startQuizProvider.dart';
 import '../../../providers/studentProviders/studentProvider.dart';
+import '../../../providers/studentProviders/timerCountDownProvider.dart';
 import '../../../reusableWidgets/Responsive.dart';
 import '../../../reusableWidgets/createColor.dart';
 import '../resultScreen/mainPage.dart';
 
-
-
 Widget submitButtonPageView(context, pageController, answers, snapshot, index) {
   String? userName = FirebaseAuth.instance.currentUser?.email.toString();
-  var firestore = FirebaseFirestore.instance.collection("users").doc(userName).collection("answers").get();
-  return Consumer3<StartQuizProvider,StudentProvider,TimerProvider>(
-    builder: (context, quizProvider,studentProvider,timerProvider, child) {
-      return  Container(
+  var firestore = FirebaseFirestore.instance
+      .collection("users")
+      .doc(userName)
+      .collection("answers")
+      .get();
+  return Consumer3<StartQuizProvider, StudentProvider, TimerProvider>(
+    builder: (context, quizProvider, studentProvider, timerProvider, child) {
+      return Container(
         margin: EdgeInsets.only(top: setSize(context, 30)),
         child: ElevatedButton(
             style: buttonStyle(context),
             onPressed: () async {
-
-              if(timerProvider.timer > 0){
+              if (timerProvider.timer > 0) {
                 // To check if Index value is greater than -1..... i.e. Answer Selected.................
                 if (quizProvider.answerIndex >= 0) {
                   pageController.nextPage(
@@ -45,10 +45,10 @@ Widget submitButtonPageView(context, pageController, answers, snapshot, index) {
 
                     Map<String, String> setValue = {
                       "Faculty Email": studentProvider.facultyEmail,
-                      "Faculty Name" : studentProvider.facultyName,
+                      "Faculty Name": studentProvider.facultyName,
                       "Quiz Title": studentProvider.quizTitle,
-                      "Score" : quizProvider.totalRight.toString(),
-                      "Total Questions" : studentProvider.totalQuestions,
+                      "Score": quizProvider.totalRight.toString(),
+                      "Total Questions": studentProvider.totalQuestions,
                       "Quiz Description": studentProvider.quizDesc,
                     };
                     FirebaseFirestore.instance
@@ -73,18 +73,22 @@ Widget submitButtonPageView(context, pageController, answers, snapshot, index) {
 
                 Map<String, String> setValue = {
                   "Faculty Email": studentProvider.facultyEmail,
-                  "Faculty Name" : studentProvider.facultyName,
+                  "Faculty Name": studentProvider.facultyName,
                   "Quiz Title": studentProvider.quizTitle,
                   "Score": quizProvider.totalRight.toString(),
                   "Total Questions": studentProvider.totalQuestions,
                   "Quiz Description": studentProvider.quizDesc,
                 };
                 FirebaseFirestore.instance
-                    .collection("users").doc(userName)
-                    .collection("answers").doc("${count + 1}")
+                    .collection("users")
+                    .doc(userName)
+                    .collection("answers")
+                    .doc("${count + 1}")
                     .set(setValue);
                 Navigator.pop(context);
-                Navigator.push(context, MaterialPageRoute(
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
                         builder: (context) => const ResultSummary()));
               }
             },
@@ -99,8 +103,9 @@ Widget submitButtonPageView(context, pageController, answers, snapshot, index) {
 
 buttonStyle(context) {
   return ButtonStyle(
-    elevation: const MaterialStatePropertyAll(15),
-      shape: MaterialStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))),
+      elevation: const MaterialStatePropertyAll(15),
+      shape: MaterialStatePropertyAll(
+          RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))),
       backgroundColor: MaterialStatePropertyAll(hexToColor("#555553")),
       padding: MaterialStatePropertyAll(EdgeInsets.symmetric(
           horizontal: setSize(context, 15), vertical: setSize(context, 10))));

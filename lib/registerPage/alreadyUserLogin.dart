@@ -3,20 +3,19 @@ import 'package:flutter/material.dart';
 import '../loginPage/mainScreen.dart';
 import '../reusableWidgets/Responsive.dart';
 
-
-
-
 Widget alreadyUserLogin(context) {
-  return InkWell(
-    child: Container(
-      margin: const EdgeInsets.only(top: 20),
-      child: Text("Not a User? Click here SignUp",
+  return Container(
+    margin: const EdgeInsets.only(top: 20),
+    child: TextButton(
+      onPressed: () {
+        Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: (context) => const LoginPage()));
+      },
+      child: Text("Already a User? Click here Login.",
           style: TextStyle(
-              color: Colors.white, fontWeight: FontWeight.w600, fontSize: setSize(context,20))),
+              color: Colors.white,
+              fontWeight: FontWeight.w600,
+              fontSize: setSize(context, 20))),
     ),
-    onTap: () {
-      Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => LoginPage()));
-    },
   );
 }

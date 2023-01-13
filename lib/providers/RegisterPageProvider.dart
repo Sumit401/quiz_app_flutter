@@ -1,39 +1,42 @@
 import 'package:flutter/material.dart';
 
-class RegisterPageProvider with ChangeNotifier{
-
+class RegisterPageProvider with ChangeNotifier {
   int radioForStudentFaculty = 0;
   String name = "";
   String email = "";
   String password = "";
 
-  void changeStudentFacultyValue(value){
-    radioForStudentFaculty=value;
+  void changeStudentFacultyValue(value) {
+    radioForStudentFaculty = value;
     notifyListeners();
   }
 
-  void nameController(value){
-    if(value!="") {
-      name=value;
+  void nameController(value) {
+    if (value != "") {
+      name = value;
       notifyListeners();
     }
+  }
 
-  }
-  void emailController(value){
-    email=value;
+  void emailController(value) {
+    email = value;
     notifyListeners();
   }
-  void passwordController(value){
-    password=value;
+
+  void passwordController(value) {
+    password = value;
     notifyListeners();
   }
-  void deleteName(){
-    name="";
+
+  void deleteName() {
+    name = "";
   }
-  void deletePassword(){
-    password="";
+
+  void deletePassword() {
+    password = "";
   }
-  void deleteEmail(){
-    email="";
+
+  void deleteEmail() {
+    email = "";
   }
 }

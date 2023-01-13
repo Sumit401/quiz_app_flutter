@@ -1,15 +1,14 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-
 import 'package:provider/provider.dart';
 
-import 'providers/createQuizProvider.dart';
-import 'loginPage/mainScreen.dart';
-import 'providers/loginPageProvider.dart';
+import 'Splash Screen/splashScreen.dart';
 import 'providers/RegisterPageProvider.dart';
-import 'providers/studentProviders/studentSnapshotProvider.dart';
+import 'providers/createQuizProvider.dart';
+import 'providers/loginPageProvider.dart';
 import 'providers/studentProviders/startQuizProvider.dart';
 import 'providers/studentProviders/studentProvider.dart';
+import 'providers/studentProviders/studentSnapshotProvider.dart';
 import 'providers/studentProviders/timerCountDownProvider.dart';
 import 'reusableWidgets/profileSection/provider.dart';
 
@@ -38,11 +37,11 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Quiz Application',
+        title: 'Champ Quizz',
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const LoginPage(),
+        home: const SplashScreen(),
       ),
     );
   }

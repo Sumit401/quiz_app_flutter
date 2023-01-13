@@ -5,14 +5,16 @@ import '../../reusableWidgets/Responsive.dart';
 import '../../reusableWidgets/createColor.dart';
 import 'cardView.dart';
 
-Widget teachersAssigned(context){
-
+Widget teachersAssigned(context) {
   // FireBase Snapshot to create instance of Users Collection............................
   var fireStore = FirebaseFirestore.instance.collection("users").snapshots();
 
   return StreamBuilder(
     stream: fireStore,
     builder: (context, snapshot) {
+      if (!snapshot.hasData) {
+        return const Center(child: CircularProgressIndicator());
+      }
 
       // check if snapshot data is null..............................
       if ((snapshot.data?.docs.length).toString() == "null" ||
@@ -22,6 +24,7 @@ Widget teachersAssigned(context){
             child: Text(
               "You have been Assigned Any Quiz\n Please Check back later.!",
               style: TextStyle(
+                  height: 1.5,
                   fontSize: setSize(context, 23),
                   color: hexToColor("#263300"),
                   fontWeight: FontWeight.bold,
@@ -30,15 +33,11 @@ Widget teachersAssigned(context){
                   letterSpacing: 0.4),
               textAlign: TextAlign.center,
             ));
-      }else {
+      } else {
         // If not null create List View of the following ......................
         return ListView.builder(
           itemCount: snapshot.data?.docs.length,
           itemBuilder: (context, index) {
-
-            if (!snapshot.hasData) {
-              return const Center(child: CircularProgressIndicator());
-            }
             // Card widget of faculty name, about and experience.................
             if (snapshot.data?.docs[index]["userType"] == "1" &&
                 snapshot.data?.docs[index]["about"] != "") {

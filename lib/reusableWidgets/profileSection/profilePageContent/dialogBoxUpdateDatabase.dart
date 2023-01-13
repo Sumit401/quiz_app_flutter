@@ -27,6 +27,11 @@ contentOfAlertBox(context, providerValue, updateValue) {
   return SizedBox(
     width: screenWidth(context),
     child: TextFormField(
+      textCapitalization: updateValue == "Experience"
+          ? TextCapitalization.words
+          : TextCapitalization.sentences,
+      keyboardType:
+          updateValue == "Phone" ? TextInputType.phone : TextInputType.text,
       initialValue: updateValue == "Your Description"
           ? providerValue.about
           : updateValue == "Experience"
@@ -34,7 +39,8 @@ contentOfAlertBox(context, providerValue, updateValue) {
               : updateValue == "Phone"
                   ? providerValue.userPhone
                   : providerValue.qualification,
-      decoration: InputDecoration(counterText: "",
+      decoration: InputDecoration(
+          counterText: "",
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(20))),
       maxLines: updateValue != "Phone" ? 10 : 1,
       minLines: 1,
@@ -52,23 +58,27 @@ contentOfAlertBox(context, providerValue, updateValue) {
   );
 }
 
-
 // Button To update...................................
 buttonForSave() {
   return Consumer<ProfilePageProvider>(
     builder: (context, proValue, child) {
-      return ElevatedButton(onPressed: () {
-        String? email = FirebaseAuth.instance.currentUser?.email.toString();
+      return ElevatedButton(
+          onPressed: () {
+            String? email = FirebaseAuth.instance.currentUser?.email.toString();
 
-        Map<String,String> updatedData= {
-          "about": proValue.about,
-          "experience":proValue.experience,
-          "qualification":proValue.qualification,
-          "contact" : proValue.userPhone,
-        };
-        FirebaseFirestore.instance.collection("users").doc(email).update(updatedData);
-        Navigator.pop(context);
-      }, child: const Text("Save"));
+            Map<String, String> updatedData = {
+              "about": proValue.about,
+              "experience": proValue.experience,
+              "qualification": proValue.qualification,
+              "contact": proValue.userPhone,
+            };
+            FirebaseFirestore.instance
+                .collection("users")
+                .doc(email)
+                .update(updatedData);
+            Navigator.pop(context);
+          },
+          child: const Text("Save"));
     },
   );
 }

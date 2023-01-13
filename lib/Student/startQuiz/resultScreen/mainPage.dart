@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:screenshot/screenshot.dart';
@@ -26,7 +25,8 @@ class _ResultSummaryState extends State<ResultSummary> {
         body: Consumer2<StartQuizProvider, StudentProvider>(
           builder: (context, quizValue, studentValue, child) {
             double result = quizValue.totalRight /
-                int.parse(studentValue.totalQuestions) * 100;
+                int.parse(studentValue.totalQuestions) *
+                100;
             return Container(
               color: Colors.white,
               alignment: Alignment.center,
@@ -35,8 +35,9 @@ class _ResultSummaryState extends State<ResultSummary> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    shareWidget(result, studentValue, quizValue,context),
-                    screenshot(studentValue, quizValue, result,sc_controller,context),
+                    shareWidget(result, studentValue, quizValue, context),
+                    screenshot(studentValue, quizValue, result, sc_controller,
+                        context),
                     homePageNaviagte(context),
                   ],
                 ),

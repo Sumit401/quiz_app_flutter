@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import '../../Responsive.dart';
@@ -11,7 +10,9 @@ Widget userDescriptionContent(context, providerValue) {
       child: Column(
         children: [
           headingDescription(context, "Your Description"),
-          providerValue.about == "" ? contentDescription("Tap to Update", context) : contentDescription(providerValue.about, context),
+          providerValue.about == ""
+              ? contentDescription("Tap to Update", context)
+              : contentDescription(providerValue.about, context),
         ],
       ),
     ),

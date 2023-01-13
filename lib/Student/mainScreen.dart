@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../reusableWidgets/appBar.dart';
-import 'navigationDrawer/drawerMain.dart';
 import 'assignedTeachers/teachersAssigned.dart';
+import 'navigationDrawer/drawerMain.dart';
 
 class StudentHome extends StatefulWidget {
   const StudentHome({Key? key}) : super(key: key);
@@ -15,7 +15,7 @@ class _StudentHomeState extends State<StudentHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBarWithLogout(context,"Student HomeScreen"),
+      appBar: appBarWithLogout(context, "Student HomeScreen"),
       drawer: navigationDrawerStudent(context),
       body: teachersAssigned(context),
     );

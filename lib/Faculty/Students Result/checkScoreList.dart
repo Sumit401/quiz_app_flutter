@@ -1,15 +1,15 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_project/reusableWidgets/Responsive.dart';
 
+import '../../reusableWidgets/Responsive.dart';
 import 'dialogBoxResult.dart';
 
 Widget checkScoreList(
     AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot,
-    context, index) {
-
+    context,
+    index) {
   // Get Data From Snapshots...................................
-  String? docID= snapshot.data?.docs[index].id;
+  String? docID = snapshot.data?.docs[index].id;
   String? studName = snapshot.data?.docs[index]["name"];
   String about = snapshot.data?.docs[index]["about"];
   String qualification = snapshot.data?.docs[index]["qualification"];
@@ -27,19 +27,19 @@ Widget checkScoreList(
           children: [
             studentName(context, studName),
             aboutStudent(context, about),
-            studentQualification(context,qualification),
+            studentQualification(context, qualification),
           ],
         ),
       ),
     ),
     onTap: () {
-      dialogBoxResult(context,docID,studName!);
+      dialogBoxResult(context, docID, studName!);
     },
   );
 }
 
 containerPadding(context) {
-  return  EdgeInsets.symmetric(
+  return EdgeInsets.symmetric(
       vertical: setSize(context, 20), horizontal: setSize(context, 10));
 }
 
@@ -58,10 +58,12 @@ studentQualification(context, String qualification) {
     mainAxisAlignment: MainAxisAlignment.center,
     children: [
       Text("Qualification :",
-          style: TextStyle(fontSize: setSize(context, 18),fontWeight: FontWeight.w600)),
+          style: TextStyle(
+              fontSize: setSize(context, 18), fontWeight: FontWeight.w600)),
       Text(qualification,
           textAlign: TextAlign.center,
-          style: TextStyle(fontSize: setSize(context, 18),fontWeight: FontWeight.w600)),
+          style: TextStyle(
+              fontSize: setSize(context, 18), fontWeight: FontWeight.w600)),
     ],
   );
 }
@@ -83,5 +85,3 @@ studentName(context, String? studName) {
             fontSize: setSize(context, 25), fontWeight: FontWeight.w700)),
   );
 }
-
-

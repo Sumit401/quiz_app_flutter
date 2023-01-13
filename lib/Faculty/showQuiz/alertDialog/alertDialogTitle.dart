@@ -1,18 +1,16 @@
-
 import 'package:flutter/material.dart';
 
 import '../../../reusableWidgets/Responsive.dart';
 
-Container titleOfAlertDialog(context,index,snapshot) {
-
+Container titleOfAlertDialog(context, index, snapshot) {
   String quizTitle = snapshot.data.docs[index]['Quiz Title'];
   String quizDesc = snapshot.data.docs[index]['Quiz Description'];
   String difficulty = snapshot.data.docs[index]['Difficulty'];
-  String totalQues = snapshot.data.docs[index]['Total Questions'];
+  String totalQues = snapshot.data.docs[index]['Total Questions'].toString();
 
   return Container(
     padding: const EdgeInsets.all(10),
-    width: screenWidth(context)*0.75,
+    width: screenWidth(context) * 0.75,
     child: Column(
       children: [
         quizTitleContainer(quizTitle, context),
@@ -30,8 +28,7 @@ descText(context) {
       padding: const EdgeInsets.only(bottom: 10, top: 10),
       child: Text("Description: ",
           style: TextStyle(
-              fontSize: setSize(context, 18),
-              fontWeight: FontWeight.w600)));
+              fontSize: setSize(context, 18), fontWeight: FontWeight.w600)));
 }
 
 totalQuesCont(context, String totalQues) {
@@ -56,15 +53,14 @@ quizDifficultyCont(context, String difficulty) {
 quizDescCont(context, quizDesc) {
   return Container(
       padding: const EdgeInsets.only(bottom: 10),
-      child: Text(
-          quizDesc,
+      child: Text(quizDesc,
           textAlign: TextAlign.center,
           overflow: TextOverflow.visible,
           style: TextStyle(
               fontSize: setSize(context, 18), fontWeight: FontWeight.w400)));
 }
 
-quizTitleContainer(quizTitle,context) {
+quizTitleContainer(quizTitle, context) {
   return Container(
       padding: const EdgeInsets.only(bottom: 10),
       child: Text(quizTitle,

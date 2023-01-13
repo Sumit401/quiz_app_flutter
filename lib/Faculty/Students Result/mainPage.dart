@@ -1,7 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
+import '../../reusableWidgets/Responsive.dart';
 import '../../reusableWidgets/appBar.dart';
+import '../../reusableWidgets/createColor.dart';
 import 'checkScoreList.dart';
 
 class StudentResult extends StatefulWidget {
@@ -23,18 +25,37 @@ class _StudentResultState extends State<StudentResult> {
             stream: firestore,
             builder: (context, snapshot) {
               if (!snapshot.hasData) {
-                return const CircularProgressIndicator();
+                return const Center(child: CircularProgressIndicator());
               }
-              return ListView.builder(
-                itemCount: snapshot.data?.docs.length,
-                itemBuilder: (context, index) {
-                  if (snapshot.data?.docs[index]["userType"] == "0") {
-                    return checkScoreList(snapshot, context, index);
-                  } else {
-                    return Container();
-                  }
-                },
-              );
+
+              if ((snapshot.data?.docs.length).toString() == "null" ||
+                  (snapshot.data?.docs.length).toString() == "0") {
+                return Container(
+                    alignment: Alignment.center,
+                    child: Text(
+                      "You have not Created a Quiz\n Create one to Display Here!",
+                      style: TextStyle(
+                          height: 1.5,
+                          fontSize: setSize(context, 24),
+                          fontWeight: FontWeight.bold,
+                          color: hexToColor("#263300"),
+                          overflow: TextOverflow.visible,
+                          wordSpacing: 2,
+                          letterSpacing: 0.4),
+                      textAlign: TextAlign.center,
+                    ));
+              } else {
+                return ListView.builder(
+                  itemCount: snapshot.data?.docs.length,
+                  itemBuilder: (context, index) {
+                    if (snapshot.data?.docs[index]["userType"] == "0") {
+                      return checkScoreList(snapshot, context, index);
+                    } else {
+                      return Container();
+                    }
+                  },
+                );
+              }
             },
           ),
         ));

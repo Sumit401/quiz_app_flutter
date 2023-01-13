@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import '../../../reusableWidgets/Responsive.dart';
@@ -12,7 +11,9 @@ Widget contentOfAlertDialogBox(context, providerValue) {
       child: Column(
         children: [
           textFieldQuestions(providerValue),
-          Container(height: 30,),
+          Container(
+            height: 30,
+          ),
           textFieldOption1(providerValue),
           textFieldOption2(providerValue),
           textFieldOption3(providerValue),

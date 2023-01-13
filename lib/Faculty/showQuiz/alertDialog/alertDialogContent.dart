@@ -5,15 +5,17 @@ import 'package:flutter/material.dart';
 import '../../../reusableWidgets/Responsive.dart';
 
 Widget contentOfAlertDialog(context, index, snapshot) {
-
   // Get Current User Email..........................
   String? email = FirebaseAuth.instance.currentUser?.email.toString();
 
   // Get Snapshots of Questions........................
   var firestoreSnapshots = FirebaseFirestore.instance
-      .collection("users").doc(email)
-      .collection("questions").doc("${snapshot.data.docs[index].id}")
-      .collection("${snapshot.data.docs[index].id}").snapshots();
+      .collection("users")
+      .doc(email)
+      .collection("questions")
+      .doc("${snapshot.data.docs[index].id}")
+      .collection("${snapshot.data.docs[index].id}")
+      .snapshots();
 
   return SizedBox(
     height: screenHeight(context) / 1.8,
@@ -35,7 +37,6 @@ Widget contentOfAlertDialog(context, index, snapshot) {
               String? ans2 = snapshot2.data?.docs[index2]['Answer2'];
               String? ans3 = snapshot2.data?.docs[index2]['Answer3'];
               String? ans4 = snapshot2.data?.docs[index2]['Answer4'];
-
 
               return Container(
                 padding: const EdgeInsets.all(20),
@@ -75,11 +76,13 @@ Widget contentOfAlertDialog(context, index, snapshot) {
         }),
   );
 }
-Widget answerContainer(value,context){
+
+Widget answerContainer(value, context) {
   return Expanded(
     child: Container(
       margin: EdgeInsets.only(top: setSize(context, 10)),
-      child: Text(value,
+      child: Text(
+        value,
         textAlign: TextAlign.center,
         overflow: TextOverflow.visible,
         style: TextStyle(fontSize: setSize(context, 16)),

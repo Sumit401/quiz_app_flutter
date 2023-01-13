@@ -13,13 +13,15 @@ String opt3 = "";
 String opt4 = "";
 
 Widget listViewQuestions(context, providerValue) {
-  if(providerValue.list.length<=0 || providerValue.list.length.toString() == "null") {
-
+  if (providerValue.list.length <= 0 ||
+      providerValue.list.length.toString() == "null") {
     return Expanded(
       child: Container(
-        padding: EdgeInsets.symmetric(vertical: screenHeight(context)< 500 ?0 :50),
+          padding: EdgeInsets.symmetric(
+              vertical: screenHeight(context) < 500 ? 0 : 50),
           alignment: Alignment.center,
-          child: Text("\n\nAdd Questions to Quiz from '+' icon on Upper Right Corner.\n\n",
+          child: Text(
+            "\n\nAdd Questions to Quiz from '+' icon on Upper Right Corner.\n\n",
             style: TextStyle(
                 fontSize: setSize(context, 24),
                 fontWeight: FontWeight.bold,
@@ -30,20 +32,23 @@ Widget listViewQuestions(context, providerValue) {
             textAlign: TextAlign.center,
           )),
     );
-
   } else {
     return Expanded(
-    flex: getScreenHeight(context) == "small" ? 1 : getScreenHeight(context) == "medium" ? 2 : 3,
-    child: ListView.builder(
-      shrinkWrap: true,
-      scrollDirection: Axis.vertical,
-      itemCount: providerValue.list.length,
-      itemBuilder: (context, index) {
+      flex: getScreenHeight(context) == "small"
+          ? 1
+          : getScreenHeight(context) == "medium"
+              ? 2
+              : 3,
+      child: ListView.builder(
+        shrinkWrap: true,
+        scrollDirection: Axis.vertical,
+        itemCount: providerValue.list.length,
+        itemBuilder: (context, index) {
           getDataFromList(providerValue, index);
           return cardWidgetOfList(index);
-      },
-    ),
-  );
+        },
+      ),
+    );
   }
 }
 

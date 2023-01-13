@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../reusableWidgets/Responsive.dart';
+import '../../reusableWidgets/createColor.dart';
 
 void dialogBoxResult(context, String? docID, String studName) {
   var firebaseStore = FirebaseFirestore.instance
@@ -28,7 +29,11 @@ void dialogBoxResult(context, String? docID, String studName) {
   );
 }
 
-content(context, facEmail, var firebaseStore) {
+content(
+  context,
+  facEmail,
+  Stream<QuerySnapshot<Map<String, dynamic>>> firebaseStore,
+) {
   return SizedBox(
     height: screenHeight(context) / 1.8,
     width: screenWidth(context),
@@ -36,9 +41,28 @@ content(context, facEmail, var firebaseStore) {
       stream: firebaseStore,
       builder: (context, snapshot) {
         if (!snapshot.hasData) {
-          return const CircularProgressIndicator();
+          return const Center(child: CircularProgressIndicator());
         }
-        return listView(snapshot, facEmail);
+
+        if ((snapshot.data?.docs.length).toString() == "null" ||
+            (snapshot.data?.docs.length).toString() == "0") {
+          return Container(
+              alignment: Alignment.center,
+              child: Text(
+                "Student has not Participated in your Quiz yet.\nPlease, Check back Later.!",
+                style: TextStyle(
+                    height: 1.5,
+                    fontSize: setSize(context, 22),
+                    fontWeight: FontWeight.bold,
+                    color: hexToColor("#263300"),
+                    overflow: TextOverflow.visible,
+                    wordSpacing: 2,
+                    letterSpacing: 0.4),
+                textAlign: TextAlign.center,
+              ));
+        } else {
+          return listView(snapshot, facEmail);
+        }
       },
     ),
   );
@@ -50,9 +74,9 @@ listView(snapshot, facEmail) {
     itemCount: snapshot.data?.docs.length,
     itemBuilder: (context, index) {
       if (snapshot.data?.docs[index]["Faculty Email"] == facEmail) {
-
         // Get Data From Snapshots................
-        double result = int.parse(snapshot.data?.docs[index]['Score']) / int.parse(snapshot.data?.docs[index]['Total Questions']);
+        double result = int.parse(snapshot.data?.docs[index]['Score']) /
+            int.parse(snapshot.data?.docs[index]['Total Questions']);
         String score = snapshot.data?.docs[index]['Score'];
         String totalQues = snapshot.data?.docs[index]['Total Questions'];
         String quizTitle = snapshot.data?.docs[index]["Quiz Title"];

@@ -6,7 +6,8 @@ import '../../reusableWidgets/Responsive.dart';
 
 Widget toggleButtonForDifficultyLevel(context) {
   return Container(
-    margin: EdgeInsets.only(top: setSize(context, 10),bottom: setSize(context, 20)),
+      margin: EdgeInsets.only(
+          top: setSize(context, 10), bottom: setSize(context, 20)),
       padding: const EdgeInsets.only(top: 10, right: 10),
       child: Consumer<CreateQuizProvider>(
         builder: (context, providerValue, child) {
@@ -34,10 +35,11 @@ Widget toggleButtonEasy(providerValue, context) {
         value: 0,
         groupValue: providerValue.radioForQuizDifficulty,
         onChanged: (changedValue) {
+          FocusManager.instance.primaryFocus?.unfocus();
           providerValue.getQuizDifficulty(changedValue);
         },
       ),
-      textWidget(context,"Easy")
+      textWidget(context, "Easy")
     ],
   );
 }
@@ -50,10 +52,11 @@ Widget toggleButtonMedium(providerValue, context) {
         value: 1,
         groupValue: providerValue.radioForQuizDifficulty,
         onChanged: (changedValue) {
+          FocusManager.instance.primaryFocus?.unfocus();
           providerValue.getQuizDifficulty(changedValue);
         },
       ),
-      textWidget(context,"Medium")
+      textWidget(context, "Medium")
     ],
   );
 }
@@ -66,6 +69,7 @@ Widget toggleButtonDifficult(providerValue, context) {
         value: 2,
         groupValue: providerValue.radioForQuizDifficulty,
         onChanged: (changedValue) {
+          FocusManager.instance.primaryFocus?.unfocus();
           providerValue.getQuizDifficulty(changedValue);
         },
       ),
@@ -74,9 +78,7 @@ Widget toggleButtonDifficult(providerValue, context) {
   );
 }
 
-
 Text textWidget(context, value) {
   return Text(value,
-      style:
-          TextStyle(fontSize: setSize(context, 18), color: Colors.black));
+      style: TextStyle(fontSize: setSize(context, 18), color: Colors.black));
 }

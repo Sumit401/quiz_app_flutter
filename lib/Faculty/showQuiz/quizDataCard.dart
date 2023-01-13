@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import '../../reusableWidgets/Responsive.dart';
@@ -14,24 +13,28 @@ Widget showQuizData(context, snapshot, index) {
           Container(
               padding: const EdgeInsets.all(20),
               child: Text(snapshot.data.docs[index]['Quiz Title'].toString(),
-                  style: textStyle("title",context),textAlign: TextAlign.center)),
+                  style: textStyle("title", context),
+                  textAlign: TextAlign.center)),
           Container(
               padding: const EdgeInsets.only(left: 20, bottom: 20, right: 20),
-              child: Text(snapshot.data.docs[index]['Quiz Description'].toString(),
-                style: textStyle("desc",context),textAlign: TextAlign.center,
+              child: Text(
+                snapshot.data.docs[index]['Quiz Description'].toString(),
+                style: textStyle("desc", context),
+                textAlign: TextAlign.center,
               )),
         ],
       ),
     ),
     onTap: () {
-      alertDialogMyQuiz(context,snapshot,index);
+      alertDialogMyQuiz(context, snapshot, index);
     },
   );
 }
 
-TextStyle textStyle(value,context) {
+TextStyle textStyle(value, context) {
   return TextStyle(
-      fontSize: (value == "title") ?setSize(context,24): setSize(context,16),
+      fontSize:
+          (value == "title") ? setSize(context, 24) : setSize(context, 16),
       color: (value == "title") ? Colors.blue.shade700 : Colors.black,
       fontWeight: (value == "title") ? FontWeight.w800 : FontWeight.w600,
       overflow: TextOverflow.visible);

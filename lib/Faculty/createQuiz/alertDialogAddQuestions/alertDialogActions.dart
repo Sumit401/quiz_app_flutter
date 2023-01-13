@@ -1,7 +1,6 @@
-
 import 'package:flutter/material.dart';
 
-Widget actionsOfAlertDialogBox(context,providerValue) {
+Widget actionsOfAlertDialogBox(context, providerValue) {
   return SingleChildScrollView(
     child: Container(
       padding: const EdgeInsets.all(10),

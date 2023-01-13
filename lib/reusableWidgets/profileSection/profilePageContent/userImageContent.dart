@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
 import '../../Responsive.dart';
 
 // Container for user Image
@@ -17,7 +18,8 @@ Container userImageContent(context) {
     );
   } else {
     return Container(
-      margin: const EdgeInsets.only(top: 50, bottom: 10),
+      margin: EdgeInsets.only(
+          top: setSize(context, 40), bottom: setSize(context, 7)),
       child: Image.network(
         imageUrl!,
         height: 100,

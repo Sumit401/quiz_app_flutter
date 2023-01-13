@@ -1,4 +1,3 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -23,11 +22,12 @@ class _QuizFromEachFacultyState extends State<QuizFromEachFaculty> {
       appBar: appBarSimple(context, "Quiz From Faculty"),
       body: Consumer<StudentProvider>(
         builder: (context, providerValue, child) {
-
           // Firebase Snapshot......................
           var firestoreSnapshots = FirebaseFirestore.instance
-              .collection("users").doc(providerValue.facultyEmail)
-              .collection("questions").snapshots();
+              .collection("users")
+              .doc(providerValue.facultyEmail)
+              .collection("questions")
+              .snapshots();
 
           return Container(
             alignment: Alignment.topCenter,
@@ -43,7 +43,6 @@ class _QuizFromEachFacultyState extends State<QuizFromEachFaculty> {
                 } else {
                   // Create listView of the Faculty Quiz..........................
                   return ListView.builder(
-
                     itemCount: snapshot.data?.docs.length,
                     itemBuilder: (context, index) {
                       if (!snapshot.hasData) {

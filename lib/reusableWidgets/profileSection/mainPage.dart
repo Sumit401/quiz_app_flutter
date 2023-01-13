@@ -1,6 +1,4 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
 import 'package:provider/provider.dart';
 
 import '../../reusableWidgets/appBar.dart';
@@ -23,25 +21,26 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
-    // Get firebase logged in user name......................................
-    String? userName =
-        FirebaseAuth.instance.currentUser?.displayName.toString();
     return Scaffold(
-      appBar: appBarSimple(context, "Welcome $userName"),
+      appBar: appBarSimple(context, "My Profile"),
       body: Consumer<ProfilePageProvider>(
         builder: (context, providerValue, child) {
           return SingleChildScrollView(
             child: Column(
               children: [
                 userImageContent(context),
-                userNameContent(context),
+                userNameContent(context, providerValue),
                 containerSeperator(context),
                 userEmailContent(context),
                 containerSeperator(context),
-                userPhoneContent(context,providerValue),
+                userPhoneContent(context, providerValue),
                 containerSeperator(context),
-                providerValue.userType != "0" ? userExperienceContent(context, providerValue) : Container(),
-                providerValue.userType != "0" ? containerSeperator(context) : Container(),
+                providerValue.userType != "0"
+                    ? userExperienceContent(context, providerValue)
+                    : Container(),
+                providerValue.userType != "0"
+                    ? containerSeperator(context)
+                    : Container(),
                 userQualificationContent(context, providerValue),
                 containerSeperator(context),
                 userDescriptionContent(context, providerValue),

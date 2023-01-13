@@ -20,42 +20,39 @@ class _CreateQuizState extends State<CreateQuiz> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: appBarCreate(context,"Create Quiz"),
-        body: SingleChildScrollView(
-          child: SizedBox(
-            height: screenHeight(context),
-            width: screenWidth(context),
-            child: Consumer<CreateQuizProvider>(
-              builder: (context, providerValue, child) {
-                return Container(
-                  padding: const EdgeInsets.all(20),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      textFieldTitle(providerValue),
-                      textFieldDescription(providerValue),
-                      toggleButtonForDifficultyLevel(context),
-                      listViewQuestions(context,providerValue),
-                      Expanded(
-                        child: Container(
-                          margin: EdgeInsets.only(top: 10),
-                          child: Align(
-                            alignment: Alignment.center,
-                            child: submitQuizButton(),
-                          ),
+      appBar: appBarCreate(context, "Create Quiz"),
+      body: SingleChildScrollView(
+        child: SizedBox(
+          height: screenHeight(context),
+          width: screenWidth(context),
+          child: Consumer<CreateQuizProvider>(
+            builder: (context, providerValue, child) {
+              return Container(
+                padding: const EdgeInsets.all(20),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    textFieldTitle(providerValue),
+                    textFieldDescription(providerValue),
+                    toggleButtonForDifficultyLevel(context),
+                    listViewQuestions(context, providerValue),
+                    Expanded(
+                      child: Container(
+                        margin: EdgeInsets.only(top: 10),
+                        child: Align(
+                          alignment: Alignment.center,
+                          child: submitQuizButton(),
                         ),
                       ),
-                    ],
-                  ),
-                );
-              },
-            ),
+                    ),
+                  ],
+                ),
+              );
+            },
+          ),
         ),
       ),
-
-
-
-      );
+    );
   }
 }

@@ -5,17 +5,16 @@ import '../../../providers/createQuizProvider.dart';
 import 'alertDialogActions.dart';
 import 'alertDialogContent.dart';
 
-
 // +AddQuestions button in Main screen
 Widget addQuestionsButton(context) {
   return Container(
       alignment: Alignment.center,
       child: TextButton(
-        onPressed:() {
+        onPressed: () {
           FocusScope.of(context).requestFocus(FocusNode());
           dialogBuilder(context);
         },
-        child: const Icon(Icons.add,color: Colors.white,size: 35),
+        child: const Icon(Icons.add, color: Colors.white, size: 35),
       ));
 }
 
@@ -25,14 +24,14 @@ Future dialogBuilder(context) {
     builder: (context) {
       return Consumer<CreateQuizProvider>(
         builder: (context, providerValue, child) {
-          return alertDialogBoxAddQuestions(context,providerValue);
+          return alertDialogBoxAddQuestions(context, providerValue);
         },
       );
     },
   );
 }
 
-Widget alertDialogBoxAddQuestions(context,providerValue) {
+Widget alertDialogBoxAddQuestions(context, providerValue) {
   return Center(
     child: SingleChildScrollView(
       scrollDirection: Axis.vertical,
@@ -44,8 +43,8 @@ Widget alertDialogBoxAddQuestions(context,providerValue) {
         actionsAlignment: MainAxisAlignment.center,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         title: const Center(child: Text("Question")),
-        content: contentOfAlertDialogBox(context,providerValue),
-        actions: [actionsOfAlertDialogBox(context,providerValue) ],
+        content: contentOfAlertDialogBox(context, providerValue),
+        actions: [actionsOfAlertDialogBox(context, providerValue)],
       ),
     ),
   );

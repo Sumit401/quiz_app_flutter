@@ -1,17 +1,19 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_project/reusableWidgets/Responsive.dart';
+
+import '../../reusableWidgets/Responsive.dart';
 
 dialogBoxShow(AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot,
     context, index, score) {
-
   return showDialog(
     context: context,
     builder: (context) {
       String title = snapshot.data?.docs[index]["Quiz Title"];
       String desc = snapshot.data?.docs[index]["Quiz Description"];
       String faculty = snapshot.data?.docs[index]["Faculty Name"];
-      String marks = snapshot.data?.docs[index]["Score"] + "/" + snapshot.data?.docs[index]["Total Questions"];
+      String marks = snapshot.data?.docs[index]["Score"] +
+          "/" +
+          snapshot.data?.docs[index]["Total Questions"];
       String result = score > 0.4 ? "Passed" : "Failed";
 
       return AlertDialog(

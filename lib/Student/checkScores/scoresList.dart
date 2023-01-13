@@ -6,8 +6,13 @@ import 'dialogBox.dart';
 
 Widget scoresList(AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot,
     int index, BuildContext context) {
-  double score = int.parse(snapshot.data?.docs[index]["Score"]) /
+  double marks = int.parse(snapshot.data?.docs[index]["Score"]) /
       int.parse(snapshot.data?.docs[index]["Total Questions"]);
+  String quizTitle = snapshot.data?.docs[index]["Quiz Title"];
+  String quizDesc = snapshot.data?.docs[index]["Quiz Description"];
+  String facName = snapshot.data?.docs[index]["Faculty Name"];
+  String score = snapshot.data?.docs[index]["Score"];
+  String totalQues = snapshot.data?.docs[index]["Total Questions"];
 
   return InkWell(
     child: Card(
@@ -25,57 +30,12 @@ Widget scoresList(AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
-                    margin: EdgeInsets.only(bottom: setSize(context, 20)),
-                    child: Text(snapshot.data?.docs[index]["Quiz Title"],
-                        style: TextStyle(fontSize: setSize(context, 20)),
-                        textAlign: TextAlign.center)),
-                Container(
-                  margin: EdgeInsets.only(bottom: setSize(context, 20)),
-                  child: Text(snapshot.data?.docs[index]["Quiz Description"],
-                      style: TextStyle(fontSize: setSize(context, 14)),
-                      textAlign: TextAlign.center),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      margin: EdgeInsets.only(bottom: setSize(context, 20)),
-                      child: Text("Assigned By : ",
-                          style: TextStyle(fontSize: setSize(context, 20)),
-                          textAlign: TextAlign.center),
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(bottom: setSize(context, 20)),
-                      child: Text(snapshot.data?.docs[index]["Faculty Name"],
-                          style: TextStyle(
-                              fontSize: setSize(context, 20),
-                              fontWeight: FontWeight.w700),
-                          textAlign: TextAlign.center),
-                    ),
-                  ],
-                ),
-                Container(
-                  margin: EdgeInsets.only(bottom: setSize(context, 12)),
-                  child: Text(
-                      "Your Score : ${snapshot.data?.docs[index]["Score"]} / ${snapshot.data?.docs[index]["Total Questions"]}",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: setSize(context, 18))),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text("Result : ",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: setSize(context, 18))),
-                    Text(score >= 0.5 ? "Pass" : "Fail",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            fontSize: setSize(context, 18),
-                            color: score >= 0.5 ? Colors.green : Colors.red,
-                            fontWeight: FontWeight.w600)),
-                  ],
-                ),
+                quizTitleContainer(context, quizTitle),
+                quizDescContainer(context, quizDesc),
+                quizAssignedContainer(context),
+                quizFacName(context, facName),
+                quizScore(context, score, totalQues),
+                resultWidget(context, marks),
               ],
             ),
           ),
@@ -83,7 +43,66 @@ Widget scoresList(AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot,
       ),
     ),
     onTap: () {
-      dialogBoxShow(snapshot, context, index, score);
+      dialogBoxShow(snapshot, context, index, marks);
     },
   );
+}
+
+resultWidget(BuildContext context, marks) {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      Text("Result : ",
+          textAlign: TextAlign.center,
+          style: TextStyle(fontSize: setSize(context, 18))),
+      Text(marks >= 0.5 ? "Pass" : "Fail",
+          textAlign: TextAlign.center,
+          style: TextStyle(
+              fontSize: setSize(context, 18),
+              color: marks >= 0.5 ? Colors.green : Colors.red,
+              fontWeight: FontWeight.w600)),
+    ],
+  );
+}
+
+quizScore(BuildContext context, score, totalQues) {
+  return Container(
+    margin: EdgeInsets.only(bottom: setSize(context, 12)),
+    child: Text("Your Score : $score / $totalQues",
+        textAlign: TextAlign.center,
+        style: TextStyle(fontSize: setSize(context, 18))),
+  );
+}
+
+quizFacName(BuildContext context, String facName) {
+  return Container(
+    margin: EdgeInsets.only(bottom: setSize(context, 20)),
+    child: Text(facName,
+        style: TextStyle(
+            fontSize: setSize(context, 20), fontWeight: FontWeight.w700),
+        textAlign: TextAlign.center),
+  );
+}
+
+quizAssignedContainer(context) {
+  return Text("Assigned By : ",
+      style: TextStyle(fontSize: setSize(context, 20)),
+      textAlign: TextAlign.center);
+}
+
+quizDescContainer(context, String quizDesc) {
+  return Container(
+    margin: EdgeInsets.only(bottom: setSize(context, 20)),
+    child: Text(quizDesc,
+        style: TextStyle(fontSize: setSize(context, 14)),
+        textAlign: TextAlign.center),
+  );
+}
+
+quizTitleContainer(context, quizTitle) {
+  return Container(
+      margin: EdgeInsets.only(bottom: setSize(context, 20)),
+      child: Text(quizTitle,
+          style: TextStyle(fontSize: setSize(context, 20)),
+          textAlign: TextAlign.center));
 }

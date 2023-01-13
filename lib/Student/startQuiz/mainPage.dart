@@ -1,12 +1,9 @@
-
 import 'package:flutter/material.dart';
-
 import 'package:provider/provider.dart';
 
 import '../../providers/studentProviders/studentSnapshotProvider.dart';
 import '../../providers/studentProviders/timerCountDownProvider.dart';
 import 'PageView/pageViewContainer.dart';
-
 
 class StartQuiz extends StatefulWidget {
   const StartQuiz({Key? key}) : super(key: key);
@@ -17,7 +14,6 @@ class StartQuiz extends StatefulWidget {
 
 class _StartQuizState extends State<StartQuiz> {
   final PageController _pagecontroller = PageController();
-
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +38,8 @@ class _StartQuizState extends State<StartQuiz> {
                             controller: _pagecontroller,
                             itemCount: snapshot.data?.docs.length,
                             itemBuilder: (context, index) {
-                              return pageViewContainer(snapshot, index, _pagecontroller,context);
+                              return pageViewContainer(
+                                  snapshot, index, _pagecontroller, context);
                             },
                           ),
                         ),
@@ -59,11 +56,14 @@ class _StartQuizState extends State<StartQuiz> {
   timer() {
     return Consumer<TimerProvider>(
       builder: (context, timerProvider, child) {
-        int mins= (timerProvider.timer/60).toInt();
-        int sec = (timerProvider.timer%60).toInt();
+        int mins = (timerProvider.timer / 60).toInt();
+        int sec = (timerProvider.timer % 60).toInt();
         return Container(
             margin: const EdgeInsets.only(top: 50),
-            child: Text(timerProvider.timer > 0 ? "${mins} min ${sec} sec left" : "Times Up",
+            child: Text(
+              timerProvider.timer > 0
+                  ? "${mins} min ${sec} sec left"
+                  : "Times Up",
               style: TextStyle(fontSize: 30),
             ));
       },

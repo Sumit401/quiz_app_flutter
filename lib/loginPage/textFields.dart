@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import '../providers/loginPageProvider.dart';
 
 // Text Field for Email.....................................
-Widget textFieldEmail(){
+Widget textFieldEmail() {
   return Padding(
       padding: const EdgeInsets.all(18.0),
       child: Consumer<LoginPageProvider>(
@@ -17,12 +17,11 @@ Widget textFieldEmail(){
               },
               style: textStyleLabel());
         },
-      )
-  );
+      ));
 }
 
 // Text Field for password.....................................
-Widget textFieldPassword(){
+Widget textFieldPassword() {
   return Padding(
     padding: const EdgeInsets.all(18.0),
     child: Consumer<LoginPageProvider>(
@@ -42,18 +41,19 @@ Widget textFieldPassword(){
 }
 
 // Input Decoration for above TextFormFields.....................
-InputDecoration inputTextDecoration(String value){
+InputDecoration inputTextDecoration(String value) {
   return InputDecoration(
     contentPadding: const EdgeInsets.all(20),
     labelText: value,
     labelStyle: textStyleLabel(),
     focusColor: Colors.white,
-    focusedBorder:textFieldBorder(),
-    enabledBorder: textFieldBorder(),);
+    focusedBorder: textFieldBorder(),
+    enabledBorder: textFieldBorder(),
+  );
 }
 
 // Border for above TextFormFields...............................
-OutlineInputBorder textFieldBorder(){
+OutlineInputBorder textFieldBorder() {
   return OutlineInputBorder(
       borderSide: const BorderSide(color: Colors.white),
       borderRadius: BorderRadius.circular(20),
@@ -61,6 +61,6 @@ OutlineInputBorder textFieldBorder(){
 }
 
 // Text Styling for above TextFormFields.........................
-TextStyle textStyleLabel(){
+TextStyle textStyleLabel() {
   return const TextStyle(color: Colors.white);
 }

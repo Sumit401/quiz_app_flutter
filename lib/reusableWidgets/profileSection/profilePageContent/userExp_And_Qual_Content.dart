@@ -14,14 +14,17 @@ Widget userExperienceContent(context, providerValue) {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Icon(FontAwesomeIcons.solidStar,color: Colors.black),
+              Icon(FontAwesomeIcons.solidStar, color: Colors.black),
               Padding(
                 padding: EdgeInsets.all(setSize(context, 20)),
                 child: textForHeading("Experience", context),
               ),
             ],
           ),
-          Expanded(child: providerValue.experience == "" ? textForHeading("Tap to Update", context) : textForHeading(providerValue.experience, context)),
+          Expanded(
+              child: providerValue.experience == ""
+                  ? textForHeading("Tap to Update", context)
+                  : textForHeading(providerValue.experience, context)),
         ],
       ),
     ),
@@ -48,7 +51,10 @@ Widget userQualificationContent(context, providerValue) {
               ),
             ],
           ),
-          Expanded(child: providerValue.qualification == "" ? textForHeading("Tap to Update", context) : textForHeading(providerValue.qualification, context)),
+          Expanded(
+              child: providerValue.qualification == ""
+                  ? textForHeading("Tap to Update", context)
+                  : textForHeading(providerValue.qualification, context)),
         ],
       ),
     ),
@@ -57,8 +63,6 @@ Widget userQualificationContent(context, providerValue) {
     },
   );
 }
-
-
 
 Text textForHeading(providerValue, context) {
   return Text(
@@ -71,4 +75,3 @@ Text textForHeading(providerValue, context) {
     textAlign: TextAlign.end,
   );
 }
-
