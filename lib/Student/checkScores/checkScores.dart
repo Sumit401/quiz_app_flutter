@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_project/reusableWidgets/topBar/topBarStudent.dart';
+
 
 import '../../reusableWidgets/Responsive.dart';
 import '../../reusableWidgets/appBar.dart';
@@ -24,7 +26,9 @@ class _CheckScoreState extends State<CheckScore> {
         .collection("answers")
         .snapshots();
     return Scaffold(
-      appBar: appBarSimple(context, "My Scores"),
+      appBar: ResponsiveWidget.isLargeScreen(context)
+          ? PreferredSize(preferredSize: Size(screenWidth(context), 70), child: const TopBarStudent())
+          : appBarSimple(context, "My Scores"),
       body: StreamBuilder(
         stream: firestore,
         builder: (context, snapshot) {

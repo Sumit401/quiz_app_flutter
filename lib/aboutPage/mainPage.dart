@@ -11,7 +11,7 @@ class AboutPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-          preferredSize: Size.fromHeight(screenHeight(context) / 4),
+          preferredSize: ResponsiveWidget.isSmallScreen(context) ? Size.fromHeight(screenHeight(context) / 4) : Size.fromHeight(screenHeight(context) / 2.5),
           child: appBarAbout(context)),
       body: Container(
         margin: const EdgeInsets.only(bottom: 20),

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../../reusableWidgets/Responsive.dart';
 import '../../reusableWidgets/appBar.dart';
 import '../../reusableWidgets/createColor.dart';
+import '../../reusableWidgets/topBar/topBarFaculty.dart';
 import 'checkScoreList.dart';
 
 class StudentResult extends StatefulWidget {
@@ -19,7 +20,12 @@ class _StudentResultState extends State<StudentResult> {
     var firestore = FirebaseFirestore.instance.collection("users").snapshots();
 
     return Scaffold(
-        appBar: appBarSimple(context, "Score"),
+        appBar: ResponsiveWidget.isLargeScreen(context)
+            ? PreferredSize(
+            preferredSize: Size(screenWidth(context), 70),
+            child: const TopBarFaculty())
+            : appBarSimple(context, "Score"),
+
         body: Center(
           child: SizedBox(
             child: Center(

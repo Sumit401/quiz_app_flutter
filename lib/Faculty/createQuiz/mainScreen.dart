@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import '../../providers/createQuizProvider.dart';
 import '../../reusableWidgets/Responsive.dart';
 import '../../reusableWidgets/appBar.dart';
+import '../../reusableWidgets/topBar/topBarFaculty.dart';
 import 'listView.dart';
 import 'submitQuizButton.dart';
 import 'textFieldWidgets.dart';
@@ -20,7 +21,11 @@ class _CreateQuizState extends State<CreateQuiz> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBarCreate(context, "Create Quiz"),
+      appBar: ResponsiveWidget.isLargeScreen(context)
+          ? PreferredSize(
+              preferredSize: Size(screenWidth(context), 70),
+              child: const TopBarFaculty())
+          : appBarCreate(context, "Create Quiz"),
       body: SingleChildScrollView(
         child: SizedBox(
           height: screenHeight(context),

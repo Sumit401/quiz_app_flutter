@@ -13,7 +13,6 @@ void dialogBoxResult(context, String? docID, String studName) {
       .collection("answers")
       .snapshots();
   String? facEmail = FirebaseAuth.instance.currentUser?.email;
-
   showDialog(
     context: context,
     builder: (context) {

@@ -52,7 +52,7 @@ Container showQuiz(context) {
               : GridView.builder(
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: ResponsiveWidget.isMediumScreen(context) ? 2 : 3,
-                mainAxisExtent: screenHeight(context) / 3),
+                mainAxisExtent: screenHeight(context) / 2.5),
                   itemCount: snapshot.data?.docs.length,
                   itemBuilder: (context, index) {
                     if (!snapshot.hasData) {
