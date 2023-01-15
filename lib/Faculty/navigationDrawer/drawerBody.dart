@@ -84,7 +84,6 @@ Widget listTileCreate(context) {
               },
             );
           } else {
-            Navigator.pop(context);
             await Navigator.push(
                 context,
                 MaterialPageRoute(

@@ -22,7 +22,7 @@ Widget teachersAssigned(context) {
         return Container(
             alignment: Alignment.center,
             child: Text(
-              "You have been Assigned Any Quiz\n Please Check back later.!",
+              "You have not been Assigned Any Quiz\n Please Check back later.!",
               style: TextStyle(
                   height: 1.5,
                   fontSize: setSize(context, 23),
@@ -35,18 +35,26 @@ Widget teachersAssigned(context) {
             ));
       } else {
         // If not null create List View of the following ......................
-        return ListView.builder(
-          itemCount: snapshot.data?.docs.length,
-          itemBuilder: (context, index) {
-            // Card widget of faculty name, about and experience.................
-            if (snapshot.data?.docs[index]["userType"] == "1" &&
-                snapshot.data?.docs[index]["about"] != "") {
-              return cardWidget(snapshot, index);
-            } else {
-              return Container();
-            }
-          },
-        );
+        final validData = snapshot.data?.docs.where((d)=> d['userType']=="1" && d['about']!="").toList();
+
+        return ResponsiveWidget.isSmallScreen(context)
+            ? ListView.builder(
+                itemCount: validData?.length,
+                itemBuilder: (context, index) {
+                  return cardWidget(validData, index,"List");
+                },
+              )
+            : GridView.builder(
+          shrinkWrap: true,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: ResponsiveWidget.isMediumScreen(context)
+                        ? 2 : 3,
+                mainAxisExtent: screenHeight(context) / 1.5),
+            itemCount: validData?.length,
+            itemBuilder: (context, index) {
+              return cardWidget(validData, index,"Grid");
+            },
+          );
       }
     },
   );

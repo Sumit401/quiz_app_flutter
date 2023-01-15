@@ -25,7 +25,7 @@ Widget shareWidget(result, studentValue, quizValue, context) {
 }
 
 Widget message(result, context) {
-  if (result > 40) {
+  if (result >= 50) {
     return Container(
       margin: EdgeInsets.only(bottom: setSize(context, 30)),
       child: Text("Hurray, You Passed the Test !!!",
@@ -85,7 +85,7 @@ Widget resultContainer(result, context) {
                 fontWeight: FontWeight.w500,
                 fontSize: setSize(context, 20),
                 color: Colors.black)),
-        Text(result > 50 ? "Passed" : "Failed",
+        Text(result >= 50 ? "Passed" : "Failed",
             style: TextStyle(
                 color:
                     result > 40 ? hexToColor("#0cab44") : hexToColor("#a31a08"),

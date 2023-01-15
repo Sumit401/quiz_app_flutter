@@ -1,34 +1,32 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 import '../../reusableWidgets/Responsive.dart';
 import 'dialogBoxResult.dart';
 
-Widget checkScoreList(
-    AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot,
-    context,
-    index) {
+Widget checkScoreList(snapshot, context, index) {
   // Get Data From Snapshots...................................
-  String? docID = snapshot.data?.docs[index].id;
-  String? studName = snapshot.data?.docs[index]["name"];
-  String about = snapshot.data?.docs[index]["about"];
-  String qualification = snapshot.data?.docs[index]["qualification"];
+  String? docID = snapshot?[index].id;
+  String? studName = snapshot?[index]["name"];
+  String about = snapshot?[index]["about"];
+  String qualification = snapshot?[index]["qualification"];
 
   return InkWell(
     child: Card(
       elevation: 18,
       shape: cardShape(),
       margin: cardMargin(context),
-      child: Container(
-        padding: containerPadding(context),
-        alignment: Alignment.center,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            studentName(context, studName),
-            aboutStudent(context, about),
-            studentQualification(context, qualification),
-          ],
+      child: SingleChildScrollView(
+        child: Container(
+          padding: containerPadding(context),
+          alignment: Alignment.center,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              studentName(context, studName),
+              aboutStudent(context, about),
+              studentQualification(context, qualification),
+            ],
+          ),
         ),
       ),
     ),

@@ -20,7 +20,7 @@ Widget submitButtonPageView(context, pageController, answers, snapshot, index) {
   return Consumer3<StartQuizProvider, StudentProvider, TimerProvider>(
     builder: (context, quizProvider, studentProvider, timerProvider, child) {
       return Container(
-        margin: EdgeInsets.only(top: setSize(context, 30)),
+        margin: EdgeInsets.only(top: setSize(context, 30),bottom: setSize(context, 30)),
         child: ElevatedButton(
             style: buttonStyle(context),
             onPressed: () async {

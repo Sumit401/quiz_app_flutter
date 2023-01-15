@@ -17,6 +17,7 @@ Container showQuiz(context) {
       .snapshots();
 
   return Container(
+    alignment: Alignment.topCenter,
     child: StreamBuilder(
       stream: firestoreSnapshots,
       builder: (context, snapshot) {
@@ -37,15 +38,30 @@ Container showQuiz(context) {
                 textAlign: TextAlign.center,
               ));
         } else {
-          return ListView.builder(
-            itemCount: snapshot.data?.docs.length,
-            itemBuilder: (context, index) {
-              if (!snapshot.hasData) {
-                return const Center(child: CircularProgressIndicator());
-              }
-              return showQuizData(context, snapshot, index);
-            },
-          );
+          return  ResponsiveWidget.isSmallScreen(context)
+              ? ListView.builder(
+                  itemCount: snapshot.data?.docs.length,
+                  itemBuilder: (context, index) {
+                    if (!snapshot.hasData) {
+                      return const Center(child: CircularProgressIndicator());
+                    }
+                    return SizedBox(
+                        child: showQuizData(context, snapshot, index));
+                  },
+                )
+              : GridView.builder(
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: ResponsiveWidget.isMediumScreen(context) ? 2 : 3,
+                mainAxisExtent: screenHeight(context) / 3),
+                  itemCount: snapshot.data?.docs.length,
+                  itemBuilder: (context, index) {
+                    if (!snapshot.hasData) {
+                      return const Center(child: CircularProgressIndicator());
+                    }
+                    return SizedBox(
+                        child: showQuizData(context, snapshot, index));
+                  },
+                );
         }
       },
     ),

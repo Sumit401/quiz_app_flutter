@@ -33,9 +33,18 @@ class _CreateQuizState extends State<CreateQuiz> {
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    textFieldTitle(providerValue),
-                    textFieldDescription(providerValue),
-                    toggleButtonForDifficultyLevel(context),
+                    Center(
+                      child: SizedBox(
+                        width: ResponsiveWidget.isSmallScreen(context) ? screenWidth(context) : screenWidth(context)/2,
+                        child: Column(
+                          children: [
+                            textFieldTitle(providerValue),
+                            textFieldDescription(providerValue),
+                            toggleButtonForDifficultyLevel(context),
+                          ],
+                        ),
+                      ),
+                    ),
                     listViewQuestions(context, providerValue),
                     Expanded(
                       child: Container(

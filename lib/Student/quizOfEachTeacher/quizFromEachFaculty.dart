@@ -42,15 +42,35 @@ class _QuizFromEachFacultyState extends State<QuizFromEachFaculty> {
                       child: textNoQuizAvailable());
                 } else {
                   // Create listView of the Faculty Quiz..........................
-                  return ListView.builder(
-                    itemCount: snapshot.data?.docs.length,
-                    itemBuilder: (context, index) {
-                      if (!snapshot.hasData) {
-                        return const Center(child: CircularProgressIndicator());
-                      }
-                      return showQuizForStudent(context, snapshot, index);
-                    },
-                  );
+                  return
+                    ResponsiveWidget.isSmallScreen(context)
+                  ? ListView.builder(
+                          itemCount: snapshot.data?.docs.length,
+                          itemBuilder: (context, index) {
+                            if (!snapshot.hasData) {
+                              return const Center(
+                                  child: CircularProgressIndicator());
+                            }
+                            return showQuizForStudent(context, snapshot, index);
+                          },
+                        )
+                      : GridView.builder(
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount:
+                                      ResponsiveWidget.isMediumScreen(context)
+                                          ? 2
+                                          : 3,
+                                  mainAxisExtent: screenHeight(context) / 1.5),
+                          itemCount: snapshot.data?.docs.length,
+                          itemBuilder: (context, index) {
+                            if (!snapshot.hasData) {
+                              return const Center(
+                                  child: CircularProgressIndicator());
+                            }
+                            return showQuizForStudent(context, snapshot, index);
+                          },
+                        );
                 }
               },
             ),

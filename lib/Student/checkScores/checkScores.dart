@@ -50,7 +50,7 @@ class _CheckScoreState extends State<CheckScore> {
               physics: const ScrollPhysics(),
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
-                  mainAxisExtent: screenHeight(context) / 3,
+                  mainAxisExtent: ResponsiveWidget.isSmallScreen(context) ? screenHeight(context) / 3 : screenHeight(context) / 2,
                   mainAxisSpacing: 10),
               shrinkWrap: true,
               scrollDirection: Axis.vertical,

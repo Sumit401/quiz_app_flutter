@@ -23,11 +23,8 @@ class _RegisterState extends State<Register> {
         width: screenWidth(context),
         height: screenHeight(context),
         decoration: pageDecoration(),
-
         /// See Below.............................
-        child: SingleChildScrollView(
-          child: bodyContainer(), //////See Below...................
-        ),
+        child: SingleChildScrollView(child: bodyContainer()),
       ),
     );
   }

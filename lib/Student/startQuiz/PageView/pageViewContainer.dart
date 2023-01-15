@@ -21,7 +21,7 @@ Widget pageViewContainer(snapshot, index, _pagecontroller, context) {
             questionNumberContainer(context, index, snapshot),
             dividerLineContainer(context),
             questionContainer(context, index, snapshot),
-            listViewPageView(answers),
+            listViewPageView(answers,context),
             submitButtonPageView(
                 context, _pagecontroller, answers, snapshot, index),
           ],

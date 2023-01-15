@@ -20,43 +20,64 @@ class _StudentResultState extends State<StudentResult> {
 
     return Scaffold(
         appBar: appBarSimple(context, "Score"),
-        body: Container(
-          child: StreamBuilder(
-            stream: firestore,
-            builder: (context, snapshot) {
-              if (!snapshot.hasData) {
-                return const Center(child: CircularProgressIndicator());
-              }
-
-              if ((snapshot.data?.docs.length).toString() == "null" ||
-                  (snapshot.data?.docs.length).toString() == "0") {
-                return Container(
-                    alignment: Alignment.center,
-                    child: Text(
-                      "No Candidate to Display !",
-                      style: TextStyle(
-                          height: 1.5,
-                          fontSize: setSize(context, 24),
-                          fontWeight: FontWeight.bold,
-                          color: hexToColor("#263300"),
-                          overflow: TextOverflow.visible,
-                          wordSpacing: 2,
-                          letterSpacing: 0.4),
-                      textAlign: TextAlign.center,
-                    ));
-              } else {
-                return ListView.builder(
-                  itemCount: snapshot.data?.docs.length,
-                  itemBuilder: (context, index) {
-                    if (snapshot.data?.docs[index]["userType"] == "0" && snapshot.data?.docs[index]["about"] != "" && snapshot.data?.docs[index]["qualification"] != "") {
-                      return checkScoreList(snapshot, context, index);
-                    } else {
-                      return Container();
-                    }
-                  },
-                );
-              }
-            },
+        body: Center(
+          child: SizedBox(
+            child: Center(
+              child: StreamBuilder(
+                stream: firestore,
+                builder: (context, snapshot) {
+                  if (!snapshot.hasData) {
+                    return const Center(child: CircularProgressIndicator());
+                  }
+                  if ((snapshot.data?.docs.length).toString() == "null" ||
+                      (snapshot.data?.docs.length).toString() == "0") {
+                    return Container(
+                        alignment: Alignment.center,
+                        child: Text(
+                          "No Candidate to Display !",
+                          style: TextStyle(
+                              height: 1.5,
+                              fontSize: setSize(context, 24),
+                              fontWeight: FontWeight.bold,
+                              color: hexToColor("#263300"),
+                              overflow: TextOverflow.visible,
+                              wordSpacing: 2,
+                              letterSpacing: 0.4),
+                          textAlign: TextAlign.center,
+                        ));
+                  } else {
+                    final validData = snapshot.data?.docs
+                        .where((d) => d['userType'] == "0" && d['about'] != "" && d["qualification"] != "")
+                        .toList();
+                    return ResponsiveWidget.isSmallScreen(context)
+                        ? ListView.builder(
+                            itemCount: validData?.length,
+                            itemBuilder: (context, index) {
+                              return checkScoreList(validData, context, index);
+                            },
+                          )
+                        : Center(
+                            child: GridView.builder(
+                              gridDelegate:
+                                  SliverGridDelegateWithFixedCrossAxisCount(
+                                      crossAxisCount:
+                                          ResponsiveWidget.isMediumScreen(
+                                                  context)
+                                              ? 2
+                                              : 3,
+                                      mainAxisExtent:
+                                          screenHeight(context) / 2),
+                              itemCount: validData?.length,
+                              itemBuilder: (context, index) {
+                                return checkScoreList(
+                                    validData, context, index);
+                              },
+                            ),
+                          );
+                  }
+                },
+              ),
+            ),
           ),
         ));
   }

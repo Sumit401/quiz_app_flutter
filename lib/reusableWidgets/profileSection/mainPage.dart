@@ -23,31 +23,41 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appBarSimple(context, "My Profile"),
-      body: Consumer<ProfilePageProvider>(
-        builder: (context, providerValue, child) {
-          return SingleChildScrollView(
-            child: Column(
-              children: [
-                userImageContent(context),
-                userNameContent(context, providerValue),
-                containerSeperator(context),
-                userEmailContent(context),
-                containerSeperator(context),
-                userPhoneContent(context, providerValue),
-                containerSeperator(context),
-                providerValue.userType != "0"
-                    ? userExperienceContent(context, providerValue)
-                    : Container(),
-                providerValue.userType != "0"
-                    ? containerSeperator(context)
-                    : Container(),
-                userQualificationContent(context, providerValue),
-                containerSeperator(context),
-                userDescriptionContent(context, providerValue),
-              ],
-            ),
-          );
-        },
+      body: SingleChildScrollView(
+        child: Container(
+          alignment: Alignment.center,
+          transformAlignment: Alignment.center,
+          padding: EdgeInsets.all(50),
+          child: Consumer<ProfilePageProvider>(
+            builder: (context, providerValue, child) {
+              return Container(
+                width: ResponsiveWidget.isSmallScreen(context)
+                    ? screenWidth(context)
+                    : screenWidth(context) / 2,
+                child: Column(
+                  children: [
+                    userImageContent(context),
+                    userNameContent(context, providerValue),
+                    containerSeperator(context),
+                    userEmailContent(context),
+                    containerSeperator(context),
+                    userPhoneContent(context, providerValue),
+                    containerSeperator(context),
+                    providerValue.userType != "0"
+                        ? userExperienceContent(context, providerValue)
+                        : Container(),
+                    providerValue.userType != "0"
+                        ? containerSeperator(context)
+                        : Container(),
+                    userQualificationContent(context, providerValue),
+                    containerSeperator(context),
+                    userDescriptionContent(context, providerValue),
+                  ],
+                ),
+              );
+            },
+          ),
+        ),
       ),
     );
   }
