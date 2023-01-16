@@ -1,16 +1,22 @@
-# flutter_project
+# Champ Quizz
 
-A new Flutter project.
+Champ Quizz - A Quiz App
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+## Technology Used:
+1. Flutter
+2. Firebase
 
-A few resources to get you started if this is your first Flutter project:
+## How to Install:
+1. APK - https://www.amazon.com/dp/B0BSCJ37CY/ref=apps_sf_sta
+2. Web - https://champquizz.netlify.app/#/
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Approach:
+1. Optimised Code - Individual files and folder for each function, class or Widget
+2. State-Management tool - Provider
+
+## Screenshots avaliable in Screenshots Folder of this project
+
+## Resources:
+http://pub.dev/
