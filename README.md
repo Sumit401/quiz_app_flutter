@@ -4,17 +4,22 @@ Champ Quizz - A Quiz App
 
 
 ## Technology Used:
-1. Flutter
-2. Firebase
+- Flutter
+- Firebase
 
 ## How to Install:
-1. APK - https://www.amazon.com/dp/B0BSCJ37CY/ref=apps_sf_sta
-2. Web - https://champquizz.netlify.app/#/
+- APK - https://www.amazon.com/dp/B0BSCJ37CY/ref=apps_sf_sta
+- Web - https://champquizz.netlify.app/#/
+
+Project has two Sections Student and Faculty :
+- In Student you can participate in a Quiz.
+- In Faculty you can create a Quiz
 
 
 ## Approach:
-1. Optimised Code - Individual files and folder for each function, class or Widget
-2. State-Management tool - Provider
+
+- Optimised Code - Individual files and folder for each function, class or Widget
+- State-Management tool - Provider
 
 ## Screenshots:
 ![1673714989656](https://user-images.githubusercontent.com/38547258/212751157-c4ba983c-3f94-4929-ab35-df947a3ead8f.jpg)
