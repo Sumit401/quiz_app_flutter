@@ -41,6 +41,35 @@
           ]
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:575325391913:android:362c0c751ab8063553a038",
+        "android_client_info": {
+          "package_name": "com.sumit401.champquizz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "575325391913-ielo1h6md08b5h1ejdkob9dpoj5jlenh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1OL4RDkiecwoOz9GpiXjcgh234ZRY8YA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "575325391913-ielo1h6md08b5h1ejdkob9dpoj5jlenh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
     }
   ],
   "configuration_version": "1"

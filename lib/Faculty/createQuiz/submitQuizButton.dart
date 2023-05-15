@@ -42,6 +42,14 @@ Widget submitQuizButton() {
                 "Difficulty": providerValue.stringForQuizDifficulty
               });
 
+
+              await FirebaseFirestore.instance
+                  .collection("users")
+                  .doc(email)
+                  .update({
+                "attempt": getDocsCount+1,
+              });
+
               // Set each Element from list to the Firebase Database.....................
               for (var element in providerValue.list) {
                 i++;

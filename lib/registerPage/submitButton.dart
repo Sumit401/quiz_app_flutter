@@ -55,13 +55,14 @@ Future<void> setDataToFirebase(providerValue, context) async {
     result.user?.updateDisplayName(providerValue.name.trim());
 
     // Map user data ................
-    Map<String, String> userdata = {
+    Map<String, dynamic> userdata = {
       "name": providerValue.name.trim(),
       "userType": providerValue.radioForStudentFaculty.toString(),
       "about": "",
       "experience": "",
       "qualification": "",
       "contact": "",
+      "attempt" : 0,
     };
     // Set user data to collection in Firebase...........
     FirebaseFirestore.instance

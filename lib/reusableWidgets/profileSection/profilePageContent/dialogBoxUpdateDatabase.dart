@@ -6,17 +6,27 @@ import 'package:provider/provider.dart';
 import '../../Responsive.dart';
 import '../provider.dart';
 
+final formKey = GlobalKey<FormState>();
 createDialogBoxUpdate(context, providerValue, updateValue) {
   showDialog(
     context: context,
     builder: (context) {
       return AlertDialog(
+        scrollable: true,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         title: Text(updateValue),
-        content: contentOfAlertBox(context, providerValue, updateValue),
-        actions: [buttonForSave()],
-        actionsPadding: EdgeInsets.only(
-            right: setSize(context, 20), bottom: setSize(context, 20)),
+        content: Form(
+          key: formKey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              contentOfAlertBox(context, providerValue, updateValue),
+              const SizedBox(height: 10),
+              buttonForSave(formKey)
+            ],
+          ),
+        ),
       );
     },
   );
@@ -42,6 +52,13 @@ contentOfAlertBox(context, providerValue, updateValue) {
       decoration: InputDecoration(
           counterText: "",
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(20))),
+
+      validator: updateValue == "Phone" ? (value) {
+        if(value?.length != 10) {
+          return "Please enter valid mobile number";
+        }
+      } : null,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
       maxLines: updateValue != "Phone" ? 10 : 1,
       minLines: 1,
       maxLength: updateValue == "Phone" ? 10 : 500,
@@ -59,24 +76,27 @@ contentOfAlertBox(context, providerValue, updateValue) {
 }
 
 // Button To update...................................
-buttonForSave() {
+buttonForSave(GlobalKey<FormState> formKey) {
   return Consumer<ProfilePageProvider>(
     builder: (context, proValue, child) {
       return ElevatedButton(
           onPressed: () {
-            String? email = FirebaseAuth.instance.currentUser?.email.toString();
+           if (formKey.currentState!.validate()) {
+             String? email = FirebaseAuth.instance.currentUser?.email
+                 .toString();
 
-            Map<String, String> updatedData = {
-              "about": proValue.about,
-              "experience": proValue.experience,
-              "qualification": proValue.qualification,
-              "contact": proValue.userPhone,
-            };
-            FirebaseFirestore.instance
-                .collection("users")
-                .doc(email)
-                .update(updatedData);
-            Navigator.pop(context);
+             Map<String, String> updatedData = {
+               "about": proValue.about,
+               "experience": proValue.experience,
+               "qualification": proValue.qualification,
+               "contact": proValue.userPhone,
+             };
+             FirebaseFirestore.instance
+                 .collection("users")
+                 .doc(email)
+                 .update(updatedData);
+             Navigator.pop(context);
+           }
           },
           child: const Text("Save"));
     },

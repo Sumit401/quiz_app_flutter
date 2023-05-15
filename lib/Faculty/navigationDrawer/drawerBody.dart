@@ -187,7 +187,12 @@ ListTile listTileShare(context) {
       style: TextStyle(
           fontSize: setSize(context, 18), fontWeight: FontWeight.w400),
     ),
-    onTap: () {},
+    onTap: () async {
+      await launchUrlString(appLink,
+      webOnlyWindowName: "App Share");
+      Navigator.pop(context);
+
+    },
   );
 }
 

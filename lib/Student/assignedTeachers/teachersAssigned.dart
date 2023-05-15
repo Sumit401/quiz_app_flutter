@@ -35,26 +35,29 @@ Widget teachersAssigned(context) {
             ));
       } else {
         // If not null create List View of the following ......................
-        final validData = snapshot.data?.docs.where((d)=> d['userType']=="1" && d['about']!="").toList();
+        final validData = snapshot.data?.docs
+            .where((d) => d['userType'] == "1" && d['about'] != "" &&  d['attempt']> 0).toList();
+
+
 
         return ResponsiveWidget.isSmallScreen(context)
             ? ListView.builder(
                 itemCount: validData?.length,
                 itemBuilder: (context, index) {
-                  return cardWidget(validData, index,"List");
+                  return cardWidget(validData, index, "List");
                 },
               )
             : GridView.builder(
-          shrinkWrap: true,
+                shrinkWrap: true,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: ResponsiveWidget.isMediumScreen(context)
-                        ? 2 : 3,
-                mainAxisExtent: screenHeight(context) / 1.5),
-            itemCount: validData?.length,
-            itemBuilder: (context, index) {
-              return cardWidget(validData, index,"Grid");
-            },
-          );
+                    crossAxisCount:
+                        ResponsiveWidget.isMediumScreen(context) ? 2 : 3,
+                    mainAxisExtent: screenHeight(context) / 1.5),
+                itemCount: validData?.length,
+                itemBuilder: (context, index) {
+                  return cardWidget(validData, index, "Grid");
+                },
+              );
       }
     },
   );

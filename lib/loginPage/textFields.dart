@@ -15,7 +15,21 @@ Widget textFieldEmail() {
               onChanged: (value) {
                 providerValue.emailNotifier(value);
               },
+              validator: (value) {
+                const pattern = r"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$";
+                if (value!.trimLeft().length < 3) {
+                  if (RegExp(r'[\s]').hasMatch(value)) {
+                    return "Email must not contain spaces";
+                  }
+                  return "Please enter a valid Email";
+                } else if (!RegExp(pattern).hasMatch(value)) {
+                  return "Please enter a valid Email";
+                }
+                return null;
+              },
+              autovalidateMode: AutovalidateMode.onUserInteraction,
               style: textStyleLabel());
+
         },
       ));
 }
@@ -49,6 +63,10 @@ InputDecoration inputTextDecoration(String value) {
     focusColor: Colors.white,
     focusedBorder: textFieldBorder(),
     enabledBorder: textFieldBorder(),
+    errorBorder: textFieldBorder(),
+    focusedErrorBorder: textFieldBorder(),
+    errorStyle: TextStyle(fontSize: 14),
+    border: textFieldBorder(),
   );
 }
 

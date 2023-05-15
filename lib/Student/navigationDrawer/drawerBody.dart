@@ -141,6 +141,11 @@ ListTile listTileShare(context) {
       style: TextStyle(
           fontSize: setSize(context, 17), fontWeight: FontWeight.w400),
     ),
-    onTap: () {},
+    onTap: () async {
+      String mailto =
+          "mailto:sumitsinha401@gmail.com?subject=Query Regarding Quiz Application";
+      await launchUrlString(mailto,
+      mode: LaunchMode.externalApplication);
+    },
   );
 }

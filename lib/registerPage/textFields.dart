@@ -26,8 +26,21 @@ Widget textFieldEmail() {
   return Consumer<RegisterPageProvider>(
     builder: (context, providerValue, child) {
       return Container(
-        margin: EdgeInsets.symmetric(vertical: 10),
+        margin: const EdgeInsets.symmetric(vertical: 10),
         child: TextFormField(
+          validator: (value) {
+            const pattern = r"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$";
+            if (value!.trimLeft().length < 3) {
+              if (RegExp(r'[\s]').hasMatch(value)) {
+                return "Email must not contain spaces";
+              }
+              return "Please enter a valid Email";
+            } else if (!RegExp(pattern).hasMatch(value)) {
+              return "Please enter a valid Email";
+            }
+            return null;
+          },
+          autovalidateMode: AutovalidateMode.onUserInteraction,
           style: const TextStyle(color: Colors.white),
           keyboardType: TextInputType.emailAddress,
           decoration: textFieldDecoration("Email"),
@@ -63,6 +76,10 @@ InputDecoration textFieldDecoration(String label) {
   return InputDecoration(
       labelText: label,
       labelStyle: const TextStyle(color: Colors.white),
+      errorBorder: textFieldBorder(),
+      focusedErrorBorder: textFieldBorder(),
+      errorStyle: TextStyle(fontSize: 14),
+      border: textFieldBorder(),
       enabledBorder: textFieldBorder(),
       focusedBorder: textFieldBorder());
 }
