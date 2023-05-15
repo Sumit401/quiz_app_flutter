@@ -8,7 +8,7 @@ Champ Quizz - A Quiz App
 - Firebase
 
 ## How to Install:
-- APK - https://www.amazon.com/dp/B0BSCJ37CY/ref=apps_sf_sta
+- APK - https://play.google.com/store/apps/details?id=com.sumit401.champquizz
 - Web - https://champquizz.netlify.app/#/
 
 Project has two Sections Student and Faculty :
